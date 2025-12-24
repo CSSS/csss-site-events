@@ -191,11 +191,11 @@ button:active {
 }
 
 #mountain {
+  position: relative;
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
   border-right: 30px solid var(--hill-shadow);
   border-left: 3px solid var(--hill-shadow);
-  position: relative;
   z-index: -2;
   display: flex;
   flex-flow: row wrap;
@@ -238,21 +238,22 @@ button:active {
 
 #info-container {
   position: relative;
+  top: 100svh;
   z-index: 1;
   color: white;
 }
 
-#info-container > article {
+#info-container > section {
   padding: 1em 0;
 }
 
-#info-container > article > div {
+#info-container > section > div {
   flex: 0 0 auto;
   margin-left: 1em;
   margin-right: 1em;
 }
 
-#info-container > article h2 {
+#info-container > section h2 {
   text-align: center;
 }
 
@@ -357,7 +358,7 @@ a > img {
 }
 
 @media (max-width: 770px) {
-  article > div {
+  section > div {
     padding: 0 2rem;
   }
 }
@@ -368,10 +369,10 @@ a > img {
     font-size: 4rem;
     text-shadow: 0 10px 0 black;
   }
-  #info-container > article {
-    max-width: 500px;
-  }
-  #mountain {
-    max-width: 500px;
-  }
+  /* #info-container > section { */
+  /*   max-width: 500px; */
+  /* } */
+  /* #mountain { */
+  /*   max-width: 500px; */
+  /* } */
 }
