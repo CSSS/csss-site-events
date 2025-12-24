@@ -1,5 +1,7 @@
 :root {
   --hill-height: 50vh;
+  --max-hill-width: 500px;
+  --building-width: 8rem;
   --hill-padding: 5vh;
   --hill-shadow: #002805;
   --hill-color: #004208;
@@ -164,8 +166,10 @@ button:active {
 }
 
 #building {
-  position: relative;
-  z-index: -2;
+  position: fixed;
+  left: calc(50% - min(50%, calc(var(--building-width) / 2)));
+  bottom: calc(3 * var(--hill-padding));
+  z-index: 1;
   margin: 3em 0 0 0;
   min-width: 5.625rem;
   width: 20vw;
@@ -191,12 +195,14 @@ button:active {
 }
 
 #mountain {
-  position: relative;
+  position: fixed;
+  left: calc(50% - min(50%, calc(var(--max-hill-width) / 2)));
+  bottom: 0;
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
   border-right: 30px solid var(--hill-shadow);
   border-left: 3px solid var(--hill-shadow);
-  z-index: -2;
+  z-index: 1;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -204,7 +210,6 @@ button:active {
   padding-top: var(--hill-padding);
   min-width: 20rem;
   width: 100%;
-  min-height: calc(var(--hill-height) + 1em);
   background: var(--hill-color);
 }
 
@@ -369,10 +374,10 @@ a > img {
     font-size: 4rem;
     text-shadow: 0 10px 0 black;
   }
-  /* #info-container > section { */
-  /*   max-width: 500px; */
-  /* } */
-  /* #mountain { */
-  /*   max-width: 500px; */
-  /* } */
+  #info-container > section {
+    max-width: 500px;
+  }
+  #mountain {
+    max-width: 500px;
+  }
 }
