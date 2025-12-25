@@ -2,6 +2,7 @@
   --hill-height: 50vh;
   --max-hill-width: 500px;
   --building-width: 8rem;
+  --building-height: 5rem;
   --hill-padding: 5vh;
   --hill-shadow: #002805;
   --hill-color: #004208;
@@ -112,29 +113,17 @@ button:active {
   }
 }
 
-#above-fold::before {
-  content: '';
-  position: absolute;
+header {
+  position: sticky;
+  z-index: 2;
   top: 0;
   width: 100%;
-  height: 100%;
-}
-
-#above-fold {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
   display: flex;
-  flex-flow: column nowrap;
   align-items: center;
-  margin: 0;
 }
 
 #hero {
   text-align: center;
-  color: white;
-  margin: auto 0;
 }
 
 #hero > h2,
@@ -250,23 +239,10 @@ button:active {
 
 #info-container {
   position: relative;
-  top: 100svh;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
-}
-
-#info-container > section {
-  padding: 1em 0;
-}
-
-#info-container > section > div {
-  flex: 0 0 auto;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-#info-container > section h2 {
-  text-align: center;
 }
 
 /* if have more sponsors, add sponsors here too */
@@ -307,7 +283,8 @@ table td {
 }
 
 .home {
-  padding: 0.1rem;
+  position: absolute;
+  left: min(2%, 1.5rem);
 }
 
 .home > object {
@@ -319,17 +296,23 @@ table td {
   background: rgba(255, 255, 255, 0.1);
   width: 100%;
   display: flex;
-  padding: 0.4rem;
-  gap: min(1.5rem, 5vw);
+  padding: 1rem;
   align-items: center;
 }
 
-#nav-links a {
-  color: white;
-  transition: text-shadow 0.2s;
+.nav-links__links {
+  display: flex;
+  width: 100%;
+  margin: 0 7vw;
+  gap: min(1.5rem, 3vw);
+  justify-content: center;
 }
 
-#nav-links a:hover {
+.nav-links__links a {
+  color: white;
+}
+
+.nav-links__links a:hover {
   text-shadow: 0 0 5px grey;
 }
 
