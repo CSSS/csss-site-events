@@ -246,12 +246,6 @@ header {
   align-items: center;
   color: white;
   overflow-y: auto;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black calc(var(--header-height) / 20),
-    black 100%
-  );
   height: calc(100svh - var(--header-height));
   padding: 4vh 2vw;
 }
