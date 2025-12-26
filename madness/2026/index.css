@@ -28,6 +28,7 @@ body {
 p {
   line-height: 1.5;
   max-width: 100%;
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 table {
@@ -121,6 +122,8 @@ header {
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-top: 10svh;
+  min-height: calc(100svh - var(--header-height));
 }
 
 #hero > h2,
@@ -194,9 +197,7 @@ header {
   position: relative;
   left: calc(50vw - min(50vw, calc(var(--max-hill-width) / 2)));
   bottom: 0px;
-  min-width: 20rem;
-  max-width: var(--max-hill-width);
-  width: 100%;
+  width: min(var(--max-hill-width), 100%);
 
   border-top-left-radius: 40%;
   border-top-right-radius: 40%;
@@ -244,13 +245,21 @@ header {
   flex-direction: column;
   align-items: center;
   color: white;
-  overflow-y: scroll;
-  mask-image: linear-gradient(to bottom, transparent 0%, black var(--header-height), black 100%);
+  overflow-y: auto;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black calc(var(--header-height) / 20),
+    black 100%
+  );
   height: calc(100svh - var(--header-height));
+  padding: 4vh 2vw;
 }
 
-section {
-  padding: 4vh 2rem;
+section:not(#hero) {
+  padding: 2rem 2rem 0 2rem;
+  max-width: 75rem;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* if have more sponsors, add sponsors here too */
