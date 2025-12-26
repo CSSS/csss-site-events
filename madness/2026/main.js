@@ -1,5 +1,6 @@
 const sky = document.getElementById('sky');
 const stars = document.getElementById('stars');
+const content = document.getElementById('info-container');
 
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
@@ -11,9 +12,6 @@ const skyColours = [
   'linear-gradient(to bottom, #FF6B6B 0%, #FF8E53 50%, #FEB47B 100%)', // Evening
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)' // Night
 ];
-
-let currentColorIndex = 0;
-let lastScrollY = 0;
 
 function interpolateColor(color1, color2, factor) {
   const result = color1.slice();
@@ -35,8 +33,7 @@ function parseGradient(gradientStr) {
 }
 
 function updateSkyColour() {
-  const scrollPercent =
-    window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  const scrollPercent = content.scrollTop / (content.scrollHeight - content.clientHeight);
   const colorIndex = scrollPercent * (skyColours.length - 1);
   const currentIndex = Math.floor(colorIndex);
   const nextIndex = Math.min(currentIndex + 1, skyColours.length - 1);
@@ -71,6 +68,6 @@ function makeStars() {
   }
 }
 
-window.addEventListener('scroll', updateSkyColour);
-updateSkyColour(skyColours[0]);
+content.addEventListener('scroll', updateSkyColour);
+updateSkyColour();
 makeStars();
