@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="menu/menu.css" />
     <link rel="icon" type="image/png" href="/static/icons/favicon.png" />
     <script src="main.js" defer></script>
+    <script src="menu/menu.js" defer></script>
   </head>
 
   <body>
@@ -23,20 +25,61 @@
       </div>
     </div>
 
+    <div id="overlay hidden"></div>
+
     <header>
-      <nav id="nav-links">
-        <a class="home" href="https://sfucsss.org">
-          <object data="/static/icons/csss_logo_white.svg" type="image/svg+xml"></object>
-        </a>
-        <div class="nav-links__links">
-          <a href="#about"> About </a>
-          <a href="#faq"> FAQ </a>
-          <a href="#schedule"> Schedule </a>
-          <a href="#winners">
-            <b>Winners</b>
-          </a>
+      <button id="menu-open" class="clickable" onclick="openMenu()">
+        <object data="/static/icons/hamburger.svg" type="image/svg+xml"></object>
+      </button>
+      <nav id="menu">
+        <div class="menu__actions">
+          <button class="clickable" onclick="closeMenu()">
+            <object data="/static/icons/close.svg" type="image/svg+xml"></object>
+          </button>
         </div>
+        <ul id="menu__list">
+          <a class="menu__link" href="#join-us"> Join Us </a>
+          <a class="menu__link" href="#about"> About </a>
+          <a class="menu__link" href="#schedule"> Schedule </a>
+          <a class="menu__link" href="#"> Previous Year </a>
+          <a class="menu__link" href="#"> Sponsors </a>
+          <a class="menu__link" href="#"> Vote </a>
+          <a class="menu__link" href="#faq"> FAQ </a>
+        </ul>
       </nav>
+      <!-- <nav class="nav"> -->
+      <!--   <a class="home" href="https://sfucsss.org"> -->
+      <!--     <object data="/static/icons/csss_logo_white.svg" type="image/svg+xml"></object> -->
+      <!--   </a> -->
+      <!--   <a class="menu__link__lg" href="#join-us"> Join Us </a> -->
+      <!--   <a class="menu__link__lg" href="#about"> About </a> -->
+      <!--   <a class="menu__link__lg" href="#schedule"> Schedule </a> -->
+      <!--   <a class="menu__link__lg" href="#"> Previous Year </a> -->
+      <!--   <a class="menu__link__lg" href="#"> Sponsors </a> -->
+      <!--   <a class="menu__link__lg" href="#"> Vote </a> -->
+      <!--   <a class="menu__link__lg" href="#faq"> FAQ </a> -->
+      <!---->
+      <!--   <div id="menu"> -->
+      <!--     <div class="menu__actions"> -->
+      <!--       <button -->
+      <!--         id="menu__close-btn" -->
+      <!--         class="clickable" -->
+      <!--         href="#" -->
+      <!--         type="button" -->
+      <!--         onclick="closeMenu()" -->
+      <!--       > -->
+      <!--         <object data="/static/icons/close.svg" type="image/svg+xml"></object> -->
+      <!--       </button> -->
+      <!--     </div> -->
+      <!--     <a class="menu__link__sm" href="#join-us"> Join Us </a> -->
+      <!--     <a class="menu__link__sm" href="#about"> About </a> -->
+      <!--     <a class="menu__link__sm" href="#schedule"> Schedule </a> -->
+      <!--     <a class="menu__link__sm" href="#"> Previous Year </a> -->
+      <!--     <a class="menu__link__sm" href="#"> Sponsors </a> -->
+      <!--     <a class="menu__link__sm" href="#"> Vote </a> -->
+      <!--     <a class="menu__link__sm" href="#faq"> FAQ </a> -->
+      <!--   </div> -->
+      <!-- </nav> -->
     </header>
 
     <div id="info-container">
