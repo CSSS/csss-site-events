@@ -43,8 +43,9 @@ body * {
   box-sizing: border-box;
 }
 
-.hidden {
-  display: none !important;
+h3,
+h4 {
+  margin: 1rem;
 }
 
 .btn {
@@ -78,10 +79,16 @@ body * {
 .clickable {
   background: rgba(255, 255, 255, 0);
   border: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .clickable:hover {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 #sky {
@@ -124,11 +131,10 @@ object {
 
 /* HEADER/NAVIGATION */
 #overlay {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100svh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 header {
@@ -144,7 +150,7 @@ header {
 }
 
 #menu {
-  position: fixed;
+  position: absolute;
   height: 100svh;
   width: 18.75rem;
   top: 0;
@@ -153,12 +159,19 @@ header {
 }
 
 #menu__list {
+  list-style: none;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2svh;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
+  padding: 0;
+}
+
+.menu__link {
+  padding-left: 2rem;
 }
 
 .menu__actions {
@@ -176,7 +189,7 @@ header {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 5svh;
+  padding-top: 0.5svh;
   min-height: calc(100svh - var(--header-height));
 }
 
@@ -301,7 +314,7 @@ header {
   color: white;
   overflow-y: auto;
   height: calc(100svh - var(--header-height));
-  padding: 4vh 2vw;
+  padding: 0 2vw;
 }
 
 section:not(#hero) {
