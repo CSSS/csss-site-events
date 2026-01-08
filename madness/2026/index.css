@@ -185,6 +185,8 @@ header {
 }
 /* END HEADER */
 
+/* HERO SECTION */
+
 #hero {
   display: flex;
   flex-direction: column;
@@ -207,9 +209,8 @@ header {
   font-size: 2rem;
   text-shadow: 0 5px 0 black;
 }
-
 #hero > h2 {
-  margin-top: 20%;
+  margin: 0.5rem 0;
 }
 
 #hero > h3 {
@@ -228,9 +229,14 @@ header {
 #peak {
   position: fixed;
   bottom: 0;
-  height: fit-content;
   width: 100%;
 }
+
+#mountain-svg {
+  position: absolute;
+  bottom: 0;
+}
+/* END HERO SECTION */
 
 #building {
   position: relative;
