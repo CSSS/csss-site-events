@@ -5,6 +5,9 @@ const content = document.getElementById('info-container');
 const menuNav = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 
+const scheduleTbl1 = document.getElementById('schedule-1');
+const scheduleTbl2 = document.getElementById('schedule-2');
+
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
   'linear-gradient(to bottom, #1e3a5f 0%, #4a5f7f 50%, #7a8f9f 100%)', // Dawn
@@ -81,6 +84,16 @@ function closeMenu() {
   menuNav.classList.add('hidden');
   overlay.classList.add('hidden');
   content.style.overflow = 'auto';
+}
+
+function openSchedule(day) {
+  if (day === 2) {
+    scheduleTbl1.classList.add('hidden');
+    scheduleTbl2.classList.remove('hidden');
+    return;
+  }
+  scheduleTbl2.classList.add('hidden');
+  scheduleTbl1.classList.remove('hidden');
 }
 
 function main() {
