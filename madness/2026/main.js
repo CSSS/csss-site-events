@@ -2,6 +2,9 @@ const sky = document.getElementById('sky');
 const stars = document.getElementById('stars');
 const content = document.getElementById('info-container');
 
+const menuNav = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
+
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
   'linear-gradient(to bottom, #1e3a5f 0%, #4a5f7f 50%, #7a8f9f 100%)', // Dawn
@@ -68,6 +71,29 @@ function makeStars() {
   }
 }
 
-content.addEventListener('scroll', updateSkyColour);
-updateSkyColour();
-makeStars();
+function openMenu() {
+  menuNav.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+  content.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  menuNav.classList.add('hidden');
+  overlay.classList.add('hidden');
+  content.style.overflow = 'auto';
+}
+
+function main() {
+  // Handles the sky changing colours
+  content.addEventListener('scroll', updateSkyColour);
+  updateSkyColour();
+  makeStars();
+
+  // Menu handling
+  const links = document.getElementsByClassName('menu__link');
+  for (const link of links) {
+    link.addEventListener('click', closeMenu);
+  }
+}
+
+main();
