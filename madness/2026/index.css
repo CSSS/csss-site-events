@@ -1,5 +1,6 @@
 :root {
   --header-height: 55px;
+  --content-height: calc(100svh - var(--header-height));
   --red: #880500;
   --darkred: #550500;
   --lightred: #aa1500;
@@ -200,7 +201,7 @@ header {
   width: 100%;
   text-align: center;
   padding-top: 0.5svh;
-  min-height: calc(100svh - var(--header-height));
+  min-height: var(--content-height);
 }
 
 #hero > h2,
@@ -274,7 +275,7 @@ header {
   align-items: center;
   color: white;
   overflow-y: auto;
-  height: calc(100svh - var(--header-height));
+  height: var(--content-height);
   padding: 0 2vw;
 }
 
@@ -336,5 +337,39 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* VOTE BUTTONS */
+#vote > h2:first-of-type {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.vote-container {
+  display: grid;
+  grid-template-columns: 7rem 3rem 7rem;
+  text-align: center;
+  align-items: center;
+  row-gap: 1rem;
+}
+
+.vote-btn {
+  border: none;
+  padding: 1rem;
+  width: 7rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+
+  &.evil {
+    background-color: black;
+    color: white;
+  }
+}
+
+.vote-counters {
+  display: flex;
+  font-size: 3rem;
+}
+
+/* END VOTE BUTTONS */
 
 /* MEDIA QUERIES */
