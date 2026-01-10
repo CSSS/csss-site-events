@@ -97,6 +97,19 @@ h4 {
   gap: clamp(3vw, 3vw, 1rem);
 }
 
+.icon {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0.1rem;
+}
+
+.icon > img {
+  width: 2rem;
+  aspect-ratio: 1 / 1;
+}
+
 #sky {
   position: fixed;
   width: 100%;
@@ -148,6 +161,7 @@ header {
   height: var(--header-height);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 0.5rem;
 }
 
@@ -245,6 +259,10 @@ header {
   gap: 1rem;
 }
 
+.logo {
+  padding: 1rem;
+}
+
 /* END HERO SECTION */
 
 #peak {
@@ -339,7 +357,6 @@ header {
   flex-direction: column;
   align-items: center;
   color: white;
-  overflow-y: auto;
   height: calc(100svh - var(--header-height));
   padding: 0 2vw;
 }
@@ -412,13 +429,4 @@ a {
   text-decoration: underline white;
 }
 
-a > img {
-  max-width: calc(100% - 4em);
-  height: auto;
-  background: white;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  transition:
-    opacity 0.2s,
-    filter 0.2s;
-}
+/* MEDIA QUERIES */

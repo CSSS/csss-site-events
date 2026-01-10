@@ -4,6 +4,7 @@ const content = document.getElementById('info-container');
 
 const menuNav = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
+const home = document.getElementById('home');
 
 const scheduleTbl1 = document.getElementById('schedule-1');
 const scheduleTbl2 = document.getElementById('schedule-2');
@@ -107,6 +108,7 @@ function main() {
   for (const link of links) {
     link.addEventListener('click', closeMenu);
   }
+  home.addEventListener('click', closeMenu);
 }
 
 main();
