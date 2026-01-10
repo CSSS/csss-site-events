@@ -1,12 +1,5 @@
 :root {
   --header-height: 55px;
-  --hill-height: 50vh;
-  --max-hill-width: 500px;
-  --building-width: 8rem;
-  --building-height: 5rem;
-  --hill-padding: 5vh;
-  --hill-shadow: #002805;
-  --hill-color: #004208;
   --red: #880500;
   --darkred: #550500;
   --lightred: #aa1500;
@@ -196,9 +189,6 @@ header {
   padding: 1rem;
 }
 
-.home {
-  display: none;
-}
 /* END HEADER */
 
 /* HERO SECTION */
@@ -277,86 +267,13 @@ header {
 }
 /* END HERO SECTION */
 
-#building {
-  position: relative;
-  height: var(--building-height);
-  left: calc(50vw - min(50vw, calc(var(--building-width) / 2)));
-  z-index: 5;
-  margin: 3em 0 0 0;
-  min-width: 5.625rem;
-  width: 20vw;
-  width: 7.8125rem;
-  background: gray;
-  box-shadow:
-    inset -20px 0 0 gray,
-    10px 0px 0 #444;
-}
-
-#building::before {
-  background: var(--red);
-  content: 'SFU';
-  font-size: 1rem;
-  color: white;
-  position: relative;
-  top: -6px;
-  left: calc(100% - 50px);
-  width: 50px;
-  height: 70px;
-  padding: 5px 5px 0px 5px;
-}
-
-#mountain {
-  position: relative;
-  left: calc(50vw - min(50vw, calc(var(--max-hill-width) / 2)));
-  bottom: 0px;
-  width: min(var(--max-hill-width), 100%);
-
-  border-top-left-radius: 40%;
-  border-top-right-radius: 40%;
-  border-right: 30px solid var(--hill-shadow);
-  border-left: 3px solid var(--hill-shadow);
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  padding-top: var(--hill-padding);
-  background: var(--hill-color);
-}
-
-.grass {
-  position: relative;
-  border-top-left-radius: 30%;
-  border-top-right-radius: 30%;
-  width: 2rem;
-  height: 5rem;
-  background:
-    linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
-    linear-gradient(45deg, var(--hill-shadow) 25%, transparent 25%);
-  background-color: var(--hill-color);
-  background-position: bottom left;
-}
-
-.grass:nth-child(1) {
-  top: 5em;
-  right: 0em;
-}
-
-.grass:nth-child(2) {
-  top: 0em;
-  right: 1em;
-}
-
-.grass:nth-child(3) {
-  top: 7em;
-  left: 1em;
-}
-
 #info-container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
+  overflow-y: auto;
   height: calc(100svh - var(--header-height));
   padding: 0 2vw;
 }
@@ -418,15 +335,6 @@ td:first-child {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-#join-discord {
-  font-weight: lighter;
-}
-
-#join-discord a {
-  font-weight: bold;
-  text-decoration: underline white;
 }
 
 /* MEDIA QUERIES */
