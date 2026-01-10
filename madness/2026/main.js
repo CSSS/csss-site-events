@@ -9,6 +9,9 @@ const home = document.getElementById('home');
 const scheduleTbl1 = document.getElementById('schedule-1');
 const scheduleTbl2 = document.getElementById('schedule-2');
 
+const goodCounter = document.getElementById('good-counter');
+const evilCounter = document.getElementById('evil-counter');
+
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
   'linear-gradient(to bottom, #1e3a5f 0%, #4a5f7f 50%, #7a8f9f 100%)', // Dawn
@@ -95,6 +98,15 @@ function openSchedule(day) {
   }
   scheduleTbl2.classList.add('hidden');
   scheduleTbl1.classList.remove('hidden');
+}
+
+// TODO: Replace these buttons with counts from the backend
+function incrementGood() {
+  goodCounter.textContent = parseInt(goodCounter.textContent) + 1;
+}
+
+function incrementEvil() {
+  evilCounter.textContent = parseInt(evilCounter.textContent) + 1;
 }
 
 function main() {
