@@ -91,6 +91,11 @@ h4 {
   display: none;
 }
 
+.col-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #sky {
   position: fixed;
   width: 100%;
@@ -123,10 +128,6 @@ h4 {
   to {
     opacity: 1;
   }
-}
-
-object {
-  pointer-events: none;
 }
 
 /* HEADER/NAVIGATION */
@@ -209,6 +210,7 @@ header {
   font-size: 2rem;
   text-shadow: 0 5px 0 black;
 }
+
 #hero > h2 {
   margin: 0.5rem 0;
 }
@@ -226,13 +228,15 @@ header {
   font-weight: 800;
 }
 
+/* END HERO SECTION */
+
 #peak {
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
-#mountain-svg {
+.mountain-svg {
   position: absolute;
   bottom: 0;
 }
@@ -325,6 +329,7 @@ header {
 
 section:not(#hero) {
   padding: 0 2rem;
+  width: 95%;
   max-width: 75rem;
   background: rgba(0, 0, 0, 0.5);
 }
