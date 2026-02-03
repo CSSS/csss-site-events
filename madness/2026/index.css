@@ -206,6 +206,10 @@ header {
   height: var(--content-height);
 }
 
+*[class$='__lg'] {
+  display: none;
+}
+
 /* HERO SECTION */
 
 #hero {
@@ -238,6 +242,10 @@ div[class^='hero__title'] > h1 {
 
 div[class^='hero__title'] > h2 {
   margin: 0.5rem 0;
+}
+
+#hero > h3 {
+  font-size: 1.5rem;
 }
 
 div[class^='hero__title'] > h3 {
@@ -357,10 +365,11 @@ a {
   color: inherit;
 }
 
-/* VOTE BUTTONS */
-#vote > h2:first-of-type {
+/* VOTE */
+section[class^='vote'] h2 {
   font-size: 2rem;
   text-align: center;
+  color: white;
 }
 
 .vote-container {
@@ -416,6 +425,10 @@ section#conduct {
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 768px) {
+  *[class$='__lg'] {
+    display: block;
+  }
+
   .layout {
     display: grid;
     grid-template-rows: 40% 60%;
@@ -461,5 +474,20 @@ section#conduct {
   .btn {
     font-size: clamp(0.6rem, 3vw, 1.5rem);
     width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
+  }
+
+  .vote__lg {
+    position: relative;
+    z-index: 10;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    display: grid;
+    place-items: center;
+  }
+
+  .vote-wrapper {
+    display: grid;
+    place-items: center;
   }
 }

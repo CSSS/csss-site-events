@@ -76,6 +76,20 @@
         </div>
       </section>
 
+      <section class="vote__lg">
+        <div class="vote-wrapper">
+          <h2>VOTE!</h2>
+          <div class="vote-container">
+            <button class="vote-btn good" onclick="incrementGood()">Good</button>
+            <span>VS</span>
+            <button class="vote-btn evil" onclick="incrementEvil()">Evil</button>
+            <div id="good-counter">0</div>
+            -
+            <div id="evil-counter">0</div>
+          </div>
+        </div>
+      </section>
+
       <div id="info-container">
         <section id="hero">
           <div class="hero__title">
@@ -178,7 +192,7 @@
           <p>TODO</p>
         </section>
 
-        <section id="vote">
+        <section id="vote" class="vote">
           <h2>VOTE!</h2>
           <div class="vote-container">
             <button class="vote-btn good" onclick="incrementGood()">Good</button>
