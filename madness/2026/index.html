@@ -48,7 +48,10 @@
       </button>
       <nav id="menu" class="hidden">
         <div class="menu__actions">
-          <button class="clickable" onclick="closeMenu()">
+          <a id="home" class="menu__button clickable" href="#hero">
+            <img src="mm-logo_512.svg" alt="home" />
+          </a>
+          <button class="menu__button clickable" onclick="closeMenu()">
             <img src="/static/icons/close.svg" alt="close menu" />
           </button>
         </div>
@@ -66,12 +69,13 @@
 
     <div id="info-container">
       <section id="hero">
-        <h3>The CSSS presents...</h3>
-        <div class="logo">
-          <img src="mm-logotext.svg" alt="mountain madness" />
+        <div class="hero__title">
+          <div class="logo">
+            <img src="mm-logotext.svg" alt="mountain madness" />
+          </div>
+          <h3>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h3>
+          <h3>@ SFU Burnaby Mountain</h3>
         </div>
-        <h3>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h3>
-        <h3>@ <b>SFU</b> Burnaby Mountain</h3>
         <div class="hero__actions">
           <h2>Join us now</h2>
           <div class="hero__btns">
@@ -162,10 +166,6 @@
         <!-- </div> -->
       </section>
 
-      <section id="prev-year">
-        <h2>Previous Year</h2>
-      </section>
-
       <section id="sponsors">
         <h2>Sponsors</h2>
         <p>TODO</p>
@@ -189,7 +189,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Wait, what
           actually is a hackathon?
         </h3>
-        <p>
+        <p class="answer">
           A hackathon is an event where teams work on a project inspired by an event-provided theme.
           You will have 24 hours to develop something cool at Mountain Madness. Your team will start
           from scratch and try to make the coolest thing they can before the time is up.
@@ -199,7 +199,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Where is
           Mountain Madness?
         </h3>
-        <p>
+        <p class="answer">
           Registration and administration is in front of SSCC 9001 on SFU's Burnaby Campus. You are
           free to hack at other open locations on campus.
         </p>
@@ -208,7 +208,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why should I
           participate?
         </h3>
-        <p>
+        <p class="answer">
           You get experience with new technologies and navigate teamwork dynamics to accomplish a
           goal. Hackathon projects are also a great addition to a resume!
         </p>
@@ -217,7 +217,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />I am in my first
           year/don't have much experience, should I still participate?
         </h3>
-        <p>
+        <p class="answer">
           Yes! This hackathon is a great learning opportunity for people with less development
           experience.
         </p>
@@ -226,7 +226,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Do I need to
           stay during the entire event?
         </h3>
-        <p>
+        <p class="answer">
           No! You may leave and enter the venue whenever (note that most doors are locked during the
           weekend). You can spend as much or as little of the 24 hours as you wish. If you get
           tired, we will have sleeping rooms available for you. Sleep still matters!
@@ -236,7 +236,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How do we
           declare teams?
         </h3>
-        <p>
+        <p class="answer">
           You do not need to know your team when you register. You can form groups before or during
           the hackathon. When you give us your submission GitHub/GitLab and Devpost link you will
           declare your group members.
@@ -246,13 +246,13 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Will there be
           food?
         </h3>
-        <p>Yes! We will be providing food for in person attendees.</p>
+        <p class="answer">Yes! We will be providing food for in person attendees.</p>
 
         <h3 class="question">
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I have
           Non-SFU people and Alumni join my team?
         </h3>
-        <p>
+        <p class="answer">
           Yes! We will allow groups to be made up of non-SFU students however we want a majority
           (50%) of the team to be made up of SFU students. So a group of 4 can have up to 2 non-SFU
           participants.
@@ -262,7 +262,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I work on my
           previous projects?
         </h3>
-        <p>
+        <p class="answer">
           No, we want you to create awesome things from scratch in 24 hours. Starting from an
           existing project is against the spirit of the event. Existing open-source libraries and
           frameworks are fine, of course. Ask a committee member if you are unsure.
@@ -272,7 +272,7 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />What size should
           my team be?
         </h3>
-        <p>
+        <p class="answer">
           Teams can have between 1 and 4 members inclusive. You can work alone if you really want
           to, but struggling with your team is an essential hackathon experience! We will run a team
           formation event before the event for you to form teams. From past experience groups of 3
@@ -283,15 +283,16 @@
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How much does it
           cost?
         </h3>
-        <p>F R E E</p>
+        <p class="answer">F R E E</p>
 
         <h3 class="question">
           <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why is there a
           Good vs Evil Counter?
         </h3>
-        <p>You'll see in the closing ceremony ;)</p>
+        <p class="answer">You'll see in the closing ceremony ;)</p>
       </section>
-      <footer id="conduct">
+
+      <section id="conduct">
         <h2>Major League Hacking (MLH)</h2>
         Major League Hacking (MLH) stands for inclusivity. We believe that every single person has
         the right to hack in a safe and welcoming environment. The
@@ -306,7 +307,7 @@
         makes you uncomfortable at an MLH Member Event, if the event itself creates an unsafe or
         inappropriate environment, or if interacting with an MLH representative or event organizer
         makes you uncomfortable, please report it using the procedures included in this document.
-      </footer>
+      </section>
     </div>
   </body>
 </html>
