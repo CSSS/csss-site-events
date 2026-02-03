@@ -9,7 +9,25 @@
     <script src="main.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon-96x96.png" />
   </head>
-
+  <a
+    id="mlh-trust-badge"
+    style="
+      display: block;
+      max-width: 100px;
+      min-width: 60px;
+      position: fixed;
+      right: 5px;
+      top: 0;
+      width: 10%;
+      z-index: 10000;
+    "
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=black"
+    target="_blank"
+    ><img
+      src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-black.svg"
+      alt="Major League Hacking 2026 Hackathon Season"
+      style="width: 100%"
+  /></a>
   <body>
     <div id="sky"></div>
     <div id="stars"></div>
@@ -33,15 +51,12 @@
           <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
           <li><a class="menu__link clickable" href="#about"> About </a></li>
           <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li>
-          <li><a class="menu__link clickable" href="#prev-year"> Previous Year </a></li>
           <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
           <li><a class="menu__link clickable" href="#vote"> Vote </a></li>
           <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
+          <li><a class="menu__link clickable" href="#conduct">Code of Conduct</a></li>
         </ul>
       </nav>
-      <a id="home" class="icon clickable sm-only" href="#hero">
-        <img src="mm-logo_512.svg" alt="home" />
-      </a>
     </header>
 
     <div id="info-container">
@@ -91,54 +106,55 @@
 
       <section id="schedule">
         <h2>Schedule</h2>
-        <div>
-          <div>
-            <button class="schedule__btn" onclick="openSchedule(1)">Day 1</button>
-            <button class="schedule__btn" onclick="openSchedule(2)">Day 2</button>
-          </div>
-          <div>
-            <table id="schedule-1">
-              <tr>
-                <td>9:00 AM</td>
-                <td>Sign-in and Registration</td>
-              </tr>
-              <tr>
-                <td>9:30 AM</td>
-                <td>Opening Presentation (Theme Announced)</td>
-              </tr>
-              <tr>
-                <td>10:00 AM</td>
-                <td>Hacking Begins</td>
-              </tr>
-              <tr>
-                <td>1:00 PM</td>
-                <td>Lunch</td>
-              </tr>
-              <tr>
-                <td>7:00 PM</td>
-                <td>Dinner</td>
-              </tr>
-            </table>
-            <table id="schedule-2">
-              <tr>
-                <td>8:30 AM</td>
-                <td>Submissions Open</td>
-              </tr>
-              <tr>
-                <td>10:00 AM</td>
-                <td>Hacking Ends (Submission Deadline)</td>
-              </tr>
-              <tr>
-                <td>10:30 AM</td>
-                <td>Project Presentations</td>
-              </tr>
-              <tr>
-                <td>12:30 PM</td>
-                <td>END</td>
-              </tr>
-            </table>
-          </div>
-        </div>
+        <div>TODO</div>
+        <!-- <div> -->
+        <!--   <div> -->
+        <!--     <button class="schedule__btn" onclick="openSchedule(1)">Day 1</button> -->
+        <!--     <button class="schedule__btn" onclick="openSchedule(2)">Day 2</button> -->
+        <!--   </div> -->
+        <!--   <div> -->
+        <!--     <table id="schedule-1"> -->
+        <!--       <tr> -->
+        <!--         <td>9:00 AM</td> -->
+        <!--         <td>Sign-in and Registration</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>9:30 AM</td> -->
+        <!--         <td>Opening Presentation (Theme Announced)</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>10:00 AM</td> -->
+        <!--         <td>Hacking Begins</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>1:00 PM</td> -->
+        <!--         <td>Lunch</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>7:00 PM</td> -->
+        <!--         <td>Dinner</td> -->
+        <!--       </tr> -->
+        <!--     </table> -->
+        <!--     <table id="schedule-2"> -->
+        <!--       <tr> -->
+        <!--         <td>8:30 AM</td> -->
+        <!--         <td>Submissions Open</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>10:00 AM</td> -->
+        <!--         <td>Hacking Ends (Submission Deadline)</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>10:30 AM</td> -->
+        <!--         <td>Project Presentations</td> -->
+        <!--       </tr> -->
+        <!--       <tr> -->
+        <!--         <td>12:30 PM</td> -->
+        <!--         <td>END</td> -->
+        <!--       </tr> -->
+        <!--     </table> -->
+        <!--   </div> -->
+        <!-- </div> -->
       </section>
 
       <section id="prev-year">
@@ -147,6 +163,7 @@
 
       <section id="sponsors">
         <h2>Sponsors</h2>
+        <p>TODO</p>
       </section>
 
       <section id="vote">
@@ -269,6 +286,22 @@
         </h3>
         <p>You'll see in the closing ceremony ;)</p>
       </section>
+      <footer id="conduct">
+        <h2>Major League Hacking (MLH)</h2>
+        Major League Hacking (MLH) stands for inclusivity. We believe that every single person has
+        the right to hack in a safe and welcoming environment. The
+        <a class="mlh" href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+          >MLH Code of Conduct</a
+        >
+        applies to all Mountain Madness attendees.
+
+        <br />
+        <br />
+        Be respectful. Harassment and abuse are never tolerated. If you are in a situation that
+        makes you uncomfortable at an MLH Member Event, if the event itself creates an unsafe or
+        inappropriate environment, or if interacting with an MLH representative or event organizer
+        makes you uncomfortable, please report it using the procedures included in this document.
+      </footer>
     </div>
   </body>
 </html>
