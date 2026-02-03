@@ -148,7 +148,7 @@ h4 {
 
 header {
   position: sticky;
-  z-index: 2;
+  z-index: 11000;
   top: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
@@ -174,7 +174,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 2svh;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: white;
   padding: 0;
@@ -279,7 +279,8 @@ header {
   padding: 0 2vw;
 }
 
-section:not(#hero) {
+section:not(#hero),
+footer {
   padding: 0 2rem;
   width: 95%;
   max-width: 75rem;
@@ -315,11 +316,6 @@ table td {
 .home {
   position: absolute;
   left: min(2%, 1.5rem);
-}
-
-.home > object {
-  width: 2rem;
-  pointer-events: none;
 }
 
 #schedule h3 {
@@ -381,4 +377,14 @@ a {
   vertical-align: middle;
 }
 
+/* FOOTER */
+footer {
+  padding-bottom: 3rem;
+}
+
+.mlh {
+  text-decoration: underline;
+}
+
+/* END FOOTER */
 /* MEDIA QUERIES */
