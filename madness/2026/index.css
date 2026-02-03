@@ -5,6 +5,8 @@
   --darkred: #550500;
   --lightred: #aa1500;
   --clr-answer: #d0d0d0;
+
+  --btn-width: 10rem;
 }
 
 html,
@@ -48,13 +50,13 @@ h4 {
   padding: 12px 12px 10px 12px;
   font-size: inherit;
   font-weight: 700;
+  width: var(--btn-width);
   color: white;
   background: var(--red);
   white-space: nowrap;
   border: none;
   text-align: center;
   cursor: pointer;
-  font-size: 1em;
   box-shadow: 0 6px 0 var(--darkred);
   transition:
     box-shadow 0.2s,
@@ -248,8 +250,6 @@ header {
   position: absolute;
   width: 100%;
   bottom: 8vh;
-  display: flex;
-  flex-direction: column;
 }
 
 .hero__btns {
@@ -264,7 +264,7 @@ header {
 }
 
 .logo > img {
-  max-width: 45rem;
+  max-width: 70rem;
 }
 
 /* END HERO SECTION */
@@ -404,3 +404,19 @@ section#conduct {
 }
 
 /* MEDIA QUERIES */
+@media screen and (min-width: 768px) {
+  .hero__title {
+    top: 5vh;
+  }
+
+  .hero__actions {
+    position: absolute;
+    bottom: 20vh;
+    left: 15vw;
+  }
+
+  .btn {
+    font-size: clamp(0.6rem, 3vw, 1.5rem);
+    width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
+  }
+}
