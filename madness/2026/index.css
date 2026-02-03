@@ -4,6 +4,7 @@
   --red: #880500;
   --darkred: #550500;
   --lightred: #aa1500;
+  --clr-answer: #d0d0d0;
 }
 
 html,
@@ -391,6 +392,7 @@ a {
 .answer {
   padding-left: min(1.5rem, 1vw);
   margin-bottom: 3rem;
+  color: var(--clr-answer);
 }
 
 section#conduct {
