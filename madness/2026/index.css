@@ -283,7 +283,7 @@ section:not(#hero) {
   padding: 0 2rem;
   width: 95%;
   max-width: 75rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 /* if have more sponsors, add sponsors here too */
@@ -371,5 +371,14 @@ a {
 }
 
 /* END VOTE BUTTONS */
+
+.question {
+  margin: 0;
+}
+
+.chevron {
+  width: 1.5rem;
+  vertical-align: middle;
+}
 
 /* MEDIA QUERIES */
