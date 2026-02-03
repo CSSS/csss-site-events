@@ -353,9 +353,9 @@ a {
 
 .vote-container {
   display: grid;
-  grid-template-columns: 7rem 3rem 7rem;
+  grid-template-columns: 2fr 1fr 2fr;
   text-align: center;
-  align-items: center;
+  place-items: center;
   row-gap: 1rem;
 }
 
