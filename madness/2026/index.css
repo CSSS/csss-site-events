@@ -43,6 +43,11 @@ h4 {
   margin: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 12px 10px 12px;
@@ -372,10 +377,43 @@ td:first-child {
 
 /* END SCHEDULE */
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* SPONSOR */
+div[class^='sponsors'][class$='t1'] {
+  --card-sz: 8rem;
+  --gap: 0.4rem;
 }
+
+div[class^='sponsors'][class$='t2'] {
+  --card-sz: 5rem;
+  --gap: 0.1rem;
+}
+
+div[class^='sponsors'][class$='t3'] {
+  --card-sz: 4rem;
+  --gap: 0.15rem;
+}
+
+div[class^='sponsors'] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-sz), 1fr));
+  gap: var(--gap);
+  place-items: center;
+  margin-bottom: 1rem;
+}
+
+.sponsor__card {
+  aspect-ratio: 1 / 1;
+  border: 1px white solid;
+  display: grid;
+  place-items: center;
+  max-width: var(--card-sz);
+}
+
+.sponsor__logo {
+  max-width: var(--card-sz);
+}
+
+/* END SPONSOR */
 
 /* VOTE */
 #vote h2 {
