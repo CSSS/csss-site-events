@@ -1,4 +1,3 @@
-const sky = document.getElementById('sky');
 const stars = document.getElementById('stars');
 const content = document.getElementById('info-container');
 
@@ -10,6 +9,8 @@ const scheduleTbl2 = document.getElementById('schedule-2');
 
 const goodCounter = document.getElementById('good-counter');
 const evilCounter = document.getElementById('evil-counter');
+
+const scheduleDays = document.querySelectorAll('.schedule__day');
 
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
@@ -89,16 +90,6 @@ function closeMenu() {
   content.style.overflow = 'auto';
 }
 
-function openSchedule(day) {
-  if (day === 2) {
-    scheduleTbl1.classList.add('hidden');
-    scheduleTbl2.classList.remove('hidden');
-    return;
-  }
-  scheduleTbl2.classList.add('hidden');
-  scheduleTbl1.classList.remove('hidden');
-}
-
 // TODO: Replace these buttons with counts from the backend
 function incrementGood() {
   goodCounter.textContent = parseInt(goodCounter.textContent) + 1;
@@ -109,6 +100,22 @@ function incrementEvil() {
 }
 
 function main() {
+  // Day selector
+  document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
+    radio.addEventListener('change', e => {
+      const selectedDay = e.target.value;
+      scheduleDays.forEach(day => {
+        day.classList.add('hidden');
+      });
+      document
+        .querySelector(`.schedule__day[data-day="${selectedDay}"]`)
+        ?.classList.remove('hidden');
+    });
+  });
+
+  // Initialize Saturday as the first day
+  document.querySelector('.schedule__day[data-day="saturday"]')?.classList.remove('hidden');
+
   // Handles the sky changing colours
   content.addEventListener('scroll', updateSkyColour);
   updateSkyColour();
