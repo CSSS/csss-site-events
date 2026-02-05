@@ -113,8 +113,8 @@ function main() {
     });
   });
 
-  // Initialize Saturday as the first day
-  document.querySelector('.schedule__day[data-day="saturday"]')?.classList.remove('hidden');
+  // Initially hide Sunday
+  document.querySelector('.schedule__day[data-day="sunday"]')?.classList.add('hidden');
 
   // Handles the sky changing colours
   content.addEventListener('scroll', updateSkyColour);
