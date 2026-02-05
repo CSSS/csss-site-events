@@ -16,6 +16,7 @@ body {
   height: 100svh;
   scrollbar-width: none;
   font-family: 'Inter', sans-serif;
+  color: white;
 }
 
 body {
@@ -52,7 +53,6 @@ h4 {
   font-size: inherit;
   font-weight: 700;
   width: var(--btn-width);
-  color: white;
   background: var(--red);
   white-space: nowrap;
   border: none;
@@ -180,7 +180,6 @@ header {
   gap: 2svh;
   font-size: 1.7rem;
   font-weight: 700;
-  color: white;
   padding: 0;
 }
 
@@ -219,10 +218,6 @@ header {
   text-align: center;
   padding-top: 0.5svh;
   min-height: var(--content-height);
-}
-
-div[class^='hero__title'] {
-  color: white;
 }
 
 div[class^='hero__title'] > h2,
@@ -305,7 +300,6 @@ div[class^='hero__title'] > h4 b {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
   overflow-y: auto;
   height: var(--content-height);
   padding: 0 2vw;
@@ -368,7 +362,6 @@ a {
 section[class^='vote'] h2 {
   font-size: 2rem;
   text-align: center;
-  color: white;
 }
 
 .vote-container {
