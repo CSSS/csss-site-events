@@ -30,12 +30,8 @@ p {
   font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
-table {
-  font-size: 1rem;
-}
-
 table * {
-  font-size: inherit;
+  font-size: 1.3rem;
 }
 
 body * {
@@ -92,7 +88,7 @@ h4 {
 .col-btns {
   display: flex;
   justify-content: center;
-  gap: clamp(3vw, 3vw, 1rem);
+  gap: 1rem;
 }
 
 .icon {
@@ -382,9 +378,13 @@ a {
 }
 
 /* VOTE */
-section[class^='vote'] h2 {
+#vote h2 {
   font-size: 2rem;
   text-align: center;
+}
+
+.vote-wrapper {
+  width: 100%;
 }
 
 .vote-container {
@@ -399,7 +399,7 @@ section[class^='vote'] h2 {
   border: none;
   padding: 1rem;
   width: 7rem;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   border-radius: 0.5rem;
 
   &.evil {
@@ -408,7 +408,7 @@ section[class^='vote'] h2 {
   }
 }
 
-.vote-counters {
+.counter {
   display: flex;
   font-size: 3rem;
 }
@@ -545,6 +545,7 @@ section#conduct {
     top: 0;
     background: none;
     pointer-events: none;
+    z-index: 12000;
   }
 
   #info-container #vote.vote button {
@@ -553,10 +554,14 @@ section#conduct {
 
   .vote-wrapper {
     position: absolute;
-    left: 15%;
+    right: 70vw;
     bottom: 15%;
     display: grid;
     place-items: center;
-    width: fit-content;
+    width: 20vw;
+  }
+
+  .vote-btn {
+    font-size: 2rem;
   }
 }
