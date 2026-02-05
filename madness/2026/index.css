@@ -204,10 +204,10 @@ header {
 
 /* END HEADER */
 
-.layout {
-  overflow: hidden;
-  height: var(--content-height);
-}
+/* .layout { */
+/*   overflow: hidden; */
+/*   height: var(--content-height); */
+/* } */
 
 *[class$='lg'] {
   display: none;
@@ -434,11 +434,9 @@ section#conduct {
     display: none !important;
   }
 
-  .layout {
-    display: grid;
-    height: 100svh;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr 1.3fr;
+  .btn {
+    font-size: clamp(0.6rem, 3vw, 1.5rem);
+    width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
   }
 
   .hero__lg {
@@ -460,13 +458,17 @@ section#conduct {
   }
 
   #info-container {
-    height: 100%;
-    grid-column: 2 / 3;
+    height: 100vw;
+  }
+
+  #info-container {
+    grid-column: 1 / 3;
     grid-row: 2 / 3;
   }
 
   #hero {
     min-height: var(--content-height);
+    margin-bottom: 2rem;
   }
 
   .hero__title {
@@ -477,25 +479,21 @@ section#conduct {
     display: none;
   }
 
-  .btn {
-    font-size: clamp(0.6rem, 3vw, 1.5rem);
-    width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
-  }
-
-  .vote__lg {
-    position: relative;
-    z-index: 10;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-
-    display: grid;
-    place-items: center;
+  #info-container #vote.vote {
+    position: fixed;
+    height: 100svh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    background: none;
   }
 
   .vote-wrapper {
+    position: absolute;
+    left: 15%;
+    bottom: 15%;
     display: grid;
     place-items: center;
-    padding-left: 10%;
-    padding-top: 15%;
+    width: fit-content;
   }
 }
