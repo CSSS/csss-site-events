@@ -317,23 +317,43 @@ h4 {
   background: rgba(0, 0, 0, 0.7);
 }
 
-/* if have more sponsors, add sponsors here too */
-#schedule {
+/* SCHEDULE */
+.schedule__selector {
   display: flex;
-  flex-flow: row wrap;
+  gap: 1rem;
   justify-content: center;
-  max-width: 100%;
+  margin-bottom: 1rem;
 }
 
-#schedule div {
-  max-width: calc(100% - 2em);
-  margin-left: 1em;
-  margin-right: 1em;
+.schedule__selector input[type='radio'] {
+  display: none;
+}
+
+.schedule__selector label {
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.schedule__selector input[type='radio']:checked + label {
+  background-color: var(--red);
+  color: white;
+}
+
+.schedule__day {
+  display: block;
+}
+
+.schedule__day.hidden {
+  display: hidden;
 }
 
 table td {
   padding: 0.5em 0;
-  max-width: 45%;
 }
 
 #schedule > h2,
@@ -341,11 +361,6 @@ table td {
 #faq > h2,
 #prize > h2 {
   flex: 1 0 100%;
-}
-
-.home {
-  position: absolute;
-  left: min(2%, 1.5rem);
 }
 
 #schedule h3 {
@@ -358,6 +373,8 @@ td:first-child {
   font-weight: 700;
   padding-right: 1em;
 }
+
+/* END SCHEDULE */
 
 a {
   text-decoration: none;

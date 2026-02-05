@@ -132,55 +132,56 @@
 
       <section id="schedule">
         <h2>Schedule</h2>
-        <div>TODO</div>
-        <!-- <div> -->
-        <!--   <div> -->
-        <!--     <button class="schedule__btn" onclick="openSchedule(1)">Day 1</button> -->
-        <!--     <button class="schedule__btn" onclick="openSchedule(2)">Day 2</button> -->
-        <!--   </div> -->
-        <!--   <div> -->
-        <!--     <table id="schedule-1"> -->
-        <!--       <tr> -->
-        <!--         <td>9:00 AM</td> -->
-        <!--         <td>Sign-in and Registration</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>9:30 AM</td> -->
-        <!--         <td>Opening Presentation (Theme Announced)</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>10:00 AM</td> -->
-        <!--         <td>Hacking Begins</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>1:00 PM</td> -->
-        <!--         <td>Lunch</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>7:00 PM</td> -->
-        <!--         <td>Dinner</td> -->
-        <!--       </tr> -->
-        <!--     </table> -->
-        <!--     <table id="schedule-2"> -->
-        <!--       <tr> -->
-        <!--         <td>8:30 AM</td> -->
-        <!--         <td>Submissions Open</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>10:00 AM</td> -->
-        <!--         <td>Hacking Ends (Submission Deadline)</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>10:30 AM</td> -->
-        <!--         <td>Project Presentations</td> -->
-        <!--       </tr> -->
-        <!--       <tr> -->
-        <!--         <td>12:30 PM</td> -->
-        <!--         <td>END</td> -->
-        <!--       </tr> -->
-        <!--     </table> -->
-        <!--   </div> -->
-        <!-- </div> -->
+        <div class="schedule__container">
+          <div class="schedule__selector">
+            <input type="radio" name="schedule-day" id="day-friday" value="saturday" checked />
+            <label for="day-friday">Saturday</label>
+            <input type="radio" name="schedule-day" id="day-saturday" value="sunday" />
+            <label for="day-saturday">Sunday</label>
+          </div>
+          <div>
+            <table class="schedule__day" data-day="saturday">
+              <tr>
+                <td>9:00 AM</td>
+                <td>Sign-in and Registration</td>
+              </tr>
+              <tr>
+                <td>9:30 AM</td>
+                <td>Opening Presentation (Theme Announced)</td>
+              </tr>
+              <tr>
+                <td>10:00 AM</td>
+                <td>Hacking Begins</td>
+              </tr>
+              <tr>
+                <td>1:00 PM</td>
+                <td>Lunch</td>
+              </tr>
+              <tr>
+                <td>7:00 PM</td>
+                <td>Dinner</td>
+              </tr>
+            </table>
+            <table class="schedule__day" data-day="sunday">
+              <tr>
+                <td>8:30 AM</td>
+                <td>Submissions Open</td>
+              </tr>
+              <tr>
+                <td>10:00 AM</td>
+                <td>Hacking Ends (Submission Deadline)</td>
+              </tr>
+              <tr>
+                <td>10:30 AM</td>
+                <td>Project Presentations</td>
+              </tr>
+              <tr>
+                <td>12:30 PM</td>
+                <td>END</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </section>
 
       <section id="sponsors">
