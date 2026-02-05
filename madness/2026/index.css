@@ -155,7 +155,7 @@ h4 {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-header {
+.header__sm {
   position: sticky;
   z-index: 11000;
   top: 0;
@@ -418,7 +418,9 @@ section#conduct {
 /* MEDIA QUERIES */
 @media screen and (min-width: 1280px) {
   :root {
-    --header-height: 263px;
+    --logo-height: 263.3px;
+    --nav-height: 33px;
+    --header-height: calc(var(--logo-height) + var(--nav-height));
   }
 
   *[class$='lg'] {
@@ -456,7 +458,30 @@ section#conduct {
   #hero__lg {
     position: fixed;
     width: 100%;
-    pointer-events: none;
+  }
+
+  #menu.hidden {
+    display: block !important;
+  }
+
+  .menu__actions,
+  .hero__title > .logo {
+    display: none;
+  }
+
+  #menu {
+    background: none;
+    top: var(--logo-height);
+    width: 100%;
+    height: var(--nav-height);
+  }
+
+  #menu__list {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    z-index: 10000;
   }
 
   .hero__title {
@@ -464,21 +489,14 @@ section#conduct {
     padding-top: 10%;
   }
 
-  .hero__title > .logo {
-    display: none;
-  }
-
   #info-container {
+    --offset: calc(var(--header-height) + 2rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100svh;
-    padding-top: var(--header-height);
+    padding-top: var(--offset);
 
-    mask-image: linear-gradient(
-      to bottom,
-      transparent var(--header-height),
-      black var(--header-height)
-    );
+    mask-image: linear-gradient(to bottom, transparent var(--offset), black var(--offset));
   }
 
   #info-container > section {
@@ -493,6 +511,10 @@ section#conduct {
     top: 0;
     background: none;
     pointer-events: none;
+  }
+
+  #info-container #vote.vote button {
+    pointer-events: auto;
   }
 
   .vote-wrapper {
