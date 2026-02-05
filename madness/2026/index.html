@@ -41,39 +41,40 @@
       <img class="mountain-svg" src="mountain.svg" alt="mountain" />
     </picture>
 
-    <section id="hero__lg">
+    <header id="hero__lg">
       <div class="hero__title__lg">
         <div class="logo">
           <img src="mm-logotext.svg" alt="mountain madness" />
         </div>
       </div>
-    </section>
+    </header>
 
     <div id="overlay" class="hidden"></div>
     <header class="header__sm">
       <button id="menu-open" class="clickable" onclick="openMenu()">
         <img src="/static/icons/hamburger.svg" alt="open menu" />
       </button>
-      <nav id="menu" class="hidden">
-        <div class="menu__actions">
-          <a id="home" class="menu__button clickable" href="#hero">
-            <img src="mm-logo_512.svg" alt="home" />
-          </a>
-          <button class="menu__button clickable" onclick="closeMenu()">
-            <img src="/static/icons/close.svg" alt="close menu" />
-          </button>
-        </div>
-        <ul id="menu__list">
-          <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
-          <li><a class="menu__link clickable" href="#about"> About </a></li>
-          <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li>
-          <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
-          <li><a class="menu__link clickable" href="#vote"> Vote </a></li>
-          <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
-          <li><a class="menu__link clickable" href="#conduct">Code of Conduct</a></li>
-        </ul>
-      </nav>
     </header>
+
+    <nav id="menu" class="hidden">
+      <div class="menu__actions">
+        <a id="home" class="menu__button clickable" href="#hero">
+          <img src="mm-logo_512.svg" alt="home" />
+        </a>
+        <button class="menu__button clickable" onclick="closeMenu()">
+          <img src="/static/icons/close.svg" alt="close menu" />
+        </button>
+      </div>
+      <ul id="menu__list">
+        <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
+        <li><a class="menu__link clickable" href="#about"> About </a></li>
+        <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li>
+        <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
+        <li><a class="menu__link clickable" href="#vote"> Vote </a></li>
+        <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
+        <li><a class="menu__link clickable" href="#conduct">Code of Conduct</a></li>
+      </ul>
+    </nav>
 
     <div id="info-container">
       <section id="hero">
@@ -93,7 +94,6 @@
               <a class="btn">JUDGE</a>
             </div>
             <div class="col-btns">
-              <!-- <a class="btn">Discord</a> -->
               <a class="social__icon" href="https://discord.sfucsss.org" target="_blank">
                 <img src="discord.svg" alt="Discord link"
               /></a>
