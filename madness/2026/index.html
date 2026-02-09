@@ -36,19 +36,21 @@
     /></a>
     <div id="sky"></div>
     <div id="stars"></div>
-    <picture id="peak">
-      <source class="mountain-svg" srcset="mountain_sm.svg" media="(width < 768px)" />
-      <img class="mountain-svg" src="mountain.svg" alt="mountain" />
-    </picture>
+    <div id="peak">
+      <picture class="mountain-svg">
+        <source srcset="mountain_sm.svg" media="(width < 768px)" />
+        <img src="mountain.svg" alt="mountain" />
+      </picture>
+    </div>
 
-    <header id="hero__lg">
-      <div class="hero__title__lg">
-        <div class="logo">
-          <img src="mm-logotext.svg" alt="mountain madness" />
-        </div>
-      </div>
-    </header>
-
+    <!-- <header id="hero__lg"> -->
+    <!--   <div class="hero__title__lg"> -->
+    <!--     <div class="logo"> -->
+    <!--       <img src="mm-logotext.svg" alt="mountain madness" /> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </header> -->
+    <!---->
     <div id="overlay" class="hidden"></div>
     <header class="header__sm">
       <button id="menu-open" class="clickable" onclick="openMenu()">
@@ -78,10 +80,8 @@
 
     <div id="info-container">
       <section id="hero">
-        <div class="hero__title">
-          <div class="logo">
-            <img src="mm-logotext.svg" alt="mountain madness" />
-          </div>
+        <img class="logo" src="mm-logotext.svg" alt="mountain madness" />
+        <div class="hero__info">
           <h3>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h3>
           <h3>@ SFU Burnaby Mountain</h3>
         </div>
