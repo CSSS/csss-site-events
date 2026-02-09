@@ -214,23 +214,19 @@ a {
 
 #hero {
   position: relative;
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  /* display: flex; */
-  /* flex-direction: column; */
   width: 100%;
   text-align: center;
-  padding-top: 0.5svh;
+  padding-top: 10%;
   min-height: var(--content-height);
 }
 
-.hero__title > h2,
-.hero__title > h3,
-.hero__title > h4 {
+.hero__info > h2,
+.hero__info > h3,
+.hero__info > h4 {
   text-shadow: 1px 1px 1px black;
 }
 
-.hero__title > h1 {
+.hero__info > h1 {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   margin: 1rem 0;
@@ -238,36 +234,30 @@ a {
   text-shadow: 0 5px 0 black;
 }
 
-.hero__title > h2 {
+.hero__info > h2 {
   margin: 0.5rem 0;
 }
 
-#hero > h3 {
-  font-size: 1.5rem;
+.logo {
+  padding: 1rem;
+  max-width: 70rem;
 }
 
-.hero__title > h3 {
+.hero__info > h3 {
   font-size: clamp(1.5rem, 3vw, 3rem);
 }
 
-.hero__title > h4 b {
+.hero__info > h4 b {
   font-weight: 800;
-}
-
-.hero__title {
-  width: 100%;
-  position: relative;
-  top: 15vh;
-}
-
-.hero__title__lg {
-  display: none;
 }
 
 .externals {
   position: absolute;
+  bottom: 7%;
   width: 100%;
-  bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .externals__btns {
@@ -276,26 +266,20 @@ a {
   gap: 1rem;
 }
 
-.logo {
-  padding: 1rem;
-  width: 100%;
-}
-
-.logo > img {
-  max-width: 70rem;
-}
-
 /* END HERO SECTION */
 
 #peak {
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .mountain-svg {
   position: absolute;
-  bottom: 0;
+  bottom: -4px;
+  width: min(100%, 375px);
 }
 /* END HERO SECTION */
 
@@ -499,7 +483,7 @@ section#conduct {
     width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
   }
 
-  .hero__title__lg {
+  .hero__info__lg {
     display: flex;
     width: 100%;
     text-align: center;
@@ -515,14 +499,9 @@ section#conduct {
     max-width: 1920px;
   }
 
-  #hero__ {
+  #hero {
     min-height: var(--content-height);
     margin-bottom: 2rem;
-  }
-
-  #hero__lg {
-    position: fixed;
-    width: 100%;
   }
 
   #menu.hidden {
@@ -530,7 +509,7 @@ section#conduct {
   }
 
   .menu__actions,
-  .hero__title > .logo,
+  .hero__info > .logo,
   li:has(a[href='#vote']) {
     display: none;
   }
@@ -555,7 +534,7 @@ section#conduct {
     padding: 0;
   }
 
-  .hero__title {
+  .hero__info {
     position: static;
     padding-top: 10%;
   }
