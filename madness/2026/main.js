@@ -4,9 +4,6 @@ const content = document.getElementById('info-container');
 const menuNav = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 
-const scheduleTbl1 = document.getElementById('schedule-1');
-const scheduleTbl2 = document.getElementById('schedule-2');
-
 const goodCounter = document.getElementById('good-counter');
 const evilCounter = document.getElementById('evil-counter');
 

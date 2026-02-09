@@ -47,7 +47,7 @@
 
     <!-- Small header -->
     <header class="sm">
-      <button id="menu-open" class="clickable sm" onclick="openMenu()">
+      <button id="menu-open" class="menu__button clickable sm" onclick="openMenu()">
         <img src="/static/icons/hamburger.svg" alt="open menu" />
       </button>
       <nav id="menu" class="hidden">
@@ -234,9 +234,9 @@
         <div class="vote-wrapper">
           <h2>VOTE!</h2>
           <div class="vote-container">
-            <button class="vote-btn good" onclick="incrementGood()">Good</button>
+            <button class="vote-btn good clickable" onclick="incrementGood()">Good</button>
             <span>VS</span>
-            <button class="vote-btn evil" onclick="incrementEvil()">Evil</button>
+            <button class="vote-btn evil clickable" onclick="incrementEvil()">Evil</button>
             <div id="good-counter" class="counter">0</div>
             <span></span>
             <div id="evil-counter" class="counter">0</div>
