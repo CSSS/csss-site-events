@@ -38,6 +38,10 @@ body * {
   box-sizing: border-box;
 }
 
+h3 {
+  font-size: 1.3em;
+}
+
 h3,
 h4 {
   margin: 1rem;
@@ -156,17 +160,24 @@ a {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.header__sm {
-  position: sticky;
+header {
   z-index: 10000;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
   height: var(--header-height);
   display: flex;
   align-items: center;
+}
+
+header.sm {
+  position: sticky;
+  background: rgba(255, 255, 255, 0.1);
   justify-content: space-between;
   padding: 0 0.5rem;
+}
+
+.logo.sm {
+  padding: 0 2vw;
 }
 
 #menu {
@@ -179,7 +190,7 @@ a {
   z-index: 11000;
 }
 
-#menu__list {
+.menu__list {
   list-style: none;
   position: relative;
   display: flex;
@@ -220,6 +231,10 @@ a {
   min-height: var(--content-height);
 }
 
+.hero__info {
+  margin-bottom: 15vh;
+}
+
 .hero__info > h2,
 .hero__info > h3,
 .hero__info > h4 {
@@ -238,11 +253,6 @@ a {
   margin: 0.5rem 0;
 }
 
-.logo {
-  padding: 1rem;
-  max-width: 70rem;
-}
-
 .hero__info > h3 {
   font-size: clamp(1.5rem, 3vw, 3rem);
 }
@@ -251,9 +261,12 @@ a {
   font-weight: 800;
 }
 
+.logo {
+  max-width: 70rem;
+}
+
 .externals {
-  position: absolute;
-  bottom: 7%;
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -279,7 +292,7 @@ a {
 .mountain-svg {
   position: absolute;
   bottom: -4px;
-  width: min(100%, 375px);
+  width: 100%;
 }
 /* END HERO SECTION */
 
@@ -465,9 +478,17 @@ section#conduct {
 /* MEDIA QUERIES */
 @media screen and (min-width: 1280px) {
   :root {
-    --logo-height: 263.3px;
+    --logo-pt: 4rem;
+    --logo-nav-gap: 3rem;
+    --logo-height: calc(179.3px + var(--logo-nav-gap) + var(--logo-pt));
     --nav-height: 33px;
     --header-height: calc(var(--logo-height) + var(--nav-height));
+    --offset: calc(var(--header-height) + 1rem);
+  }
+
+  .btn {
+    font-size: clamp(0.6rem, 3vw, 1.5rem);
+    width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
   }
 
   *[class$='lg'] {
@@ -478,12 +499,19 @@ section#conduct {
     display: none !important;
   }
 
-  .btn {
-    font-size: clamp(0.6rem, 3vw, 1.5rem);
-    width: clamp(calc(0.6 * var(--btn-width)), 20vw, calc(1.5 * var(--btn-width)));
+  #menu {
+    display: block !important;
   }
 
-  .hero__info__lg {
+  header.lg {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero__info {
     display: flex;
     width: 100%;
     text-align: center;
@@ -496,20 +524,15 @@ section#conduct {
   #peak {
     position: absolute;
     top: 1080px;
-    max-width: 1920px;
+    width: 100%;
   }
 
-  #hero {
-    min-height: var(--content-height);
-    margin-bottom: 2rem;
-  }
-
-  #menu.hidden {
-    display: block !important;
+  .mountain-svg {
+    width: 100%;
   }
 
   .menu__actions,
-  .hero__info > .logo,
+  .hero__info >,
   li:has(a[href='#vote']) {
     display: none;
   }
@@ -521,7 +544,7 @@ section#conduct {
     height: var(--nav-height);
   }
 
-  #menu__list {
+  .menu__list {
     width: 100%;
     flex-direction: row;
     gap: 2rem;
@@ -534,24 +557,20 @@ section#conduct {
     padding: 0;
   }
 
-  .hero__info {
-    position: static;
-    padding-top: 10%;
-  }
-
-  .externals {
-    position: relative;
+  #hero {
+    padding-top: var(--offset);
+    height: 100svh;
   }
 
   #info-container {
-    --offset: calc(var(--header-height) + 2rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100svh;
-    padding-top: var(--offset);
     place-items: center;
 
-    mask-image: linear-gradient(to bottom, transparent var(--offset), black var(--offset));
+    mask:
+      linear-gradient(black 0 0) subtract,
+      linear-gradient(to bottom, black var(--header-height), transparent var(--offset)) content-box;
   }
 
   #info-container > section {
