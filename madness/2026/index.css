@@ -378,38 +378,40 @@ td:first-child {
 
 /* SPONSOR */
 div[class^='sponsors'][class$='t1'] {
-  --card-sz: 8rem;
+  --card-sz: clamp(7rem, 100%, 15rem);
   --gap: 0.4rem;
 }
 
 div[class^='sponsors'][class$='t2'] {
-  --card-sz: 5rem;
-  --gap: 0.1rem;
+  --card-sz: clamp(5rem, 100%, 7.5rem);
+  --gap: 0.5rem;
 }
 
 div[class^='sponsors'][class$='t3'] {
-  --card-sz: 4rem;
-  --gap: 0.15rem;
+  --card-sz: clamp(4rem, 100%, 5rem);
+  --gap: 0.5rem;
 }
 
 div[class^='sponsors'] {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-sz), 1fr));
-  gap: var(--gap);
-  place-items: center;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(0.05 * var(--card-sz));
+  margin-bottom: 2rem;
 }
 
 .sponsor__card {
-  aspect-ratio: 1 / 1;
   border: 1px white solid;
   display: grid;
   place-items: center;
+  width: 100%;
   max-width: var(--card-sz);
+  aspect-ratio: 1 / 1;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .sponsor__logo {
-  max-width: var(--card-sz);
+  width: 100%;
 }
 
 /* END SPONSOR */
