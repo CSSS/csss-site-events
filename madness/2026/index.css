@@ -213,9 +213,11 @@ a {
 /* HERO SECTION */
 
 #hero {
-  display: flex;
   position: relative;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  /* display: flex; */
+  /* flex-direction: column; */
   width: 100%;
   text-align: center;
   padding-top: 0.5svh;
@@ -508,10 +510,12 @@ section#conduct {
   }
 
   #peak {
-    width: 1920px;
+    position: absolute;
+    top: 1080px;
+    max-width: 1920px;
   }
 
-  #hero {
+  #hero__ {
     min-height: var(--content-height);
     margin-bottom: 2rem;
   }
@@ -557,7 +561,7 @@ section#conduct {
   }
 
   .externals {
-    bottom: 20svh;
+    position: relative;
   }
 
   #info-container {
@@ -601,5 +605,12 @@ section#conduct {
 
   .vote-btn {
     font-size: 2rem;
+  }
+}
+
+@media (min-height: 1080px) and (min-width: 1280px) {
+  #peak {
+    position: fixed;
+    bottom: 0;
   }
 }
