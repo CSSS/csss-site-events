@@ -80,7 +80,6 @@ a {
 }
 
 .clickable {
-  background: rgba(255, 255, 255, 0);
   border: none;
   -webkit-user-select: none;
   user-select: none;
@@ -98,19 +97,6 @@ a {
   display: flex;
   justify-content: center;
   gap: 1rem;
-}
-
-.icon {
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  padding: 0.1rem;
-}
-
-.icon > img {
-  width: 2rem;
-  aspect-ratio: 1 / 1;
 }
 
 .social__icon > img {
@@ -211,6 +197,10 @@ header.sm {
   padding: 1rem;
 }
 
+.menu__button {
+  background-color: transparent;
+}
+
 .menu__button > img {
   width: 2rem;
 }
@@ -227,7 +217,7 @@ header.sm {
   position: relative;
   width: 100%;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 12%;
   min-height: var(--content-height);
 }
 
@@ -262,7 +252,7 @@ header.sm {
 }
 
 .logo {
-  max-width: 70rem;
+  max-width: 65rem;
 }
 
 .externals {
@@ -348,19 +338,8 @@ header.sm {
   display: block;
 }
 
-.schedule__day.hidden {
-  display: hidden;
-}
-
 table td {
   padding: 0.5em 0;
-}
-
-#schedule > h2,
-#schedule > h3,
-#faq > h2,
-#prize > h2 {
-  flex: 1 0 100%;
 }
 
 #schedule h3 {
@@ -586,8 +565,8 @@ section#conduct {
     left: 0;
     top: 0;
     background: none;
-    pointer-events: none;
     z-index: 12000;
+    pointer-events: none;
   }
 
   #info-container #vote.vote button {
