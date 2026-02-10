@@ -4,9 +4,13 @@
   --red: #880500;
   --darkred: #550500;
   --lightred: #aa1500;
-  --clr-answer: #d0d0d0;
+  --clr-text: #d0d0d0;
 
-  --btn-width: 10rem;
+  --btn-width: clamp(8rem, 10vw, 12rem);
+  --h1: clamp(2rem, 5vw, 3.75rem);
+  --h2: clamp(1.5rem, 3.5vw, 2.75rem);
+  --h3: clamp(1.25rem, 2.5vw, 2rem);
+  --p: clamp(1rem, 0.5vw + 1rem, 1.5rem);
 }
 
 html,
@@ -27,19 +31,28 @@ body {
 p {
   line-height: 1.5;
   max-width: 100%;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: var(--p);
+  color: var(--clr-text);
 }
 
 table * {
-  font-size: 1.3rem;
+  font-size: var(--p);
 }
 
 body * {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
 h3 {
-  font-size: 1.3em;
+  font-size: var(--h3);
 }
 
 h3,
@@ -54,8 +67,7 @@ a {
 
 .btn {
   display: inline-block;
-  padding: 12px 12px 10px 12px;
-  font-size: inherit;
+  padding: 1rem;
   font-weight: 700;
   width: var(--btn-width);
   background: var(--red);
@@ -222,7 +234,7 @@ header.sm {
 }
 
 .hero__info {
-  margin-bottom: 15vh;
+  margin-bottom: 3vh;
 }
 
 .hero__info > h2,
@@ -235,7 +247,6 @@ header.sm {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   margin: 1rem 0;
-  font-size: 2rem;
   text-shadow: 0 5px 0 black;
 }
 
@@ -302,9 +313,13 @@ header.sm {
 }
 
 #info-container > section:not(#hero) {
-  padding: 1rem 2rem 4rem;
+  padding: 1rem 2rem 0;
   width: 95%;
   background: rgba(0, 0, 0, 0.7);
+}
+
+#info-container > section:last-child {
+  padding-bottom: 3rem !important;
 }
 
 /* SCHEDULE */
@@ -322,8 +337,10 @@ header.sm {
 .schedule__selector label {
   padding: 0.5rem 1.5rem;
   cursor: pointer;
+  font-size: var(--h3);
+  width: auto;
   border: 2px solid var(--red);
-  border-radius: 4px;
+  border-radius: 0.5rem;
   transition:
     background-color 0.2s,
     color 0.2s;
@@ -397,7 +414,6 @@ div[class^='sponsors'] {
 
 /* VOTE */
 #vote h2 {
-  font-size: 2rem;
   text-align: center;
 }
 
@@ -411,14 +427,15 @@ div[class^='sponsors'] {
   text-align: center;
   place-items: center;
   row-gap: 1rem;
+  column-gap: 1rem;
 }
 
 .vote-btn {
   border: none;
   padding: 1rem;
-  width: 7rem;
-  font-size: clamp(1.5rem, 5vw, 2rem);
+  width: clamp(6rem, 20vw, 12rem);
   border-radius: 0.5rem;
+  font-size: var(--h2);
 
   &.evil {
     background-color: black;
@@ -428,7 +445,7 @@ div[class^='sponsors'] {
 
 .counter {
   display: flex;
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
 }
 
 /* END VOTE BUTTONS */
@@ -438,18 +455,13 @@ div[class^='sponsors'] {
 }
 
 .chevron {
-  width: 1.5rem;
+  width: var(--h3);
   vertical-align: middle;
 }
 
 .answer {
   padding-left: min(1.5rem, 1vw);
   margin-bottom: 3rem;
-  color: var(--clr-answer);
-}
-
-section#conduct {
-  padding-bottom: 3rem;
 }
 
 .mlh {
@@ -459,7 +471,7 @@ section#conduct {
 /* MEDIA QUERIES */
 @media screen and (min-width: 1280px) {
   :root {
-    --logo-pt: 4rem;
+    --logo-pt: 10svh;
     --logo-nav-gap: 3rem;
     --logo-height: calc(179.3px + var(--logo-nav-gap) + var(--logo-pt));
     --nav-height: 33px;
@@ -490,6 +502,8 @@ section#conduct {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: var(--logo-pt);
+    gap: var(--logo-nav-gap);
   }
 
   .hero__info {
@@ -583,7 +597,7 @@ section#conduct {
   }
 
   .vote-btn {
-    font-size: 2rem;
+    font-size: var(--h3);
   }
 }
 
