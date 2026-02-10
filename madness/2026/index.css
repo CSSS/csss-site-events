@@ -171,11 +171,10 @@ header.sm {
   position: sticky;
   background: rgba(255, 255, 255, 0.1);
   justify-content: space-between;
-  padding: 0 0.5rem;
 }
 
 .logo.sm {
-  padding: 0 2vw;
+  padding: 1rem 2vw 0;
 }
 
 #menu {
