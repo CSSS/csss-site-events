@@ -210,6 +210,7 @@ header.sm {
 
 .menu__button {
   background-color: transparent;
+  padding: 0.5rem;
 }
 
 .menu__button > img {

@@ -57,6 +57,8 @@ function updateSkyColour() {
 
   if (scrollPercent > 0.7) {
     stars.style.opacity = Math.min((scrollPercent - 0.7) / 0.3, 1);
+  } else if (scrollPercent < 0.3) {
+    stars.style.opacity = Math.min(1 - scrollPercent, 1);
   } else {
     stars.style.opacity = 0;
   }
