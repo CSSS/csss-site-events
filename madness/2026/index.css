@@ -7,10 +7,10 @@
   --clr-text: #d0d0d0;
 
   --btn-width: fit-content;
-  --h1: 2rem;
-  --h2: 1.5rem;
-  --h3: 1.3125rem;
   --p: 1rem;
+  --h3: 1.25rem;
+  --h2: 1.5rem;
+  --h1: 2rem;
 }
 
 html,
@@ -112,7 +112,7 @@ a {
 }
 
 .social__icon > img {
-  width: clamp(2rem, 3vw, 5rem);
+  width: clamp(1rem, 1.8vw, 5rem);
   aspect-ratio: 1 / 1;
 }
 
