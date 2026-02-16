@@ -112,7 +112,7 @@ a {
 }
 
 .social__icon > img {
-  width: clamp(3rem, 3vw, 5rem);
+  width: clamp(2rem, 3vw, 5rem);
   aspect-ratio: 1 / 1;
 }
 
@@ -259,7 +259,7 @@ header.sm {
 }
 
 .hero__info > h3 {
-  font-size: var(--h2);
+  font-size: var(--h1);
 }
 
 .hero__info > h4 b {
@@ -508,14 +508,13 @@ div[class^='sponsors'] {
     justify-content: center;
     padding-top: var(--logo-pt);
     gap: var(--logo-nav-gap);
-    z-index: 0;
+    z-index: 10000;
   }
 
   .hero__info {
     display: flex;
     width: 100%;
     text-align: center;
-    padding-top: 3rem;
     flex-direction: column;
     justify-content: center;
     background-color: transparent;
@@ -550,7 +549,6 @@ div[class^='sponsors'] {
     gap: 2rem;
     justify-content: center;
     margin: 0;
-    z-index: 1000;
   }
 
   .menu__link {
