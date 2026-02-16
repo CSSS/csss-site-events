@@ -21,6 +21,7 @@ body {
   scrollbar-width: none;
   font-family: 'Inter', sans-serif;
   color: white;
+  overflow: hidden;
 }
 
 body {
@@ -229,7 +230,7 @@ header.sm {
   position: relative;
   width: 100%;
   text-align: center;
-  padding-top: 12%;
+  padding-top: 3rem;
   min-height: var(--content-height);
 }
 
