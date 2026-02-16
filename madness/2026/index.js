@@ -1,3 +1,4 @@
+const API_URL = 'https://sfucsss.org/api/mm';
 const stars = document.getElementById('stars');
 const content = document.getElementById('info-container');
 
@@ -89,16 +90,30 @@ function closeMenu() {
   content.style.overflow = 'auto';
 }
 
-// TODO: Replace these buttons with counts from the backend
-function incrementGood() {
-  goodCounter.textContent = parseInt(goodCounter.textContent) + 1;
+function updateCounters(good, evil) {
+  goodCounter.textContent = good;
+  evilCounter.textContent = evil;
 }
 
-function incrementEvil() {
-  evilCounter.textContent = parseInt(evilCounter.textContent) + 1;
+async function incrementGood() {
+  fetch(`${API_URL}/good`, { method: 'POST' })
+    .then(res => res.json())
+    .then(res => updateCounters(res.good, res.evil));
+}
+
+async function incrementEvil() {
+  fetch(`${API_URL}/evil`, { method: 'POST' })
+    .then(res => res.json())
+    .then(res => updateCounters(res.good, res.evil));
 }
 
 function main() {
+  fetch(`${API_URL}/counters`)
+    .then(res => res.json())
+    .then(data => {
+      goodCounter.textContent = data.good;
+      evilCounter.textContent = data.evil;
+    });
   // Day selector
   document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
     radio.addEventListener('change', e => {
