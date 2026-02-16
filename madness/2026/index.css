@@ -379,12 +379,12 @@ div[class^='sponsors'][class$='t1'] {
 }
 
 div[class^='sponsors'][class$='t2'] {
-  --card-sz: clamp(5rem, 100%, 7.5rem);
+  --card-sz: clamp(5rem, 100%, 8rem);
   --gap: 0.5rem;
 }
 
 div[class^='sponsors'][class$='t3'] {
-  --card-sz: clamp(4rem, 100%, 5rem);
+  --card-sz: clamp(4rem, 100%, 6rem);
   --gap: 0.5rem;
 }
 
@@ -392,7 +392,7 @@ div[class^='sponsors'] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: calc(0.05 * var(--card-sz));
+  gap: calc(0.05 * var(--card-sz) + 5vw);
   margin-bottom: 2rem;
 }
 
@@ -401,9 +401,14 @@ div[class^='sponsors'] {
   display: grid;
   place-items: center;
   width: 100%;
-  max-width: var(--card-sz);
+  max-width: calc(var(--card-sz) + 5vw);
   aspect-ratio: 1 / 1;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 0.25rem;
+}
+
+.sponsor__card:hover {
+  pointer-events: auto;
 }
 
 .sponsor__logo {
