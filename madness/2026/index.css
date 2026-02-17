@@ -6,6 +6,12 @@
   --lightred: #aa1500;
   --clr-text: #d0d0d0;
 
+  --primary: #ffa36e;
+  --secondary: #71a074;
+  --tertiary: #b23c6f;
+  --dark: #1a160a;
+  --light: #fcf4ca;
+
   --btn-width: fit-content;
   --p: 1rem;
   --h3: 1.25rem;
@@ -20,7 +26,7 @@ body {
   height: 100svh;
   scrollbar-width: none;
   font-family: 'Inter', sans-serif;
-  color: white;
+  color: var(--light);
   overflow: hidden;
 }
 
@@ -112,7 +118,7 @@ a {
 }
 
 .social__icon > img {
-  width: clamp(1rem, 1.8vw, 5rem);
+  width: clamp(2rem, 1.8vw, 5rem);
   aspect-ratio: 1 / 1;
 }
 
@@ -155,7 +161,7 @@ a {
   position: absolute;
   width: 100vw;
   height: 100svh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0.102, 0.0863, 0.0392, 0.7);
 }
 
 header {
@@ -445,10 +451,12 @@ div[class^='sponsors'] {
   width: clamp(6rem, 20vw, 12rem);
   border-radius: 0.5rem;
   font-size: var(--h2);
+  background-color: var(--light);
+  color: var(--dark);
 
   &.evil {
-    background-color: black;
-    color: white;
+    background-color: var(--dark);
+    color: var(--light);
   }
 }
 
@@ -609,6 +617,10 @@ div[class^='sponsors'] {
 
   .vote-btn {
     font-size: var(--h3);
+  }
+
+  .social__icon > img {
+    width: clamp(1rem, 1.8vw, 5rem);
   }
 }
 
