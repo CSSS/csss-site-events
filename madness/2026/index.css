@@ -6,9 +6,18 @@
   --lightred: #aa1500;
   --clr-text: #d0d0d0;
 
-  --primary: #ffa36e;
-  --secondary: #71a074;
-  --tertiary: #b23c6f;
+  --berry-l: #d7989d;
+  --berry: #b23c6f;
+  --berry-d: #66293d;
+
+  --sage-l: #b7ca9f;
+  --sage: #71a074;
+  --sage-d: #465b3f;
+
+  --tangerine-l: #fecc9c;
+  --tangerine: #ffa36e;
+  --tangerine-d: #8d5d3c;
+
   --dark: #1a160a;
   --light: #fcf4ca;
 
@@ -72,29 +81,50 @@ a {
   color: inherit;
 }
 
-.btn {
+*[class$='--berry'] {
+  --clr-d: var(--berry-d);
+  --clr-primary: var(--berry);
+  --clr-l: var(--berry-l);
+  --text: var(--dark);
+}
+
+*[class$='--sage'] {
+  --clr-d: var(--sage-d);
+  --clr-primary: var(--sage);
+  --clr-l: var(--sage-l);
+  --text: var(--dark);
+}
+
+*[class$='--tangerine'] {
+  --clr-d: var(--tangerine-d);
+  --clr-primary: var(--tangerine);
+  --clr-l: var(--tangerine-l);
+  --text: var(--dark);
+}
+
+*[class^='btn'] {
   display: inline-block;
   padding: 0.75rem;
   font-weight: 700;
   width: var(--btn-width);
-  background: var(--red);
+  color: var(--text);
+  background: var(--clr-primary);
   white-space: nowrap;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 0.4rem 0 var(--darkred);
   transition:
     box-shadow 0.2s,
     color 0.2s,
     background 0.2s;
 }
 
-.btn:focus,
-.btn:hover {
-  background: var(--lightred);
+*[class^='btn']:focus,
+*[class^='btn']:hover {
+  background: var(--clr-l);
 }
 
-.btn:active {
-  background: var(--darkred);
+*[class^='btn']:active {
+  background: var(--clr-d);
 }
 
 .clickable {
@@ -325,7 +355,7 @@ header.sm {
 #info-container > section:not(#hero) {
   padding: 1rem 2rem 0;
   width: 95%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0.102, 0.0863, 0.0392, 0.7);
 }
 
 #info-container > section:last-child {
@@ -349,15 +379,14 @@ header.sm {
   cursor: pointer;
   font-size: var(--h3);
   width: auto;
-  border: 2px solid var(--red);
-  border-radius: 0.5rem;
+  border: 2px solid var(--berry);
   transition:
     background-color 0.2s,
     color 0.2s;
 }
 
 .schedule__selector input[type='radio']:checked + label {
-  background-color: var(--red);
+  background-color: var(--berry);
   color: white;
 }
 
@@ -386,16 +415,25 @@ td:first-child {
 div[class^='sponsors'][class$='t1'] {
   --card-sz: clamp(7rem, 100%, 15rem);
   --gap: 0.4rem;
+  --border: var(--berry);
 }
 
 div[class^='sponsors'][class$='t2'] {
   --card-sz: clamp(5rem, 100%, 8rem);
   --gap: 0.5rem;
+  --border: var(--sage);
 }
 
 div[class^='sponsors'][class$='t3'] {
   --card-sz: clamp(4rem, 100%, 6rem);
   --gap: 0.5rem;
+  --border: var(--tangerine);
+}
+
+div[class^='sponsors'][class$='t4'] {
+  --card-sz: clamp(3.5rem, 100%, 5rem);
+  --gap: 0.5rem;
+  --border: var(--dark);
 }
 
 div[class^='sponsors'] {
@@ -407,13 +445,13 @@ div[class^='sponsors'] {
 }
 
 .sponsor__card {
-  border: 1px white solid;
+  border: 0.5rem var(--border) solid;
   display: grid;
   place-items: center;
   width: 100%;
   max-width: calc(var(--card-sz) + 5vw);
   aspect-ratio: 1 / 1;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--light);
   padding: 0.25rem;
 }
 
@@ -449,7 +487,6 @@ div[class^='sponsors'] {
   border: none;
   padding: 1rem;
   width: clamp(6rem, 20vw, 12rem);
-  border-radius: 0.5rem;
   font-size: var(--h2);
   background-color: var(--light);
   color: var(--dark);
@@ -483,6 +520,7 @@ div[class^='sponsors'] {
 
 .mlh {
   text-decoration: underline;
+  color: var(--tangerine);
 }
 
 /* MEDIA QUERIES */

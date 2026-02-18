@@ -48,7 +48,7 @@
     <!-- Small header -->
     <header class="sm">
       <button id="menu-open" class="menu__button clickable sm" onclick="openMenu()">
-        <img src="/static/icons/hamburger.svg" alt="open menu" />
+        <img src="hamburger.svg" alt="open menu" />
       </button>
       <nav id="menu" class="hidden">
         <div class="menu__actions sm">
@@ -56,7 +56,7 @@
             <img src="mm-logo_512.svg" alt="home" />
           </a>
           <button class="menu__button clickable" onclick="closeMenu()">
-            <img src="/static/icons/close.svg" alt="close menu" />
+            <img src="close.svg" alt="close menu" />
           </button>
         </div>
         <ul class="menu__list">
@@ -97,11 +97,15 @@
           <h2>Join Us Now!</h2>
           <div class="externals__btns">
             <div class="col-btns">
-              <a class="btn" href="https://forms.gle/NufumYprcb4sNm6Q8" target="_blank">HACKER</a>
-              <a class="btn" href="https://forms.gle/4qDPQgHacV1gZrsK8" target="_blank"
+              <a class="btn--berry" href="https://forms.gle/NufumYprcb4sNm6Q8" target="_blank"
+                >HACKER</a
+              >
+              <a class="btn--tangerine" href="https://forms.gle/4qDPQgHacV1gZrsK8" target="_blank"
                 >VOLUNTEER</a
               >
-              <a class="btn" href="https://forms.gle/XV9ioSrxJzbnGr7E6" target="_blank">MENTOR</a>
+              <a class="btn--sage" href="https://forms.gle/XV9ioSrxJzbnGr7E6" target="_blank"
+                >MENTOR</a
+              >
             </div>
             <div class="col-btns">
               <a class="social__icon" href="https://discord.sfucsss.org" target="_blank">
@@ -140,101 +144,138 @@
         <!-- <h3>This year's theme: <strong>TBA</strong></h3> -->
       </section>
 
-      <!-- <section id="schedule"> -->
-      <!--   <h2>Schedule</h2> -->
-      <!--   <div class="schedule__container"> -->
-      <!--     <div class="schedule__selector"> -->
-      <!--       <input type="radio" name="schedule-day" id="day-friday" value="saturday" checked /> -->
-      <!--       <label for="day-friday">Saturday</label> -->
-      <!--       <input type="radio" name="schedule-day" id="day-saturday" value="sunday" /> -->
-      <!--       <label for="day-saturday">Sunday</label> -->
-      <!--     </div> -->
-      <!--     <div> -->
-      <!--       <table class="schedule__day" data-day="saturday"> -->
-      <!--         <tr> -->
-      <!--           <td>9:00 AM</td> -->
-      <!--           <td>Sign-in and Registration</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>9:30 AM</td> -->
-      <!--           <td>Opening Presentation (Theme Announced)</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>10:00 AM</td> -->
-      <!--           <td>Hacking Begins</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>1:00 PM</td> -->
-      <!--           <td>Lunch</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>7:00 PM</td> -->
-      <!--           <td>Dinner</td> -->
-      <!--         </tr> -->
-      <!--       </table> -->
-      <!--       <table class="schedule__day" data-day="sunday"> -->
-      <!--         <tr> -->
-      <!--           <td>8:30 AM</td> -->
-      <!--           <td>Submissions Open</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>10:00 AM</td> -->
-      <!--           <td>Hacking Ends (Submission Deadline)</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>10:30 AM</td> -->
-      <!--           <td>Project Presentations</td> -->
-      <!--         </tr> -->
-      <!--         <tr> -->
-      <!--           <td>12:30 PM</td> -->
-      <!--           <td>END</td> -->
-      <!--         </tr> -->
-      <!--       </table> -->
-      <!--     </div> -->
-      <!--   </div> -->
-      <!-- </section> -->
+      <section id="schedule">
+        <h2>Schedule</h2>
+        <div class="schedule__container">
+          <div class="schedule__selector">
+            <input type="radio" name="schedule-day" id="day-friday" value="saturday" checked />
+            <label for="day-friday">Saturday</label>
+            <input type="radio" name="schedule-day" id="day-saturday" value="sunday" />
+            <label for="day-saturday">Sunday</label>
+          </div>
+          <div>
+            <table class="schedule__day" data-day="saturday">
+              <tr>
+                <td>09:30</td>
+                <td>Hacker check-in</td>
+              </tr>
+              <tr>
+                <td>10:00</td>
+                <td>Opening Ceremony</td>
+              </tr>
+              <tr>
+                <td>12:00</td>
+                <td>Begin Hacking</td>
+              </tr>
+              <tr>
+                <td>12:15</td>
+                <td>Lunch</td>
+              </tr>
+              <tr>
+                <td>13:00</td>
+                <td>MKB Typing Competition</td>
+              </tr>
+              <tr>
+                <td>13:30</td>
+                <td>Company Workshop</td>
+              </tr>
+              <tr>
+                <td>14:45</td>
+                <td>Ricing Showcase</td>
+              </tr>
+              <tr>
+                <td>15:45</td>
+                <td>Cracker Eating</td>
+              </tr>
+              <tr>
+                <td>16:30</td>
+                <td>Company Workshop</td>
+              </tr>
+              <tr>
+                <td>18:00</td>
+                <td>Dinner</td>
+              </tr>
+              <tr>
+                <td>18:30</td>
+                <td>CS:GO Tournament</td>
+              </tr>
+              <tr>
+                <td>23:00</td>
+                <td>Slime Space (WiCS x CSSS)</td>
+              </tr>
+              <tr>
+                <td>23:30</td>
+                <td>Midnight Snacks</td>
+              </tr>
+            </table>
+            <table class="schedule__day" data-day="sunday">
+              <tr>
+                <td>00:00</td>
+                <td>Karaoke</td>
+              </tr>
+              <tr>
+                <td>00:00</td>
+                <td>Sleeping Rooms open</td>
+              </tr>
+              <tr>
+                <td>03:30</td>
+                <td>Recocting Resume Review</td>
+              </tr>
+              <tr>
+                <td>09:00</td>
+                <td>Breakfast</td>
+              </tr>
+              <tr>
+                <td>12:00</td>
+                <td>End Hacking</td>
+              </tr>
+              <tr>
+                <td>12:15</td>
+                <td>Lunch</td>
+              </tr>
+              <tr>
+                <td>13:00</td>
+                <td>Judging Time</td>
+              </tr>
+              <tr>
+                <td>15:00</td>
+                <td>Closing Ceremony</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
 
       <section id="sponsors">
         <h2>Sponsors</h2>
-        <!-- <div class="sponsors__t1"> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class="sponsors__t2"> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!--   <div class="sponsor__card"> -->
-        <!--     <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-        <!--   </div> -->
-        <!-- </div> -->
+        <div class="sponsors__t1">
+          <a
+            class="sponsor__card"
+            href="https://www.rbcroyalbank.com/personal.html"
+            target="_blank"
+          >
+            <img class="sponsor__logo" src="logos/rbc.png" alt="RBC logo" />
+          </a>
+        </div>
         <div class="sponsors__t3">
-          <!-- <a class="sponsor__card" href="https://mlh.io" target="_blank"> -->
-          <!--   <img class="sponsor__logo" src="mlh-logo-color.svg" alt="MLH logo" /> -->
-          <!-- </a> -->
+          <a class="sponsor__card" href="https://steelseries.com/en-ca" target="_blank">
+            <img class="sponsor__logo" src="logos/steelseries.png" alt="Steelseries logo" />
+          </a>
+          <a class="sponsor__card" href="https://www.huion.com/" target="_blank">
+            <img class="sponsor__logo" src="logos/huion.png" alt="Huion logo" />
+          </a>
+        </div>
+        <div class="sponsors__t4">
+          <a class="sponsor__card" href="https://www.ea.com/en-ca" target="_blank">
+            <img class="sponsor__logo" src="logos/ea.svg" alt="EA logo" />
+          </a>
           <a
             class="sponsor__card"
             href="https://mlh.link/MLH-PureButtons-hackathons"
             target="_blank"
           >
-            <img class="sponsor__logo" src="pure-logo.svg" alt="Pure logo" />
+            <img class="sponsor__logo" src="logos/pure-logo.svg" alt="Pure logo" />
           </a>
-          <!-- <div class="sponsor__card"> -->
-          <!--   <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-          <!-- </div> -->
-          <!-- <div class="sponsor__card"> -->
-          <!--   <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" /> -->
-          <!-- </div> -->
         </div>
       </section>
 
@@ -255,8 +296,8 @@
       <section id="faq">
         <h2>Frequently Asked Questions</h2>
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Wait, what
-          actually is a hackathon?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Wait, what actually is a
+          hackathon?
         </h3>
         <p class="answer">
           A hackathon is an event where teams work on a project inspired by an event-provided theme.
@@ -265,8 +306,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Where is
-          Mountain Madness?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Where is Mountain Madness?
         </h3>
         <p class="answer">
           Registration and administration is in front of SSCC 9001 on SFU's Burnaby Campus. You are
@@ -274,8 +314,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why should I
-          participate?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Why should I participate?
         </h3>
         <p class="answer">
           You get experience with new technologies and navigate teamwork dynamics to accomplish a
@@ -283,8 +322,8 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />I am in my first
-          year/don't have much experience, should I still participate?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />I am in my first year/don't
+          have much experience, should I still participate?
         </h3>
         <p class="answer">
           Yes! This hackathon is a great learning opportunity for people with less development
@@ -292,8 +331,8 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Do I need to
-          stay during the entire event?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Do I need to stay during the
+          entire event?
         </h3>
         <p class="answer">
           No! You may leave and enter the venue whenever (note that most doors are locked during the
@@ -302,8 +341,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How do we
-          declare teams?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />How do we declare teams?
         </h3>
         <p class="answer">
           You do not need to know your team when you register. You can form groups before or during
@@ -312,14 +350,13 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Will there be
-          food?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Will there be food?
         </h3>
         <p class="answer">Yes! We will be providing food for in person attendees.</p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I have
-          Non-SFU people and Alumni join my team?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Can I have Non-SFU people and
+          Alumni join my team?
         </h3>
         <p class="answer">
           Yes! We will allow groups to be made up of non-SFU students however we want a majority
@@ -328,8 +365,8 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I work on my
-          previous projects?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Can I work on my previous
+          projects?
         </h3>
         <p class="answer">
           No, we want you to create awesome things from scratch in 24 hours. Starting from an
@@ -338,8 +375,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />What size should
-          my team be?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />What size should my team be?
         </h3>
         <p class="answer">
           Teams can have between 1 and 4 members inclusive. You can work alone if you really want
@@ -349,16 +385,15 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How much does it
-          cost?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />How much does it cost?
         </h3>
         <p class="answer">F R E E</p>
 
-        <!-- <h3 class="question"> -->
-        <!--   <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why is there a -->
-        <!--   Good vs Evil Counter? -->
-        <!-- </h3> -->
-        <!-- <p class="answer">You'll see in the closing ceremony ;)</p> -->
+        <h3 class="question">
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Why is there a Good vs Evil
+          Counter?
+        </h3>
+        <p class="answer">You'll see in the closing ceremony ;)</p>
       </section>
 
       <section id="conduct">
