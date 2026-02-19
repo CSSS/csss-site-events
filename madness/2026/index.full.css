@@ -1,5 +1,6 @@
 :root {
   --header-height: 3.1875rem;
+  --logo-h: 7.1875rem;
   --content-height: calc(100svh - var(--header-height));
   --red: #880500;
   --darkred: #550500;
@@ -20,6 +21,7 @@
 
   --dark: 28, 22, 9;
   --light: #fcf4ca;
+  --bg-dark: rgb(var(--dark), 0.7);
 
   --btn-width: fit-content;
   --h1: 4.5rem;
@@ -67,8 +69,10 @@ body * {
 h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: var(--h1);
-  line-height: 1;
-  margin: 10svh 0 0;
+  line-height: 0.8;
+  text-align: right;
+  height: var(--logo-h);
+  margin: 0;
 }
 
 h2 {
@@ -87,6 +91,27 @@ h4 {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.text-decorative {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: var(--h1);
+  margin: 0;
+}
+
+.site-header {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10svh;
+  justify-content: center;
+  height: var(--logo-h);
+  align-items: flex-end;
+  width: 100%;
+}
+
+.logo {
+  height: 7.1875rem;
+  max-width: 30%;
 }
 
 *[class$='--berry'] {
@@ -213,7 +238,7 @@ header {
 
 header.sm {
   position: sticky;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255, 255, 255, 0);
   justify-content: space-between;
 }
 
@@ -264,10 +289,6 @@ header.sm {
 }
 
 /* HERO SECTION */
-
-#hero-spacer {
-  display: none;
-}
 
 #hero {
   position: relative;
@@ -428,7 +449,7 @@ div[class^='sponsors'] {
 }
 
 .sponsor__card {
-  border: 0.5rem var(--border) solid;
+  border: 0.25rem var(--border) solid;
   display: grid;
   place-items: center;
   width: 100%;
@@ -455,6 +476,7 @@ div[class^='sponsors'] {
 
 .vote-wrapper {
   width: 100%;
+  padding: 1rem;
 }
 
 .vote-container {
@@ -469,7 +491,8 @@ div[class^='sponsors'] {
 .vote-btn {
   border: none;
   padding: 1rem;
-  width: clamp(6rem, 20vw, 12rem);
+  width: 100%;
+  max-width: 12rem;
   font-size: var(--h2);
   background-color: var(--light);
   color: rgb(var(--dark));
@@ -509,12 +532,9 @@ div[class^='sponsors'] {
 /* MEDIA QUERIES */
 @media screen and (min-width: 1280px) {
   :root {
-    /* --logo-pt: 10svh; */
-    /* --logo-nav-gap: 3rem; */
-    /* --logo-height: calc(166px + var(--logo-nav-gap) + var(--logo-pt)); */
-    /* --nav-height: 33px; */
-    /* --header-height: calc(var(--logo-height) + var(--nav-height)); */
-    /* --offset: calc(var(--header-height) + 1rem); */
+    --site-header-mt: 3svh;
+    --header-height: 13.53rem;
+    --offset: calc(var(--header-height) + 0.25rem);
   }
 
   *[class$='lg'] {
@@ -529,18 +549,11 @@ div[class^='sponsors'] {
     display: block !important;
   }
 
-  .logo > img {
-    min-height: 166px;
-    aspect-ratio: auto;
-  }
-
   header.lg {
     position: fixed;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--logo-nav-gap);
     z-index: 10000;
   }
 
@@ -557,6 +570,11 @@ div[class^='sponsors'] {
     position: absolute;
     top: 1080px;
     width: 100%;
+  }
+
+  .site-header {
+    margin-top: var(--site-header-mt);
+    width: fit-content;
   }
 
   .mountain-svg {
@@ -590,12 +608,6 @@ div[class^='sponsors'] {
     padding: 0;
   }
 
-  #hero-spacer {
-    display: block;
-    height: var(--header-height);
-    margin: 0;
-  }
-
   #hero {
     height: calc(100svh - var(--offset));
     display: grid;
@@ -605,28 +617,26 @@ div[class^='sponsors'] {
 
   #info-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    height: 100svh;
+    grid-template-columns: 25vw 1fr;
+    margin-top: var(--header-height);
     place-items: center;
-
-    mask:
-      linear-gradient(black 0 0) subtract,
-      linear-gradient(to bottom, black var(--header-height), transparent var(--offset)) content-box;
   }
 
   #info-container > section {
     grid-column: 2 / 3;
   }
 
-  #info-container #vote.vote {
+  section#vote.vote {
     position: fixed;
-    height: 100svh;
-    width: 100vw;
+    height: fit-content;
+    width: 25vw !important;
     left: 0;
-    top: 0;
+    padding: 0;
+    bottom: 5svh;
     background: none;
     z-index: 12000;
     pointer-events: none;
+    background-color: transparent !important;
   }
 
   #info-container #vote.vote button {
@@ -634,12 +644,7 @@ div[class^='sponsors'] {
   }
 
   .vote-wrapper {
-    position: absolute;
-    right: 70vw;
-    bottom: 15%;
-    display: grid;
-    place-items: center;
-    width: 20vw;
+    background-color: var(--bg-dark);
   }
 
   .vote-btn {
