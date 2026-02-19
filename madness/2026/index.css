@@ -302,7 +302,7 @@ header.sm {
   font-weight: 800;
 }
 
-.logo {
+.logo > img {
   max-width: 65rem;
 }
 
@@ -544,6 +544,15 @@ div[class^='sponsors'] {
 
   #menu {
     display: block !important;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  h1.logo.lg > img {
+    display: block;
+    height: 10.375rem;
   }
 
   header.lg {
