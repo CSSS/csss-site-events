@@ -78,12 +78,12 @@
     /></a>
     <div id="sky"></div>
     <div id="stars"></div>
-    <div id="peak">
-      <picture class="mountain-svg">
-        <source srcset="mountain_sm.svg" media="(width < 1280px)" />
-        <img src="mountain.svg" alt="mountain" loading="eager" />
-      </picture>
-    </div>
+    <!-- <div id="peak"> -->
+    <!--   <picture class="mountain-svg"> -->
+    <!--     <source srcset="mountain_sm.svg" media="(width < 1280px)" /> -->
+    <!--     <img src="mountain.svg" alt="mountain" loading="eager" /> -->
+    <!--   </picture> -->
+    <!-- </div> -->
 
     <div id="overlay" class="hidden"></div>
 
@@ -104,7 +104,7 @@
         <ul class="menu__list">
           <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
           <li><a class="menu__link clickable" href="#about"> About </a></li>
-          <!-- <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li> -->
+          <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li>
           <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
           <li><a class="menu__link clickable" href="#vote"> Vote </a></li>
           <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
@@ -115,14 +115,17 @@
 
     <!-- Large header -->
     <header class="lg">
-      <h1 class="logo lg">
-        Mountain <br />
-        Madness
-      </h1>
+      <div class="site-header">
+        <img class="logo" src="mm-logo_512.svg" alt="Mountain Madness logo" />
+        <h1>
+          Mountain <br />
+          Madness
+        </h1>
+      </div>
       <ul class="menu__list">
         <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
         <li><a class="menu__link clickable" href="#about"> About </a></li>
-        <!-- <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li> -->
+        <li><a class="menu__link clickable" href="#schedule"> Schedule </a></li>
         <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
         <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
         <li><a class="menu__link clickable" href="#conduct">Code of Conduct</a></li>
@@ -131,12 +134,14 @@
     </header>
 
     <div id="info-container">
-      <section id="hero-spacer"></section>
       <section id="hero">
-        <h1 class="logo sm">
-          Mountain <br />
-          Madness
-        </h1>
+        <div class="site-header sm">
+          <img class="logo" src="mm-logo_512.svg" alt="Mountain Madness logo" />
+          <h1>
+            Mountain <br />
+            Madness
+          </h1>
+        </div>
         <div class="hero__info">
           <h2>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h2>
           <h2>@ SFU Burnaby Mountain</h2>
@@ -329,10 +334,10 @@
 
       <section id="vote" class="vote">
         <div class="vote-wrapper">
-          <h2>VOTE!</h2>
+          <h2 class="text-decorative">VOTE!</h2>
           <div class="vote-container">
             <button class="vote-btn good clickable" onclick="incrementGood()">Good</button>
-            <span>VS</span>
+            <span></span>
             <button class="vote-btn evil clickable" onclick="incrementEvil()">Evil</button>
             <div id="good-counter" class="counter">0</div>
             <span></span>
