@@ -4,13 +4,7 @@
     <title>Mountain Madness 2026</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index.full.css" />
     <script src="index.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon-96x96.png" />
     <!-- SEO STUFF -->
@@ -87,7 +81,7 @@
     <div id="peak">
       <picture class="mountain-svg">
         <source srcset="mountain_sm.svg" media="(width < 1280px)" />
-        <img src="mountain.svg" alt="mountain" />
+        <img src="mountain.svg" alt="mountain" loading="eager" />
       </picture>
     </div>
 
@@ -121,7 +115,10 @@
 
     <!-- Large header -->
     <header class="lg">
-      <h1 class="logo lg"><img src="mm-logotext.svg" alt="mountain madness" /></h1>
+      <h1 class="logo lg">
+        Mountain <br />
+        Madness
+      </h1>
       <ul class="menu__list">
         <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
         <li><a class="menu__link clickable" href="#about"> About </a></li>
@@ -136,10 +133,13 @@
     <div id="info-container">
       <section id="hero-spacer"></section>
       <section id="hero">
-        <h1 class="logo sm"><img src="mm-logotext.svg" alt="mountain madness" /></h1>
+        <h1 class="logo sm">
+          Mountain <br />
+          Madness
+        </h1>
         <div class="hero__info">
-          <h3>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h3>
-          <h3>@ SFU Burnaby Mountain</h3>
+          <h2>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h2>
+          <h2>@ SFU Burnaby Mountain</h2>
         </div>
         <div class="externals">
           <h2>Join Us Now!</h2>
