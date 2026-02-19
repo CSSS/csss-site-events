@@ -24,10 +24,11 @@
   --bg-dark: rgb(var(--dark), 0.7);
 
   --btn-width: fit-content;
-  --h1: 4.5rem;
-  --h2: 1.5rem;
-  --h3: 1.25rem;
-  --p: 1rem;
+  --site-heading: 5rem;
+  --h1: clamp(2.5rem, 5vw, 4rem);
+  --h2: clamp(1.8rem, 4vw, 3rem);
+  --h3: clamp(1.5rem, 3vw, 2.25rem);
+  --p: clamp(1rem, 2vw, 1.25rem);
 }
 
 @font-face {
@@ -68,7 +69,7 @@ body * {
 
 h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: var(--h1);
+  font-size: var(--site-heading);
   line-height: 0.8;
   text-align: right;
   height: var(--logo-h);
@@ -95,6 +96,8 @@ a {
 
 .text-decorative {
   font-family: 'Bebas Neue', sans-serif;
+  color: var(--light);
+  text-align: center;
   font-size: var(--h1);
   margin: 0;
 }
@@ -265,6 +268,8 @@ header.sm {
 
 .menu__link {
   padding-left: 2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: var(--h3);
 }
 
 .menu__actions {
@@ -323,6 +328,10 @@ header.sm {
   justify-content: center;
 }
 
+.externals > h2 {
+  margin-top: 0;
+}
+
 .externals__btns {
   display: flex;
   flex-direction: column;
@@ -357,9 +366,9 @@ header.sm {
 }
 
 #info-container > section:not(#hero) {
-  padding: 1rem 2rem 0;
+  padding: 1rem 2rem 30rem;
   width: 95%;
-  background: rgb(var(--dark), 0.7);
+  background: var(--bg-dark);
 }
 
 #info-container > section:last-child {
@@ -535,6 +544,7 @@ div[class^='sponsors'] {
     --site-header-mt: 3svh;
     --header-height: 13.53rem;
     --offset: calc(var(--header-height) + 0.25rem);
+    --sidebar: 23vw;
   }
 
   *[class$='lg'] {
@@ -610,14 +620,14 @@ div[class^='sponsors'] {
 
   #hero {
     height: calc(100svh - var(--offset));
-    display: grid;
-    padding-top: 0;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   #info-container {
     display: grid;
-    grid-template-columns: 25vw 1fr;
+    grid-template-columns: var(--sidebar) 1fr;
     margin-top: var(--header-height);
     place-items: center;
   }
@@ -629,10 +639,10 @@ div[class^='sponsors'] {
   section#vote.vote {
     position: fixed;
     height: fit-content;
-    width: 25vw !important;
+    width: var(--sidebar) !important;
     left: 0;
-    padding: 0;
-    bottom: 5svh;
+    padding: 0 1rem 0 !important;
+    bottom: 1rem;
     background: none;
     z-index: 12000;
     pointer-events: none;
@@ -648,7 +658,7 @@ div[class^='sponsors'] {
   }
 
   .vote-btn {
-    font-size: var(--h3);
+    font-size: var(--p);
   }
 
   .social__icon > img {
