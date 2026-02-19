@@ -24,7 +24,7 @@
   --bg-dark: rgb(var(--dark), 0.7);
 
   --btn-width: fit-content;
-  --site-heading: 5rem;
+  --site-heading: 4.5rem;
   --h1: clamp(2.5rem, 5vw, 4rem);
   --h2: clamp(1.8rem, 4vw, 3rem);
   --h3: clamp(1.5rem, 3vw, 2.25rem);
@@ -115,6 +115,8 @@ a {
 .logo {
   height: 7.1875rem;
   max-width: 30%;
+  object-fit: contain;
+  object-position: bottom;
 }
 
 *[class$='--berry'] {
@@ -376,6 +378,12 @@ header.sm {
 }
 
 /* SCHEDULE */
+.schedule__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .schedule__selector {
   display: flex;
   gap: 1rem;
@@ -545,6 +553,7 @@ div[class^='sponsors'] {
     --header-height: 13.53rem;
     --offset: calc(var(--header-height) + 0.25rem);
     --sidebar: 23vw;
+    --site-heading: 5rem;
   }
 
   *[class$='lg'] {
