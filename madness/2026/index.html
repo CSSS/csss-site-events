@@ -208,96 +208,191 @@
             <input type="radio" name="schedule-day" id="day-saturday" value="sunday" />
             <label for="day-saturday">Sunday</label>
           </div>
-          <div>
-            <table class="schedule__day" data-day="saturday">
-              <tr>
-                <td>09:30</td>
-                <td>Hacker check-in</td>
-              </tr>
-              <tr>
-                <td>10:00</td>
-                <td>Opening Ceremony</td>
-              </tr>
-              <tr>
-                <td>12:00</td>
-                <td>Begin Hacking</td>
-              </tr>
-              <tr>
-                <td>12:15</td>
-                <td>Lunch</td>
-              </tr>
-              <tr>
-                <td>13:00</td>
-                <td>MKB Typing Competition</td>
-              </tr>
-              <tr>
-                <td>13:30</td>
-                <td>Company Workshop</td>
-              </tr>
-              <tr>
-                <td>14:45</td>
-                <td>Ricing Showcase</td>
-              </tr>
-              <tr>
-                <td>15:45</td>
-                <td>Cracker Eating</td>
-              </tr>
-              <tr>
-                <td>16:30</td>
-                <td>Company Workshop</td>
-              </tr>
-              <tr>
-                <td>18:00</td>
-                <td>Dinner</td>
-              </tr>
-              <tr>
-                <td>18:30</td>
-                <td>Valorant Tournament</td>
-              </tr>
-              <tr>
-                <td>23:00</td>
-                <td>Slime Space (WiCS x CSSS)</td>
-              </tr>
-              <tr>
-                <td>23:30</td>
-                <td>Midnight Snacks</td>
-              </tr>
-            </table>
-            <table class="schedule__day" data-day="sunday">
-              <tr>
-                <td>00:00</td>
-                <td>Karaoke</td>
-              </tr>
-              <tr>
-                <td>00:00</td>
-                <td>Sleeping Rooms open</td>
-              </tr>
-              <tr>
-                <td>03:30</td>
-                <td>Recocting Resume Review</td>
-              </tr>
-              <tr>
-                <td>09:00</td>
-                <td>Breakfast</td>
-              </tr>
-              <tr>
-                <td>12:00</td>
-                <td>End Hacking</td>
-              </tr>
-              <tr>
-                <td>12:15</td>
-                <td>Lunch</td>
-              </tr>
-              <tr>
-                <td>13:00</td>
-                <td>Judging Time</td>
-              </tr>
-              <tr>
-                <td>15:00</td>
-                <td>Closing Ceremony</td>
-              </tr>
-            </table>
+
+          <!-- Saturday Timeline: 09:30–23:30 -->
+          <div class="timeline" data-day="saturday">
+            <div class="timeline__track">
+              <div class="timeline__line"></div>
+
+              <div class="timeline__event left" data-minutes="570">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">09:30</span>
+                  <span class="timeline__label">Hacker check-in</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="600">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">10:00</span>
+                  <span class="timeline__label">Opening Ceremony</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="720">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:00</span>
+                  <span class="timeline__label">Begin Hacking</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="735">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:15</span>
+                  <span class="timeline__label">Lunch</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="780">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:00</span>
+                  <span class="timeline__label">MKB Typing Competition</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="810">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:30</span>
+                  <span class="timeline__label">Company Workshop</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="885">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">14:45</span>
+                  <span class="timeline__label">Ricing Showcase</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="945">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">15:45</span>
+                  <span class="timeline__label">Cracker Eating</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="990">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">16:30</span>
+                  <span class="timeline__label">Company Workshop</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="1080">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">18:00</span>
+                  <span class="timeline__label">Dinner</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="1110">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">18:30</span>
+                  <span class="timeline__label">Valorant Tournament</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="1380">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">23:00</span>
+                  <span class="timeline__label">Slime Space (WiCS × CSSS)</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="1410">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">23:30</span>
+                  <span class="timeline__label">Midnight Snacks</span>
+                </div>
+              </div>
+
+            </div>
           </div>
+
+          <!-- Sunday Timeline: 00:00–15:00 -->
+          <div class="timeline hidden" data-day="sunday">
+            <div class="timeline__track">
+              <div class="timeline__line"></div>
+
+              <div class="timeline__event left" data-minutes="0">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">00:00</span>
+                  <span class="timeline__label">Karaoke</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="0">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">00:00</span>
+                  <span class="timeline__label">Sleeping Rooms open</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="210">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">03:30</span>
+                  <span class="timeline__label">Recocting Resume Review</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="540">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">09:00</span>
+                  <span class="timeline__label">Breakfast</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="720">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:00</span>
+                  <span class="timeline__label">End Hacking</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="735">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:15</span>
+                  <span class="timeline__label">Lunch</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="780">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:00</span>
+                  <span class="timeline__label">Judging Time</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="900">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">15:00</span>
+                  <span class="timeline__label">Closing Ceremony</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
