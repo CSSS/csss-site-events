@@ -107,13 +107,23 @@ async function incrementEvil() {
     .then(res => updateCounters(res.good, res.evil));
 }
 
-function main() {
+async function fetchCounters() {
   fetch(`${API_URL}/counters`)
     .then(res => res.json())
     .then(data => {
-      goodCounter.textContent = data.good;
-      evilCounter.textContent = data.evil;
+      updateCounters(data.good, data.evil);
     });
+}
+
+function pollVotes() {
+  fetchCounters();
+  setInterval(() => {
+    fetchCounters();
+  }, 30000);
+}
+
+function main() {
+  pollVotes();
   // Day selector
   document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
     radio.addEventListener('change', e => {
