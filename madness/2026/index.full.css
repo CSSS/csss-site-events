@@ -415,10 +415,6 @@ header.sm {
   display: block;
 }
 
-table td {
-  padding: 0.5em 0;
-}
-
 #schedule h3 {
   flex: 1 0 100%;
   text-align: center;
@@ -679,5 +675,126 @@ div[class^='sponsors'] {
   #peak {
     position: fixed;
     bottom: 0;
+  }
+}
+
+.timeline {
+  width: 100%;
+  padding: 1rem 0 2rem;
+}
+
+/*
+ * .timeline__track height is set by JS to:
+ *   (number of distinct time slots - 1) * ROW_HEIGHT + card_height_buffer
+ * The line spans from first node to last node via JS-set height.
+ */
+.timeline__track {
+  position: relative;
+  margin: 0 auto;
+  width: clamp(17.375rem, 100%, 32rem);
+}
+
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0; /* JS will set exact top/height to span first→last node */
+  width: 3px;
+  background: linear-gradient(to bottom, var(--berry), var(--tangerine));
+  transform: translateX(-50%);
+  border-radius: 2px;
+  /* height set by JS */
+}
+
+.timeline__event {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+/* Node (circle) always centered on the line */
+.timeline__node {
+  position: absolute;
+  left: 50%;
+  top: 0.6rem; /* vertically centers with first line of card text */
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--berry-l);
+  border: 3px solid var(--berry);
+  box-shadow: 0 0 8px rgba(178, 60, 111, 0.6);
+  z-index: 1;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Content card */
+.timeline__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: rgba(var(--dark), 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  width: clamp(100px, 18vw, 260px);
+  pointer-events: auto;
+  font-size: var(--p);
+}
+
+.timeline__time {
+  /* font-size: 0.75rem; */
+  font-weight: 700;
+  color: var(--berry-l);
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.timeline__label {
+  /* font-size: 0.85rem; */
+  color: var(--clr-text);
+  line-height: 1.3;
+}
+
+/* LEFT-side events: card sits to the left of the line, right-edge flush to node */
+.timeline__event.left {
+  justify-content: flex-start;
+}
+.timeline__event.left .timeline__content {
+  position: absolute;
+  right: calc(50% + 16px);
+  left: 0;
+  width: auto;
+  max-width: calc(50% - 16px);
+  text-align: right;
+}
+
+/* RIGHT-side events: card sits to the right of the line, left-edge flush to node */
+.timeline__event.right {
+  justify-content: flex-end;
+}
+.timeline__event.right .timeline__content {
+  position: absolute;
+  left: calc(50% + 16px);
+  right: 0;
+  width: auto;
+  max-width: calc(50% - 16px);
+  text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+  .timeline__content {
+    max-width: calc(50% - 18px);
+    padding: 0.3rem 0.5rem;
+  }
+  .timeline__time {
+    font-size: 0.68rem;
+  }
+  .timeline__label {
+    font-size: 0.75rem;
   }
 }

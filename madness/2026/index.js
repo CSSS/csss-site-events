@@ -10,6 +10,63 @@ const evilCounter = document.getElementById('evil-counter');
 
 const scheduleDays = document.querySelectorAll('.schedule__day');
 
+/**
+ * Lay out a single .timeline__track so that:
+ *  - Each event's top is proportional to its time within the day
+ *  - The vertical line spans exactly from the first node to the last node
+ *  - The track is tall enough to contain all cards without overlap
+ *
+ * Each .timeline__event must have data-minutes="<minutes since midnight>".
+ * A minimum gap of MIN_GAP_PX is enforced between consecutive events.
+ */
+function layoutTimeline(track) {
+  const events = Array.from(track.querySelectorAll('.timeline__event'));
+  if (events.length === 0) return;
+
+  const minutes = events.map(el => parseInt(el.dataset.minutes, 10));
+  const minMin = Math.min(...minutes);
+
+  const pxPerMin = Math.max(0.5, Math.min(0.9, window.innerWidth / 800));
+
+  // Ideal positions
+  const idealTops = minutes.map(m => (m - minMin) * pxPerMin);
+
+  // Enforce minimum gap only between events at DIFFERENT times
+  // Events sharing the same minute get the same top value
+  const MIN_GAP = 100; // px
+  const tops = [...idealTops];
+  for (let i = 1; i < tops.length; i++) {
+    if (minutes[i] === minutes[i - 1]) {
+      // Same time: force identical position
+      tops[i] = tops[i - 1];
+    } else if (tops[i] < tops[i - 1] + MIN_GAP) {
+      tops[i] = tops[i - 1] + MIN_GAP;
+    }
+  }
+
+  events.forEach((el, i) => {
+    el.style.top = tops[i] + 'px';
+  });
+
+  // Track height = last top + last card height + small buffer
+  const lastTop = tops[tops.length - 1];
+  const lastCard = events[events.length - 1].querySelector('.timeline__content');
+  const cardH = lastCard ? lastCard.offsetHeight : 48;
+  track.style.height = lastTop + cardH + 12 + 'px';
+
+  // Line from centre of first node to centre of last node
+  const NODE_HALF = 7;
+  const line = track.querySelector('.timeline__line');
+  if (line) {
+    line.style.top = tops[0] + NODE_HALF + 'px';
+    line.style.height = tops[tops.length - 1] - tops[0] + 'px';
+  }
+}
+
+function layoutAllTimelines() {
+  document.querySelectorAll('.timeline__track').forEach(layoutTimeline);
+}
+
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
   'linear-gradient(to bottom, #1e3a5f 0%, #4a5f7f 50%, #7a8f9f 100%)', // Dawn
@@ -125,25 +182,30 @@ function pollVotes() {
 function main() {
   pollVotes();
   // Day selector
+  const timelines = document.querySelectorAll('.timeline[data-day]');
   document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
     radio.addEventListener('change', e => {
       const selectedDay = e.target.value;
-      scheduleDays.forEach(day => {
-        day.classList.add('hidden');
+      timelines.forEach(timeline => {
+        timeline.classList.add('hidden');
       });
-      document
-        .querySelector(`.schedule__day[data-day="${selectedDay}"]`)
-        ?.classList.remove('hidden');
+      const shown = document.querySelector(`.timeline[data-day="${selectedDay}"]`);
+      shown?.classList.remove('hidden');
+      if (shown)
+        requestAnimationFrame(() => layoutTimeline(shown.querySelector('.timeline__track')));
     });
   });
-
-  // Initially hide Sunday
-  document.querySelector('.schedule__day[data-day="sunday"]')?.classList.add('hidden');
 
   // Handles the sky changing colours
   content.addEventListener('scroll', updateSkyColour);
   updateSkyColour();
   makeStars();
+
+  // Layout timelines after first paint, then re-layout on resize
+  requestAnimationFrame(() => {
+    layoutAllTimelines();
+  });
+  window.addEventListener('resize', layoutAllTimelines);
 
   // Menu handling
   const links = document.getElementsByClassName('menu__link');
