@@ -9,6 +9,7 @@ const goodCounter = document.getElementById('good-counter');
 const evilCounter = document.getElementById('evil-counter');
 
 const scheduleDays = document.querySelectorAll('.schedule__day');
+let pollLimit = 12; // one hours max polling
 
 /**
  * Lay out a single .timeline__track so that:
@@ -174,8 +175,12 @@ async function fetchCounters() {
 
 function pollVotes() {
   fetchCounters();
-  setInterval(() => {
+  const poll = setInterval(() => {
     fetchCounters();
+    pollLimit -= 1;
+    if (pollLimit <= 0) {
+      clearInterval(poll);
+    }
   }, 30000);
 }
 
