@@ -119,6 +119,18 @@ a {
   object-position: bottom;
 }
 
+.graphic {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.graphic > img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 500px;
+}
+
 *[class$='--berry'] {
   --clr-d: var(--berry-d);
   --clr-primary: var(--berry);
@@ -368,7 +380,7 @@ header.sm {
 }
 
 #info-container > section:not(#hero) {
-  padding: 1rem 2rem 30rem;
+  padding: 1rem 2rem 5rem;
   width: 95%;
   background: var(--bg-dark);
 }
