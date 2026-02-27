@@ -494,7 +494,7 @@ div[class^='sponsors'] {
 
 .vote-container {
   display: grid;
-  grid-template-columns: 3fr 1fr 2fr;
+  grid-template-columns: 3fr 1fr 3fr;
   text-align: center;
   place-items: center;
   row-gap: 1rem;
