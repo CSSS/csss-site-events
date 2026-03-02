@@ -153,18 +153,6 @@ function updateCounters(good, evil) {
   evilCounter.textContent = evil;
 }
 
-async function incrementGood() {
-  fetch(`${API_URL}/good`, { method: 'POST' })
-    .then(res => res.json())
-    .then(res => updateCounters(res.good, res.evil));
-}
-
-async function incrementEvil() {
-  fetch(`${API_URL}/evil`, { method: 'POST' })
-    .then(res => res.json())
-    .then(res => updateCounters(res.good, res.evil));
-}
-
 async function fetchCounters() {
   fetch(`${API_URL}/counters`)
     .then(res => res.json())
@@ -173,19 +161,8 @@ async function fetchCounters() {
     });
 }
 
-function pollVotes() {
-  fetchCounters();
-  const poll = setInterval(() => {
-    fetchCounters();
-    pollLimit -= 1;
-    if (pollLimit <= 0) {
-      clearInterval(poll);
-    }
-  }, 30000);
-}
-
 function main() {
-  pollVotes();
+  fetchCounters();
   // Day selector
   const timelines = document.querySelectorAll('.timeline[data-day]');
   document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
