@@ -531,7 +531,7 @@ div[class^='sponsors'] {
 
 .counter {
   display: flex;
-  font-size: var(--p);
+  font-size: var(--h3);
 }
 
 /* END VOTE BUTTONS */
