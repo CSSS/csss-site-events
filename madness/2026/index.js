@@ -148,21 +148,7 @@ function closeMenu() {
   content.style.overflow = 'auto';
 }
 
-function updateCounters(good, evil) {
-  goodCounter.textContent = good;
-  evilCounter.textContent = evil;
-}
-
-async function fetchCounters() {
-  fetch(`${API_URL}/counters`)
-    .then(res => res.json())
-    .then(data => {
-      updateCounters(data.good, data.evil);
-    });
-}
-
 function main() {
-  fetchCounters();
   // Day selector
   const timelines = document.querySelectorAll('.timeline[data-day]');
   document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
