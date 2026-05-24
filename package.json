@@ -9,11 +9,14 @@
   "scripts": {
     "build": "nx run-many --target=build",
     "dev": "nx dev",
-    "new-site": "bash scripts/new-site.sh"
+    "new-site": "bash scripts/new-site.sh",
+    "format": "prettier --write .",
+    "format:check": "prettier --check"
   },
   "devDependencies": {
+    "astro": "6.3.7",
     "nx": "22.7.3",
-    "astro": "6.3.7"
+    "prettier": "3.8.3",
+    "prettier-plugin-astro": "0.14.1"
   }
 }
-

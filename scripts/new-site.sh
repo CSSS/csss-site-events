@@ -84,7 +84,7 @@ EOF
 # tsconfig.json
 cat >"$DIR/tsconfig.json" <<EOF
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../../tsconfig.json",
   "include": ["src"]
 }
 EOF
