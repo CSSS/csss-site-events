@@ -2,7 +2,18 @@
   "name": "csss-site-events",
   "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "sites/*/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "nx run-many --target=build",
+    "dev": "nx dev",
+    "new-site": "bash scripts/new-site.sh"
+  },
   "devDependencies": {
-    "nx": "22.7.3"
+    "nx": "22.7.3",
+    "astro": "6.3.7"
   }
 }
+
