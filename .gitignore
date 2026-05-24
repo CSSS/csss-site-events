@@ -1,0 +1,39 @@
+# Nx specific
+.nx/cache
+.nx/workspace-data
+.nx/installation
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# IDEs and Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
