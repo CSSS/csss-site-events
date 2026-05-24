@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "paths": {
+      "@csss-site-events/ui/*": [
+        "./packages/ui/src/*"
+      ]
+    }
+  }
+}
