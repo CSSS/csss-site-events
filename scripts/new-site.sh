@@ -122,6 +122,7 @@ EOF
 cat >"$DIR/src/layouts/Layout.astro" <<'EOF'
 ---
 import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import { navItems } from '../config/site.data';
 
 interface Props {
   title: string;
@@ -129,7 +130,7 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<BaseLayout title={title}>
+<BaseLayout title={title} navItems={navItems}>
   <slot />
 </BaseLayout>
 EOF

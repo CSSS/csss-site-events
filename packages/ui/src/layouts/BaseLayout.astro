@@ -1,5 +1,6 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
 import { NavItem } from '../types';
 
 interface Props {
@@ -19,7 +20,14 @@ const hasHero = Astro.slots.has('hero');
     <title>{title}</title>
   </head>
   <body>
-    <Navbar items={navItems} />
+    <Navbar title={title} items={navItems} />
+    {
+      hasHero && (
+        <Hero>
+          <slot name="hero" />
+        </Hero>
+      )
+    }
     <main>
       <slot />
     </main>
@@ -28,3 +36,9 @@ const hasHero = Astro.slots.has('hero');
     </footer>
   </body>
 </html>
+
+<style>
+  main {
+    height: 200svh;
+  }
+</style>
