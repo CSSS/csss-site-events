@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+UI_DIR="csss-site-events/ui"
+
 EVENT=$1 # e.g. fall-hacks, frosh, madness, tech-fair
 YEAR=$2  # e.g. 2026
 
@@ -14,7 +16,7 @@ DIR="sites/$EVENT/$YEAR"
 
 echo "Creating $NAME at $DIR..."
 
-mkdir -p "$DIR/src/"{pages,components,layouts}
+mkdir -p "$DIR/src/"{pages,components,layouts,config}
 
 # astro.config.mjs
 cat >"$DIR/astro.config.mjs" <<EOF
@@ -89,10 +91,31 @@ cat >"$DIR/tsconfig.json" <<EOF
 }
 EOF
 
+# Default navconfig
+cat >"$DIR/src/config/nav.data.ts" <<EOF
+import { NavItem } from '$UI_DIR/types';
+
+export const navItems: NavItem[] = [
+  {
+    label: 'Link',
+    href: '/'
+  },
+  {
+    label: 'Dropdown',
+    dropdown: [
+      {
+        label: 'Link 1',
+        href: 'link/to/1'
+      }
+    ]
+  }
+]
+EOF
+
 # Default layout extending @csss-site-events/ui
 cat >"$DIR/src/layouts/Layout.astro" <<'EOF'
 ---
-import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
 
 interface Props {
   title: string;

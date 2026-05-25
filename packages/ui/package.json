@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     "./layouts/*": "./src/layouts/*",
-    "./components/*": "./src/components/*"
+    "./components/*": "./src/components/*",
+    "./types": "./src/types"
   },
   "peerDependencies": {
     "astro": "^6.0.0"
