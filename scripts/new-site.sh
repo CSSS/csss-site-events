@@ -91,8 +91,8 @@ cat >"$DIR/tsconfig.json" <<EOF
 }
 EOF
 
-# Default navconfig
-cat >"$DIR/src/config/nav.data.ts" <<EOF
+# Default site data
+cat >"$DIR/src/config/site.data.ts" <<EOF
 import { NavItem } from '$UI_DIR/types';
 
 export const navItems: NavItem[] = [
@@ -110,6 +110,12 @@ export const navItems: NavItem[] = [
     ]
   }
 ]
+
+export const siteConfig: SiteConfig = {
+  name: '$EVENT $YEAR',
+  title: '$EVENT $YEAR',
+  description: 'Description',
+}
 EOF
 
 # Default layout extending @csss-site-events/ui
