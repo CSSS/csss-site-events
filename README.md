@@ -10,7 +10,7 @@ Mono-repo which contains event sites that the CSSS has used for marketing. Uses 
 These commands indicate what you can do once you've cloned the project.
 The project graph will show you the dependencies of each site.
 
-*Note: make sure you put the hyphen between `<event>` and `<year>`.
+*Note: make sure you put the hyphen between `<event>` and `<year>`, this is also referred to as the `site-name`.
 
 
 | Description         | Command                      |
@@ -21,3 +21,7 @@ The project graph will show you the dependencies of each site.
 | Build changed sites | `nx affected --target=build`  |
 | See changed sites   | `nx show projects --affected` |
 | See project graph   | `nx graph`                    |
+| Install package for all sites   | `npm install <library> -w`                    |
+| Install package for one site   | `npm install <library> --workspace=<site-name>`                    |
+
+
