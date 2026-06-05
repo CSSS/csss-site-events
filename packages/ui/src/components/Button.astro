@@ -74,19 +74,20 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
 <style>
   @layer theme {
     .button {
-      --button-accent: var(--clr-accent-blue);
-      --button-accent-contrast: var(--clr-accent-blue-contrast);
-      --button-border-width: 2px;
+      --btn-accent: var(--clr-accent-blue);
+      --btn-accent-contrast: var(--clr-accent-blue-contrast);
+      --btn-border-width: 2px;
+      --btn-border-radius: 10px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: var(--sp-2);
       padding: var(--sp-2) var(--sp-4);
-      border-radius: 10px;
-      border: var(--button-border-width) solid var(--button-accent);
+      border-radius: var(--btn-border-radius);
+      border: var(--btn-border-width) solid var(--btn-accent);
+      font-family: var(--font-heading);
       font-size: var(--font-size-2);
-      font-weight: var(--font-weight-semibold);
       line-height: var(--line-height-tight);
       text-decoration: none;
       cursor: pointer;
@@ -98,27 +99,27 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
     }
 
     .button--solid {
-      background-color: var(--button-accent);
-      color: var(--button-accent-contrast);
+      background-color: var(--btn-accent);
+      color: var(--btn-accent-contrast);
     }
 
     .button--outline {
       background-color: transparent;
-      color: var(--button-accent);
+      color: var(--btn-accent);
     }
 
     .button--ghost {
       background-color: transparent;
       border-color: transparent;
-      color: var(--button-accent);
+      color: var(--btn-accent);
     }
 
     .button--outline:hover:not(.button--disabled),
     .button--outline:focus-visible:not(.button--disabled),
     .button--ghost:hover:not(.button--disabled),
     .button--ghost:focus-visible:not(.button--disabled) {
-      background-color: var(--button-accent);
-      color: var(--button-accent-contrast);
+      background-color: var(--btn-accent);
+      color: var(--btn-accent-contrast);
     }
 
     .button--sm {
@@ -142,23 +143,23 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
     }
 
     .button--blue {
-      --button-accent: var(--clr-accent-blue);
-      --button-accent-contrast: var(--clr-accent-blue-contrast);
+      --btn-accent: var(--clr-accent-blue);
+      --btn-accent-contrast: var(--clr-accent-blue-contrast);
     }
 
     .button--pink {
-      --button-accent: var(--clr-accent-pink);
-      --button-accent-contrast: var(--clr-accent-pink-contrast);
+      --btn-accent: var(--clr-accent-pink);
+      --btn-accent-contrast: var(--clr-accent-pink-contrast);
     }
 
     .button--red {
-      --button-accent: var(--clr-accent-red);
-      --button-accent-contrast: var(--clr-accent-red-contrast);
+      --btn-accent: var(--clr-accent-red);
+      --btn-accent-contrast: var(--clr-accent-red-contrast);
     }
 
     .button--green {
-      --button-accent: var(--clr-accent-green);
-      --button-accent-contrast: var(--clr-accent-green-contrast);
+      --btn-accent: var(--clr-accent-green);
+      --btn-accent-contrast: var(--clr-accent-green-contrast);
     }
   }
 </style>

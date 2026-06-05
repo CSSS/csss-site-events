@@ -171,7 +171,7 @@ const { title, items = [] } = Astro.props;
 
   .navbar__title {
     font-size: var(--font-size-3);
-    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-title);
     white-space: nowrap;
   }
 
@@ -186,6 +186,7 @@ const { title, items = [] } = Astro.props;
   }
 
   .navbar__link {
+    font-family: var(--font-heading);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
     color: var(--clr-text-inverse);

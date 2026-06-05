@@ -25,7 +25,6 @@
 
   body {
     position: relative;
-    height: 200svh;
     padding-top: var(--navbar-height, 0);
     background: var(--clr-surface-base);
   }
@@ -87,9 +86,10 @@
     --sp-10: 8rem;
 
     /* Typography tokens */
-    /* --font-family-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; */
-    /* --font-family-serif: 'Georgia', 'Times New Roman', serif; */
-    /* --font-family-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace; */
+    --font-body: 'Ancizar Serif', serif;
+    --font-title: 'Boldonse', sans-serif;
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-fancy: 'Workbench', sans-serif;
 
     --font-size-0: 0.75rem;
     --font-size-1: 0.875rem;
@@ -115,6 +115,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
+    /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
   }
 }
