@@ -22,8 +22,11 @@ mkdir -p "$DIR/src/"{pages,components,layouts,config}
 cat >"$DIR/astro.config.mjs" <<EOF
 import { defineConfig } from 'astro/config';
 
+const isProd = import.meta.env.PROD;
+
 export default defineConfig({
-  base: '/$EVENT/$YEAR',
+  base: isProd ? '/' : '/$EVENT/$YEAR',
+  site: 'https://$EVENT.sfucsss.org',
   outDir: './dist',
   build: {
     assets: 'assets',
