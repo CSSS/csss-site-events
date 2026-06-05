@@ -69,6 +69,13 @@ const { title, items = [] } = Astro.props;
   const navbar = document.querySelector('.navbar') as HTMLElement;
   const toggleButton = navbar.querySelector('.navbar__toggle') as HTMLButtonElement | null;
   const closeButton = navbar.querySelector('.navbar__close') as HTMLButtonElement | null;
+  const navLinks = navbar.querySelectorAll('.navbar__link');
+
+  function closeMenu() {
+    navbar.classList.add('navbar--menu-animate');
+    navbar.classList.remove('navbar--menu-open');
+    toggleButton?.setAttribute('aria-expanded', 'false');
+  }
 
   // If the user has scrolled down the navbar recedes a bit
   const observer = new IntersectionObserver(
@@ -92,11 +99,15 @@ const { title, items = [] } = Astro.props;
     });
   }
 
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
   if (closeButton) {
     closeButton.addEventListener('click', () => {
-      navbar.classList.add('navbar--menu-animate');
-      navbar.classList.remove('navbar--menu-open');
-      toggleButton?.setAttribute('aria-expanded', 'false');
+      closeMenu();
     });
   }
 
