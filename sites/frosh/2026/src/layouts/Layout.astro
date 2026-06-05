@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import { navItems } from '../config/site.data';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title} navItems={navItems}>
+  <article>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: var(--section-gap);
+    padding: 0 min(var(--sp-2), 10vw);
+    max-width: 75rem;
+  }
+</style>

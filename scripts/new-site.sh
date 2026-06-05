@@ -141,6 +141,7 @@ const { title } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
+    padding: 0 min(var(--sp-2), 10vw);
   }
 </style>
 EOF
