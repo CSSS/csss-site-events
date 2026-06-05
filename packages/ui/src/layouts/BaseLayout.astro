@@ -31,9 +31,11 @@ const hasHero = Astro.slots.has('hero');
     <main>
       <slot />
     </main>
-    <footer>
-      <p>Base Layout Footer</p>
-    </footer>
+    <slot slot="footer">
+      <footer>
+        <p>Base Layout Footer</p>
+      </footer>
+    </slot>
   </body>
 </html>
 

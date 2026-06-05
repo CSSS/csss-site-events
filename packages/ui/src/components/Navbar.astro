@@ -15,20 +15,24 @@ const { title, items = [] } = Astro.props;
     <span class="navbar__title">{title}</span>
   </div>
   <nav class="navbar__nav">
-    <ul>
+    <ul class="navbar__list">
       {
         items.map(item => (
           <li>
             {'href' in item ? (
-              <a href={item.href}>{item.label}</a>
+              <a class="navbar__link" href={item.href}>
+                {item.label}
+              </a>
             ) : (
               <div class="dropdown">
-                <button>{item.label}</button>
+                <button class="navbar__link">{item.label}</button>
                 <ul class="dropdown__menu">
                   {item.dropdown.map(child => (
                     <li>
                       {'href' in child ? (
-                        <a href={child.href}>{child.label}</a>
+                        <a class="navbar__link" href={child.href}>
+                          {child.label}
+                        </a>
                       ) : (
                         <span>{child.label}</span>
                       )}
@@ -68,6 +72,10 @@ const { title, items = [] } = Astro.props;
     --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
   }
 
+  a {
+    color: black;
+  }
+
   .navbar {
     position: fixed;
     top: 0;
@@ -77,8 +85,8 @@ const { title, items = [] } = Astro.props;
 
     display: flex;
     align-items: center;
+    gap: 2rem;
 
-    gap: 0.75rem;
     padding: 0 2rem;
     height: var(--navbar-height);
     transition:
@@ -103,7 +111,7 @@ const { title, items = [] } = Astro.props;
     white-space: nowrap;
   }
 
-  .navbar__nav > ul {
+  .navbar__list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -112,7 +120,9 @@ const { title, items = [] } = Astro.props;
     gap: 1.5rem;
   }
 
-  .navbar__nav a {
+  .navbar__link {
+    color: black;
+    font-weight: 700;
     text-decoration: none;
   }
 
@@ -151,7 +161,7 @@ const { title, items = [] } = Astro.props;
 
   .dropdown__menu a {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     white-space: nowrap;
   }
 </style>

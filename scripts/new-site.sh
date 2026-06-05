@@ -98,7 +98,7 @@ import { NavItem } from '$UI_DIR/types';
 export const navItems: NavItem[] = [
   {
     label: 'Link',
-    href: '/'
+    href: '/$EVENT/$YEAR'
   },
   {
     label: 'Dropdown',
