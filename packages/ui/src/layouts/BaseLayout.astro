@@ -39,8 +39,6 @@ const hasHero = Astro.slots.has('hero');
   </body>
 </html>
 
-<style>
-  main {
-    height: 200svh;
-  }
+<style is:global>
+  @layer reset, base, theme, components;
 </style>
