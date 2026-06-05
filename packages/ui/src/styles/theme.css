@@ -1,23 +1,38 @@
+@layer reset, base, theme;
+
 @layer base {
+  :root {
+    --navbar-height: 5rem;
+    --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
+  }
+
+  body {
+    position: relative;
+    height: 200svh;
+    padding-top: var(--navbar-height, 0);
+    background: var(--clr-surface-base);
+  }
+}
+
+@layer theme {
   :root {
     /* CSSS brand palette */
     /* Don't override these in the sites */
+    --csss-brand-black: hsl(0, 0%, 0%);
     --csss-brand-white: hsl(55, 44%, 89%);
     --csss-brand-green: hsl(165.71, 57.27%, 43.14%);
     --csss-brand-blue: hsl(240, 100%, 28.24%);
     --csss-brand-pink: hsl(357.19, 98.46%, 74.51%);
     --csss-brand-red: hsl(358.29, 97.77%, 64.9%);
+    --csss-brand-grey: hsl(0, 0%, 27%);
 
     /* Color tokens */
-    --clr-neutral-0: var(--csss-brand-white);
-    --clr-neutral-900: hsl(0, 0%, 0%);
-
     --clr-surface-base: var(--csss-brand-white);
-    --clr-surface-inverse: var(--csss-brand-blue);
+    --clr-surface-inverse: var(--csss-brand-grey);
     --clr-border-default: hsl(0, 0%, 0%, 0.15);
 
-    --clr-text-primary: var(--color-neutral-900);
-    --clr-text-inverse: var(--color-neutral-0);
+    --clr-text-primary: var(--csss-brand-black);
+    --clr-text-inverse: var(--csss-brand-white);
 
     --clr-accent-blue: var(--csss-brand-blue);
     --clr-accent-blue-contrast: var(--csss-brand-white);
@@ -69,5 +84,7 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+
+    --animation-duration-regular: 0.3s;
   }
 }

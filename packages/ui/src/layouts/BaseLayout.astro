@@ -2,6 +2,8 @@
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import { NavItem } from '../types';
+import '../styles/reset.css';
+import '../styles/theme.css';
 
 interface Props {
   title: string;
@@ -31,14 +33,10 @@ const hasHero = Astro.slots.has('hero');
     <main>
       <slot />
     </main>
-    <slot slot="footer">
+    <slot name="footer">
       <footer>
         <p>Base Layout Footer</p>
       </footer>
     </slot>
   </body>
 </html>
-
-<style is:global>
-  @layer reset, base, theme, components;
-</style>

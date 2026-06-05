@@ -67,31 +67,25 @@ const { title, items = [] } = Astro.props;
 </script>
 
 <style>
-  :root {
-    --navbar-height: 5rem;
-    --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
-  }
-
-  a {
-    color: black;
-  }
-
   .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    width: 100%;
+    z-index: 1000;
 
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: var(--sp-6);
+    background-color: var(--clr-surface-inverse);
+    color: var(--clr-text-inverse);
 
-    padding: 0 2rem;
+    padding: 0 var(--sp-6);
     height: var(--navbar-height);
     transition:
-      height 0.3s ease,
-      box-shadow 0.3s ease;
+      height var(--animation-duration-regular) ease,
+      box-shadow var(--animation-duration-regular) ease;
   }
 
   .navbar--scrolled {
@@ -102,12 +96,12 @@ const { title, items = [] } = Astro.props;
   .navbar__left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--sp-3);
   }
 
   .navbar__title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-semibold);
     white-space: nowrap;
   }
 
@@ -117,13 +111,13 @@ const { title, items = [] } = Astro.props;
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: var(--sp-5);
   }
 
   .navbar__link {
-    color: black;
-    font-weight: 700;
+    font-weight: var(--font-weight-regular);
     text-decoration: none;
+    color: var(--clr-text-inverse);
   }
 
   .dropdown {
@@ -147,6 +141,7 @@ const { title, items = [] } = Astro.props;
     gap: 0;
     min-width: 10rem;
     padding: 0.5rem 0;
+    background-color: var(--clr-surface-inverse);
   }
 
   .dropdown:hover .dropdown__menu,
