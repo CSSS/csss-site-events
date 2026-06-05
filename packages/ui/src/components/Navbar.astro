@@ -46,6 +46,7 @@ const { title, items = [] } = Astro.props;
       }
     </ul>
   </nav>
+  <div class="navbar__right"></div>
 </header>
 
 <script>
@@ -75,7 +76,8 @@ const { title, items = [] } = Astro.props;
     width: 100%;
     z-index: 1000;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     gap: var(--sp-6);
     background-color: var(--clr-surface-inverse);
@@ -86,6 +88,11 @@ const { title, items = [] } = Astro.props;
     transition:
       height var(--animation-duration-regular) ease,
       box-shadow var(--animation-duration-regular) ease;
+  }
+
+  .navbar__nav {
+    display: flex;
+    justify-content: center;
   }
 
   .navbar--scrolled {
