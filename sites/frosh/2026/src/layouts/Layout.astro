@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <BaseLayout title={title} navItems={navItems}>
-  <div slot="hero">Hero</div>
+  <slot name="hero" slot="hero" />
   <article>
     <slot />
   </article>
