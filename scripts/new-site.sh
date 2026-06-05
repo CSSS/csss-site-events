@@ -131,8 +131,18 @@ interface Props {
 const { title } = Astro.props;
 ---
 <BaseLayout title={title} navItems={navItems}>
-  <slot />
+  <article>
+    <slot />
+  </article>
 </BaseLayout>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+  }
+</style>
 EOF
 
 # Default index page
