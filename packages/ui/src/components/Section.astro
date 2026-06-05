@@ -1,11 +1,31 @@
 ---
+interface Props {
+  id?: string;
+  title?: string;
+}
 
+const { id, title } = Astro.props;
+const hasFooter = Astro.slots.has('footer');
 ---
 
-<section class="section">
-  <h1 class="section__heading">Section Heading</h1>
-  <section class="section__content">
-    <p>Section content goes here.</p>
-  </section>
-  <div class="section__div">Section div</div>
+<section id={id} class="section">
+  <slot name="header">
+    <h2 class="section__heading">{title}</h2>
+  </slot>
+  <p class="section__content"><slot /></p>
+  {
+    hasFooter && (
+      <div class="section__footer">
+        <slot name="footer" />
+      </div>
+    )
+  }
 </section>
+
+<style>
+  .section__footer {
+    display: flex;
+    margin-top: var(--sp-4);
+    justify-content: space-around;
+  }
+</style>

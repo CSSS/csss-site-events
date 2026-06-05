@@ -4,6 +4,9 @@
   :root {
     --navbar-height: 5rem;
     --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
+
+    --section-gap: var(--sp-8);
+    --clr-link-inline: var(--clr-accent-blue);
   }
 
   body {
@@ -11,6 +14,15 @@
     height: 200svh;
     padding-top: var(--navbar-height, 0);
     background: var(--clr-surface-base);
+  }
+
+  p > a {
+    color: var(--clr-link-inline);
+  }
+
+  h2,
+  h3 {
+    margin-bottom: var(--sp-4);
   }
 }
 
