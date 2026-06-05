@@ -1,0 +1,71 @@
+:root {
+  /* CSSS brand palette */
+  /* Don't override these in the sites */
+  --csss-brand-white: hsl(55, 44%, 89%);
+  --csss-brand-green: hsl(165.71, 57.27%, 43.14%);
+  --csss-brand-blue: hsl(240, 100%, 28.24%);
+  --csss-brand-pink: hsl(357.19, 98.46%, 74.51%);
+  --csss-brand-red: hsl(358.29, 97.77%, 64.9%);
+
+  /* Color tokens */
+  --color-neutral-0: var(--csss-brand-white);
+  --color-neutral-900: hsl(0, 0%, 0%);
+
+  --color-surface-base: var(--csss-brand-white);
+  --color-surface-inverse: var(--csss-brand-blue);
+  --color-border-default: hsl(0, 0%, 0%, 0.15);
+
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-inverse: var(--color-neutral-0);
+
+  --color-accent-blue: var(--csss-brand-blue);
+  --color-accent-blue-contrast: var(--csss-brand-white);
+  --color-accent-pink: var(--csss-brand-pink);
+  --color-accent-pink-contrast: var(--csss-brand-white);
+  --color-accent-red: var(--csss-brand-red);
+  --color-accent-red-contrast: var(--csss-brand-white);
+  --color-accent-green: var(--csss-brand-green);
+  --color-accent-green-contrast: var(--csss-brand-white);
+
+  /* Spacing tokens */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Typography tokens */
+  /* --font-family-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; */
+  /* --font-family-serif: 'Georgia', 'Times New Roman', serif; */
+  /* --font-family-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace; */
+
+  --font-size-0: 0.75rem;
+  --font-size-1: 0.875rem;
+  --font-size-2: 1rem;
+  --font-size-3: 1.125rem;
+  --font-size-4: 1.25rem;
+  --font-size-5: 1.5rem;
+  --font-size-6: 2rem;
+  --font-size-7: 2.5rem;
+  --font-size-8: 3rem;
+
+  --font-size-body: var(--font-size-2);
+  --font-size-heading-1: var(--font-size-8);
+  --font-size-heading-2: var(--font-size-6);
+  --font-size-heading-3: var(--font-size-5);
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
