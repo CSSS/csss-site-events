@@ -146,6 +146,7 @@ const { title } = Astro.props;
     flex-direction: column;
     gap: var(--section-gap);
     padding: 0 min(var(--sp-2), 10vw);
+    max-width: var(--site-content-width);
   }
 
   footer {

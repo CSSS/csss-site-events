@@ -5,6 +5,7 @@ import Button from '@csss-site-events/ui/components/Button.astro';
 import { siteConfig } from '../config/site.data';
 import Faq from '../components/Faq.astro';
 import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
+import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
 import commonData from '@csss-site-events/ui/common.data';
 ---
 
@@ -44,7 +45,7 @@ import commonData from '@csss-site-events/ui/common.data';
     >, <strong>hikes</strong>, <strong>seasonal parties</strong>, and more!
     <Fragment slot="footer">
       <Button href={commonData.discordHref} variant="solid"><DiscordIcon />Discord</Button>
-      <Button href="/registration" variant="solid">Waiver</Button>
+      <Button href="/registration" variant="solid"><CsssIcon />Waiver</Button>
     </Fragment>
   </Section>
   <Section id="schedule" title="Schedule">
