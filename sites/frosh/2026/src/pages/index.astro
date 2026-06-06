@@ -8,6 +8,7 @@ import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
 import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
 import commonData from '@csss-site-events/ui/common.data';
 import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
+import { Mail } from '@lucide/astro';
 ---
 
 <Layout title="Frosh 2026" heroImage={win} heroAlt="Hero">
@@ -27,8 +28,11 @@ import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
       >{siteConfig.startDate}th</strong
     > to <strong>{siteConfig.endDate}th</strong>. This year's Frosh is inspired by TODO.
     <Fragment slot="footer">
-      <Button href="/registration" variant="solid">Register</Button>
-      <Button href="/registration" variant="solid">Waiver</Button>
+      <p>Button test</p>
+      <Button href="/" variant="solid">Solid</Button>
+      <Button href="/" variant="outline" tone="pink">Outline</Button>
+      <Button href="/" variant="ghost" tone="green">Ghost</Button>
+      <Button href="/" variant="solid" tone="red">Solid</Button>
     </Fragment>
   </Section>
   <Section title="Who's organizing this?">
@@ -69,7 +73,7 @@ import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
 
     If you're interested in sponsoring this event, please email csss-froshchair@sfu.ca.
     <Fragment slot="footer">
-      <Button href="mailto:csss-froshchair@sfu.ca">Frosh Chair</Button>
+      <Button href="mailto:csss-froshchair@sfu.ca"><Mail />Frosh Chair</Button>
     </Fragment>
   </Section>
   <Faq />
