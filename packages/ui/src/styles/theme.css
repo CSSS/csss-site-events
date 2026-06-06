@@ -17,6 +17,8 @@
 
     /* Colour of a link in a paragraph */
     --clr-link-inline: var(--clr-accent-blue);
+
+    --site-content-width: 60rem;
   }
 
   html {
@@ -101,7 +103,7 @@
     --font-size-7: 2.5rem;
     --font-size-8: 3rem;
 
-    --font-size-body: var(--font-size-2);
+    --font-size-body: var(--font-size-4);
     --font-size-heading-1: var(--font-size-8);
     --font-size-heading-2: var(--font-size-6);
     --font-size-heading-3: var(--font-size-5);
