@@ -134,7 +134,7 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<BaseLayout title={title}>
+<BaseLayout pageTitle={title}>
   <main>
     <slot />
   </main>

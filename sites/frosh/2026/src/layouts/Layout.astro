@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
-import { navItems } from '../config/site.data';
+import { navItems, siteConfig } from '../config/site.data';
+import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout pageTitle={title} description={siteConfig.description} image={win}>
   <Navbar title={title} items={navItems} />
   <slot name="hero" />
   <main>

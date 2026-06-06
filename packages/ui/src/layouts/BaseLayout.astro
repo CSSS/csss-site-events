@@ -1,20 +1,26 @@
 ---
+import Seo from '../components/Seo.astro';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/theme.css';
 
 interface Props {
-  title: string;
+  pageTitle: string;
+  description?: string;
+  image?: ImageMetadata | string;
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const { pageTitle, description, image, noindex = false } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
+    <!-- For any extra meta tags a page may need -->
+    <slot name="head" />
   </head>
   <body>
     <slot />

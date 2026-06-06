@@ -8,7 +8,8 @@
     "./icons/*": "./src/icons/*",
     "./common.data": "./src/common.data",
     "./types": "./src/types",
-    "./assets/icons/*": "./assets/icons/*"
+    "./assets/icons/*": "./assets/icons/*",
+    "./assets/images/*": "./assets/images/*"
   },
   "peerDependencies": {
     "astro": "^6.0.0"

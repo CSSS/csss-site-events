@@ -23,7 +23,7 @@ export const navItems: NavItem[] = [
 export const siteConfig: Frosh2026SiteConfig = {
   name: 'Frosh 2026',
   title: 'Frosh 2026',
-  description: 'Description',
+  description: "Frosh Week 2026 hosted by SFU's Computing Science Student Society",
   eventName: 'Once Upon a Frosh',
   startDate: 'September 8',
   endDate: 'September 13'
