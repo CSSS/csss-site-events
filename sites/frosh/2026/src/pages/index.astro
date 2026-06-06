@@ -4,6 +4,8 @@ import Section from '@csss-site-events/ui/components/Section.astro';
 import Button from '@csss-site-events/ui/components/Button.astro';
 import { siteConfig } from '../config/site.data';
 import Faq from '../components/Faq.astro';
+import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
+import commonData from '@csss-site-events/ui/common.data';
 ---
 
 <Layout title="Frosh 2026">
@@ -41,7 +43,7 @@ import Faq from '../components/Faq.astro';
       >bi-weekly board game nights</strong
     >, <strong>hikes</strong>, <strong>seasonal parties</strong>, and more!
     <Fragment slot="footer">
-      <Button href="/registration" variant="solid">Register</Button>
+      <Button href={commonData.discordHref} variant="solid"><DiscordIcon />Discord</Button>
       <Button href="/registration" variant="solid">Waiver</Button>
     </Fragment>
   </Section>

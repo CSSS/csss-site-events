@@ -20,6 +20,7 @@
     "prettier-plugin-astro": "0.14.1"
   },
   "dependencies": {
-    "@lucide/astro": "^1.17.0"
+    "@lucide/astro": "^1.17.0",
+    "simple-icons": "^16.22.0"
   }
 }

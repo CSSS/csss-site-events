@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import Navbar from '@csss-site-events/ui/components/Navbar.astro';
 import { navItems } from '../config/site.data';
 
 interface Props {
@@ -9,20 +10,26 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<BaseLayout title={title} navItems={navItems}>
-  <slot name="hero" slot="hero" />
-  <article>
+<BaseLayout title={title}>
+  <Navbar title={title} items={navItems} />
+  <slot name="hero" />
+  <main>
     <slot />
-  </article>
+  </main>
+  <footer></footer>
 </BaseLayout>
 
 <style>
-  article {
+  main {
     display: flex;
     margin: 0 auto;
     flex-direction: column;
     gap: var(--section-gap);
     padding: 0 min(var(--sp-2), 10vw);
     max-width: 75rem;
+  }
+
+  footer {
+    margin-top: var(--sp-6);
   }
 </style>

@@ -13,6 +13,9 @@
     "paths": {
       "@csss-site-events/ui/*": [
         "./packages/ui/src/*"
+      ],
+      "@csss-site-events/assets/*": [
+        "./packages/ui/assets/*"
       ]
     }
   }

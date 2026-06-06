@@ -1,19 +1,13 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import { NavItem } from '../types';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/theme.css';
 
 interface Props {
   title: string;
-  navItems: NavItem[];
 }
 
-const { title, navItems } = Astro.props;
-
-const hasHero = Astro.slots.has('hero');
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -23,27 +17,6 @@ const hasHero = Astro.slots.has('hero');
     <title>{title}</title>
   </head>
   <body>
-    <Navbar title={title} items={navItems} />
-    {
-      hasHero && (
-        <Hero>
-          <slot name="hero" />
-        </Hero>
-      )
-    }
-    <main>
-      <slot />
-    </main>
-    <slot name="footer">
-      <footer>
-        <p>Base Layout Footer</p>
-      </footer>
-    </slot>
+    <slot />
   </body>
 </html>
-
-<style>
-  footer {
-    margin-top: var(--sp-6);
-  }
-</style>

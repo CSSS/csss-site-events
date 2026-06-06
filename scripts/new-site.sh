@@ -125,6 +125,7 @@ EOF
 cat >"$DIR/src/layouts/Layout.astro" <<'EOF'
 ---
 import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import Navbar from '@csss-site-events/ui/components/Navbar.astro';
 import { navItems } from '../config/site.data';
 
 interface Props {
@@ -133,18 +134,22 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<BaseLayout title={title} navItems={navItems}>
-  <article>
+<BaseLayout title={title}>
+  <main>
     <slot />
-  </article>
+  </main>
 </BaseLayout>
 
 <style>
-  article {
+  main {
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
     padding: 0 min(var(--sp-2), 10vw);
+  }
+
+  footer {
+    margin-top: var(--sp-6);
   }
 </style>
 EOF

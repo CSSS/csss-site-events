@@ -5,7 +5,10 @@
   "exports": {
     "./layouts/*": "./src/layouts/*",
     "./components/*": "./src/components/*",
-    "./types": "./src/types"
+    "./icons/*": "./src/icons/*",
+    "./common.data": "./src/common.data",
+    "./types": "./src/types",
+    "./assets/icons/*": "./assets/icons/*"
   },
   "peerDependencies": {
     "astro": "^6.0.0"
