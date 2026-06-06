@@ -1,16 +1,37 @@
 ---
+import { Image } from 'astro:assets';
 
+interface Props {
+  image: ImageMetadata;
+  alt?: string;
+}
+
+const { image, alt = '' } = Astro.props;
+const hasContent = Astro.slots.has('default');
 ---
 
 <section class="hero">
-  <slot />
+  <Image class="hero__image" src={image} alt={alt} />
+  {
+    hasContent && (
+      <div class="hero__content">
+        <slot />
+      </div>
+    )
+  }
 </section>
 
 <style>
-  .hero {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    overflow: hidden;
+  @layer base {
+    .hero {
+      position: relative;
+      height: calc(100svh - var(--navbar-height));
+      overflow: hidden;
+    }
+
+    .hero__image {
+      width: 100%;
+      object-fit: cover;
+    }
   }
 </style>
