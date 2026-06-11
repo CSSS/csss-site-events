@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 
 interface Props {
-  image: ImageMetadata;
+  image?: ImageMetadata;
   isFullHeight?: boolean;
   alt?: string;
 }
@@ -12,7 +12,7 @@ const hasContent = Astro.slots.has('default');
 ---
 
 <section class:list={[`hero${isFullHeight ? '--full-height' : ''}`]}>
-  <Image class="hero__image" src={image} alt={alt} />
+  {image && <Image class="hero__image" src={image} alt={alt} />}
   {
     hasContent && (
       <div class="hero__content">
