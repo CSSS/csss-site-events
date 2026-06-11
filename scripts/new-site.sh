@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-UI_DIR="csss-site-events/ui"
+UI_DIR="@csss-site-events/ui"
 
 EVENT=$1 # e.g. fall-hacks, frosh, madness, tech-fair
 YEAR=$2  # e.g. 2026
@@ -12,6 +12,8 @@ if [ -z "$EVENT" ] || [ -z "$YEAR" ]; then
 fi
 
 NAME="$EVENT-$YEAR"
+# Converts the name from kebab case to title case e.g. `my-event-20XX` to `My Event 20XX`
+PROPER_NAME=$(echo "$EVENT-$YEAR" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2); print}')
 DIR="sites/$EVENT/$YEAR"
 
 echo "Creating $NAME at $DIR..."
@@ -96,7 +98,7 @@ EOF
 
 # Default site data
 cat >"$DIR/src/config/site.data.ts" <<EOF
-import { NavItem } from '$UI_DIR/types';
+import type { NavItem, SiteConfig } from '$UI_DIR/types';
 
 export const navItems: NavItem[] = [
   {
@@ -115,29 +117,46 @@ export const navItems: NavItem[] = [
 ]
 
 export const siteConfig: SiteConfig = {
-  name: '$EVENT $YEAR',
-  title: '$EVENT $YEAR',
+  name: '$PROPER_NAME',
+  title: '$PROPER_NAME',
   description: 'Description',
+  eventName: '$PROPER_NAME',
+  startDate: '',
+  endDate: ''
 }
 EOF
 
 # Default layout extending @csss-site-events/ui
-cat >"$DIR/src/layouts/Layout.astro" <<'EOF'
+cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
-import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
-import { navItems } from '../config/site.data';
+import { navItems, siteConfig } from '../config/site.data';
 
 interface Props {
   title: string;
+  heroImage?: ImageMetadata;
+  heroAlt?: string;
+  isFullHeightHero?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, heroImage, heroAlt, isFullHeightHero = false } = Astro.props;
 ---
-<BaseLayout pageTitle={title}>
+
+<BaseLayout pageTitle={title} description={siteConfig.description}>
+  <Navbar title={title} items={navItems} />
+  {
+    heroImage && (
+      <Hero image={heroImage} alt={heroAlt} isFullHeight={isFullHeightHero}>
+        <slot name="hero" />
+      </Hero>
+    )
+  }
   <main>
     <slot />
   </main>
+  <footer></footer>
 </BaseLayout>
 
 <style>
@@ -145,7 +164,7 @@ const { title } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
-    padding: 0 min(var(--sp-2), 10vw);
+    padding: 0 min(var(--sp-2), 10vw) var(--sp-6);
     max-width: var(--site-content-width);
   }
 
@@ -159,9 +178,10 @@ EOF
 cat >"$DIR/src/pages/index.astro" <<EOF
 ---
 import Layout from '../layouts/Layout.astro';
+import { navItems, siteConfig } from '../config/site.data';
 ---
-<Layout title="$EVENT $YEAR">
-  <h1>$EVENT $YEAR</h1>
+<Layout title={siteConfig.title}>
+  <h1>{siteConfig.title}</h1>
 </Layout>
 EOF
 
