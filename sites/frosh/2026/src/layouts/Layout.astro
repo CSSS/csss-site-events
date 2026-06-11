@@ -9,16 +9,17 @@ interface Props {
   title: string;
   heroImage?: ImageMetadata;
   heroAlt?: string;
+  isFullHeightHero?: boolean;
 }
 
-const { title, heroImage, heroAlt } = Astro.props;
+const { title, heroImage, heroAlt, isFullHeightHero = false } = Astro.props;
 ---
 
 <BaseLayout pageTitle={title} description={siteConfig.description} image={win}>
   <Navbar title={title} items={navItems} />
   {
     heroImage && (
-      <Hero image={heroImage} alt={heroAlt}>
+      <Hero image={heroImage} alt={heroAlt} isFullHeight={isFullHeightHero}>
         <slot name="hero" />
       </Hero>
     )

@@ -34,14 +34,14 @@ const { title, items = [] } = Astro.props;
                 <div class="dropdown">
                   <button class="navbar__link">{item.label}</button>
                   <ul class="dropdown__menu">
-                    {item.dropdown.map(child => (
+                    {item.children.map(child => (
                       <li>
                         {'href' in child ? (
                           <a class="navbar__link" href={child.href}>
                             {child.label}
                           </a>
                         ) : (
-                          <span>{child.label}</span>
+                          <span class="navbar__link">{child.label}</span>
                         )}
                       </li>
                     ))}
@@ -71,7 +71,7 @@ const { title, items = [] } = Astro.props;
   const navbar = document.querySelector('.navbar') as HTMLElement;
   const toggleButton = navbar.querySelector('.navbar__toggle') as HTMLButtonElement | null;
   const closeButton = navbar.querySelector('.navbar__close') as HTMLButtonElement | null;
-  const navLinks = navbar.querySelectorAll('.navbar__link');
+  const navLinks = navbar.querySelectorAll('a.navbar__link');
 
   function closeMenu() {
     navbar.classList.add('navbar--menu-animate');
@@ -124,14 +124,18 @@ const { title, items = [] } = Astro.props;
 
 <style>
   .navbar {
+    --nav-clr-bg: var(--clr-surface-base);
+    --nav-clr-fg: var(--clr-surface-inverse);
+    --menu-clr-bg: var(--clr-surface-inverse);
+    --menu-clr-fg: var(--clr-surface-base);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
     width: 100vw;
-    background-color: var(--clr-surface-base);
-    color: var(--clr-surface-inverse);
+    background-color: var(--nav-clr-bg);
+    color: var(--nav-clr-fg);
     height: var(--navbar-height);
     transition:
       height var(--animation-duration-regular) ease,
@@ -158,7 +162,7 @@ const { title, items = [] } = Astro.props;
     width: 16.5rem;
     max-width: 100vw;
     height: 100svh;
-    background-color: var(--clr-surface-inverse);
+    background-color: var(--menu-clr-bg);
     transform: translateX(100%);
     display: flex;
     justify-content: flex-start;
@@ -181,8 +185,8 @@ const { title, items = [] } = Astro.props;
   .navbar--scrolled {
     height: var(--navbar-height-scrolled);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: var(--clr-surface-inverse);
-    color: var(--clr-surface-base);
+    --nav-clr-bg: var(--clr-surface-inverse);
+    --nav-clr-fg: var(--clr-surface-base);
   }
 
   .navbar__left {
@@ -211,7 +215,7 @@ const { title, items = [] } = Astro.props;
     font-family: var(--font-heading);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
-    /* color: var(--clr-text-inverse); */
+    color: var(--menu-clr-fg);
   }
 
   .dropdown {
@@ -234,7 +238,7 @@ const { title, items = [] } = Astro.props;
     flex-direction: column;
     gap: 0;
     min-width: 10rem;
-    padding: 0.5rem 0;
+    padding: var(--sp-2);
     background-color: var(--clr-surface-inverse);
   }
 
@@ -290,6 +294,8 @@ const { title, items = [] } = Astro.props;
 
   @media (min-width: 36rem) {
     .navbar {
+      --menu-clr-bg: var(--clr-surface-base);
+      --menu-clr-fg: var(--clr-surface-inverse);
       justify-content: center;
       padding: 0;
     }
@@ -325,6 +331,15 @@ const { title, items = [] } = Astro.props;
 
     .navbar__menu-header {
       display: none;
+    }
+
+    .navbar--scrolled {
+      --menu-clr-bg: var(--clr-surface-inverse);
+      --menu-clr-fg: var(--clr-surface-base);
+    }
+
+    .dropdown__menu {
+      background-color: var(--menu-clr-bg);
     }
   }
 </style>

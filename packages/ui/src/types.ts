@@ -8,7 +8,7 @@ export type NavItem =
     }
   | {
       label: string;
-      dropdown: NavItem[];
+      children: NavItem[];
     };
 
 export const socialLinks = {

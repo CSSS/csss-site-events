@@ -107,7 +107,7 @@ export const navItems: NavItem[] = [
   },
   {
     label: 'Dropdown',
-    dropdown: [
+    children: [
       {
         label: 'Link 1',
         href: 'link/to/1'
@@ -120,9 +120,7 @@ export const siteConfig: SiteConfig = {
   name: '$PROPER_NAME',
   title: '$PROPER_NAME',
   description: 'Description',
-  eventName: '$PROPER_NAME',
-  startDate: '',
-  endDate: ''
+  eventName: '$PROPER_NAME'
 }
 EOF
 
