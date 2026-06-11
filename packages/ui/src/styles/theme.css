@@ -19,6 +19,7 @@
     --clr-link-inline: var(--clr-accent-blue);
 
     --site-content-width: 60rem;
+    --site-body-texture: var(--csss-texture-bg);
   }
 
   html {
@@ -28,7 +29,16 @@
   body {
     position: relative;
     padding-top: var(--navbar-height, 0);
-    background: var(--clr-surface-base);
+    background-color: var(--csss-brand-cream);
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--site-body-texture);
+    background-position: center;
+    opacity: 0.5;
   }
 
   p > a {
@@ -48,31 +58,32 @@
 @layer theme {
   :root {
     /* CSSS brand palette */
+    --csss-texture-bg: url('../../assets/images/brand-texture-primary.png');
     /* Don't override these in the sites */
     --csss-brand-black: hsl(0, 0%, 0%);
-    --csss-brand-white: hsl(55, 44%, 89%);
-    --csss-brand-green: hsl(165.71, 57.27%, 43.14%);
-    --csss-brand-blue: hsl(240, 100%, 28.24%);
-    --csss-brand-pink: hsl(357.19, 98.46%, 74.51%);
-    --csss-brand-red: hsl(358.29, 97.77%, 64.9%);
+    --csss-brand-cream: hsl(55, 44%, 89%);
+    --csss-brand-green: hsl(166, 57%, 43);
+    --csss-brand-blue: hsl(240, 100%, 28%);
+    --csss-brand-pink: hsl(357, 98%, 74%);
+    --csss-brand-red: hsl(358, 98%, 65%);
     --csss-brand-grey: hsl(0, 0%, 27%);
 
     /* Color tokens */
-    --clr-surface-base: var(--csss-brand-white);
+    --clr-surface-base: var(--csss-brand-cream);
     --clr-surface-inverse: var(--csss-brand-grey);
     --clr-border-default: hsl(0, 0%, 0%, 0.15);
 
     --clr-text-primary: var(--csss-brand-black);
-    --clr-text-inverse: var(--csss-brand-white);
+    --clr-text-inverse: var(--csss-brand-cream);
 
     --clr-accent-blue: var(--csss-brand-blue);
-    --clr-accent-blue-contrast: var(--csss-brand-white);
+    --clr-accent-blue-contrast: var(--csss-brand-cream);
     --clr-accent-pink: var(--csss-brand-pink);
-    --clr-accent-pink-contrast: var(--csss-brand-white);
+    --clr-accent-pink-contrast: var(--csss-brand-cream);
     --clr-accent-red: var(--csss-brand-red);
-    --clr-accent-red-contrast: var(--csss-brand-white);
+    --clr-accent-red-contrast: var(--csss-brand-cream);
     --clr-accent-green: var(--csss-brand-green);
-    --clr-accent-green-contrast: var(--csss-brand-white);
+    --clr-accent-green-contrast: var(--csss-brand-cream);
 
     /* Spacing tokens */
     --sp-0: 0;
