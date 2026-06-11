@@ -48,7 +48,7 @@ cat >"$DIR/package.json" <<EOF
     "preview": "astro preview"
   },
   "dependencies": {
-    "@csss-site-events/ui": "*",
+    "$UI_DIR": "*",
     "astro": "^6.0.0"
   }
 }
@@ -127,9 +127,9 @@ EOF
 # Default layout extending @csss-site-events/ui
 cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
-import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
-import Hero from '@csss-site-events/ui/components/Hero.astro';
-import Navbar from '@csss-site-events/ui/components/Navbar.astro';
+import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import Hero from '$UI_DIR/components/Hero.astro';
+import Navbar from '$UI_DIR/components/Navbar.astro';
 import { navItems, siteConfig } from '../config/site.data';
 
 interface Props {
@@ -176,8 +176,9 @@ EOF
 cat >"$DIR/src/pages/index.astro" <<EOF
 ---
 import Layout from '../layouts/Layout.astro';
-import { navItems, siteConfig } from '../config/site.data';
+import { siteConfig } from '../config/site.data';
 ---
+
 <Layout title={siteConfig.title}>
   <h1>{siteConfig.title}</h1>
 </Layout>
