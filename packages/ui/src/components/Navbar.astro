@@ -75,6 +75,7 @@ const { title, items = [] } = Astro.props;
   const toggleButton = navbar.querySelector('.navbar__toggle') as HTMLButtonElement | null;
   const closeButton = navbar.querySelector('.navbar__close') as HTMLButtonElement | null;
   const navLinks = navbar.querySelectorAll('a.navbar__link');
+  const dropdownButtons = navbar.querySelectorAll('.dropdown > button');
 
   function closeMenu() {
     navbar.classList.add('navbar--menu-animate');
@@ -110,6 +111,12 @@ const { title, items = [] } = Astro.props;
     });
   });
 
+  dropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      button.closest('.dropdown')?.classList.toggle('dropdown--open');
+    });
+  });
+
   if (closeButton) {
     closeButton.addEventListener('click', () => {
       closeMenu();
@@ -120,6 +127,9 @@ const { title, items = [] } = Astro.props;
     navbar.classList.remove('navbar--menu-open');
     navbar.classList.remove('navbar--menu-animate');
     toggleButton?.setAttribute('aria-expanded', 'false');
+    navbar.querySelectorAll('.dropdown--open').forEach(dropdown => {
+      dropdown.classList.remove('dropdown--open');
+    });
   };
 
   window.matchMedia('(max-width: 36rem)').addEventListener('change', resetMenuForViewport);
@@ -234,18 +244,16 @@ const { title, items = [] } = Astro.props;
 
   .dropdown__menu {
     display: none;
-    position: absolute;
     top: 100%;
     left: 0;
     flex-direction: column;
     gap: 0;
     min-width: 10rem;
-    padding: var(--sp-2);
+    padding: 0 var(--sp-2);
     background-color: var(--clr-surface-inverse);
   }
 
-  .dropdown:hover .dropdown__menu,
-  .dropdown:focus-within .dropdown__menu {
+  .dropdown--open .dropdown__menu {
     display: flex;
   }
 
@@ -342,7 +350,14 @@ const { title, items = [] } = Astro.props;
     }
 
     .dropdown__menu {
+      position: absolute;
       background-color: var(--menu-clr-bg);
+      border: 1px solid var(--menu-clr-fg);
+    }
+
+    .dropdown:hover .dropdown__menu,
+    .dropdown:focus-within .dropdown__menu {
+      display: flex;
     }
   }
 </style>
