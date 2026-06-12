@@ -137,6 +137,8 @@
 
     /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
+    --border-radius-default: var(--sp-3);
+    --border-radius-lg: var(--sp-8);
   }
 
   .brand--red {

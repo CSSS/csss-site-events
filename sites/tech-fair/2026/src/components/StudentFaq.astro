@@ -1,7 +1,12 @@
 ---
 import DialogueInfo from './DialogueInfo.astro';
+import { Image } from 'astro:assets';
+import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
+import ScrollListItem from '@csss-site-events/ui/components/scroll-list/ScrollListItem.astro';
 import Section from '@csss-site-events/ui/components/Section.astro';
+import icbc from '../assets/companies/icbc.png';
 import { type Dialogue } from '../config/site.types';
+import { ImageMetadata } from 'astro';
 
 const sections: Dialogue[] = [
   {
@@ -26,8 +31,63 @@ const sections: Dialogue[] = [
   {
     first: "I'm still not convinced",
     second: "It's a free event and the companies sometimes give out stuff"
+  },
+  {
+    first: "Who's coming?",
+    second: ''
   }
 ];
+
+const imagesMeta = import.meta.glob<{ default: ImageMetadata }>('../assets/companies/*.{png,jpg}', {
+  eager: true
+});
+
+const images = Object.entries(imagesMeta).map(([path, mod]) => ({
+  src: mod.default,
+  alt: path
+    .split('/')
+    .at(-1)!
+    .replace(/\.[^.]+$/, '')
+    .replace(/-|_/g, ' ')
+}));
 ---
 
-<Section id="students" title="Why Should I Go?"><DialogueInfo sections={sections} /></Section>
+<Section id="students" title="Why Should I Go?">
+  <DialogueInfo sections={sections} />
+</Section>
+<ScrollList>
+  {
+    images.map(({ src, alt }) => (
+      <li>
+        <Image class="logo" src={src} alt={alt} />
+      </li>
+    ))
+  }
+</ScrollList>
+
+<style>
+  li {
+    list-style-type: none;
+    background-color: white;
+    border-radius: 0 var(--border-radius-lg) 0 var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-shrink: 0;
+    padding: var(--sp-4);
+  }
+
+  .logo {
+    height: auto;
+    width: 90%;
+    max-width: unset;
+    object-fit: contain;
+  }
+
+  @media (hover: none) {
+    li {
+      scroll-snap-align: center;
+    }
+  }
+</style>

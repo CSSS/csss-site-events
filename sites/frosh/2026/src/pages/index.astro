@@ -6,7 +6,7 @@ import { siteConfig } from '../config/site.data';
 import Faq from '../components/Faq.astro';
 import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
 import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
-import commonData from '@csss-site-events/ui/common.data';
+import { socialLinks } from '@csss-site-events/ui/common.data';
 import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
 import { Mail } from '@lucide/astro';
 ---
@@ -48,7 +48,7 @@ import { Mail } from '@lucide/astro';
       >bi-weekly board game nights</strong
     >, <strong>hikes</strong>, <strong>seasonal parties</strong>, and more!
     <Fragment slot="footer">
-      <Button href={commonData.discordHref} variant="solid"><DiscordIcon />Discord</Button>
+      <Button href={socialLinks.discordHref} variant="solid"><DiscordIcon />Discord</Button>
       <Button href="/registration" variant="solid"><CsssIcon />Waiver</Button>
     </Fragment>
   </Section>
