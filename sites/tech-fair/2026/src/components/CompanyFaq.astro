@@ -1,0 +1,58 @@
+---
+import Button from '@csss-site-events/ui/components/Button.astro';
+import DialogueInfo from './DialogueInfo.astro';
+import EmailButton from '@csss-site-events/ui/components/buttons/EmailButton.astro';
+import Section from '@csss-site-events/ui/components/Section.astro';
+import { FileText } from '@lucide/astro';
+import { type Dialogue } from '../config/site.types';
+
+const sections: Dialogue[] = [
+  {
+    first: 'Direct Access to SFU Tech Talent',
+    second:
+      'With over 3,000 Computing Science students at Simon Fraser University, your company representatives would be able to meet hundreds of computing science students who are actively seeking co-op, internship, and new graduate roles.'
+  },
+  {
+    first: 'Strengthen Your Brand on Campus',
+    second:
+      'As a booth sponsor, your company will be featured in event promotions, signage, and materials for visibility before, during, and after the fair. It’ll leave a lasting impression to potential future hires.'
+  },
+  {
+    first: 'Real-time engagement and feedback',
+    second:
+      'Conversations at your booth provide firsthand insight into what students value in employers, what technologies they’re learning, and how your opportunities are perceived on campus.'
+  },
+  {
+    first: 'Support for Student-Led Industry Initiatives',
+    second:
+      'Your participation helps foster career development and strengthen ties between academia and industry that helps reinforce your reputation as a company that invests in future talent.'
+  }
+];
+---
+
+<Section title="Calling All Tech Companies!">
+  <p class="benefits">Tech Fair benefits more than just students&mdash;it helps companies too!</p>
+  <DialogueInfo sections={sections} />
+  <div slot="footer">
+    <h3>Learn more!</h3>
+    <div class="buttons">
+      <Button href={`${import.meta.env.BASE_URL}/tech-fair-2026-sponsorship.pdf`} tone="blue"><FileText />Sponsor Pack</Button>
+      <EmailButton address="csss-techfair@sfu.ca" tone="red" />
+    </div>
+  </div>
+</Section>
+
+<style>
+  .benefits {
+    margin-bottom: var(--sp-6);
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    gap: var(--sp-4);
+  }
+</style>

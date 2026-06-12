@@ -7,6 +7,6 @@ export default defineConfig({
   site: 'https://tech-fair.sfucsss.org',
   outDir: './dist',
   build: {
-    assets: 'assets',
-  },
+    assets: 'assets'
+  }
 });

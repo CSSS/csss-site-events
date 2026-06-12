@@ -12,7 +12,7 @@ const hasFooter = Astro.slots.has('footer');
   <slot name="header">
     <h2 class="section__heading">{title}</h2>
   </slot>
-  <p class="section__content"><slot /></p>
+  <slot />
   {
     hasFooter && (
       <div class="section__footer">
