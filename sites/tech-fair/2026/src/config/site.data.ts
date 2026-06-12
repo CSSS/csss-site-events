@@ -6,39 +6,16 @@ export interface TechFair2026SiteConfig extends SiteConfig {
 
 export const navItems: NavItem[] = [
   {
-    label: 'Link',
-    href: '/tech-fair/2026'
+    label: 'About',
+    href: '#about'
   },
   {
-    label: 'Link',
-    children: [
-      {
-        label: 'Link 1',
-        href: 'link/to/1'
-      }
-    ]
+    label: 'Students',
+    href: '#students'
   },
   {
-    label: 'Link',
-    children: [
-      {
-        label: 'Link 1',
-        href: 'link/to/1'
-      }
-    ]
-  },
-  {
-    label: 'Link',
-    href: '/tech-fair/2026'
-  },
-  {
-    label: 'Link',
-    children: [
-      {
-        label: 'Link 1',
-        href: 'link/to/1'
-      }
-    ]
+    label: 'Sponsors',
+    href: '#sponsors'
   }
 ];
 
