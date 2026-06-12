@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import Footer from '@csss-site-events/ui/components/Footer.astro';
 import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
 import { navItems, siteConfig } from '../config/site.data';
@@ -29,7 +30,7 @@ const hasHero = heroImage || Astro.slots.hero;
   <main>
     <slot />
   </main>
-  <footer></footer>
+  <Footer config={siteConfig} navItems={navItems} />
 </BaseLayout>
 
 <style>

@@ -1,0 +1,67 @@
+---
+import type { SiteConfig, NavItem } from '../types';
+import DiscordIcon from '../icons/DiscordIcon.astro';
+import FacebookIcon from '../icons/FacebookIcon.astro';
+import InstagramIcon from '../icons/InstagramIcon.astro';
+import LinkedInIcon from '../icons/LinkedInIcon.astro';
+import CsssIcon from '../icons/CsssIcon.astro';
+import { socialLinks } from '../common.data';
+
+interface Props {
+  config: SiteConfig;
+  navItems: NavItem[];
+}
+
+const { config, navItems } = Astro.props;
+
+const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
+---
+
+<footer>
+  <h2>{config.name}</h2>
+  <div class="links">
+    {navLinks.map(nav => <a href={nav.href}>{nav.label}</a>)}
+  </div>
+  <p>Follow the CSSS to join our other events!</p>
+  <ul class="socials">
+    <li><a href={socialLinks.website}><CsssIcon /></a></li>
+    <li><a href={socialLinks.discord}><DiscordIcon /></a></li>
+    <li><a href={socialLinks.instagram}><InstagramIcon /></a></li>
+    <li><a href={socialLinks.linkedin}><LinkedInIcon /></a></li>
+    <li><a href={socialLinks.facebook}><FacebookIcon /></a></li>
+  </ul>
+  <p></p>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    margin-top: var(--sp-6);
+    padding: var(--sp-8) var(--sp-4) var(--sp-4);
+    text-align: center;
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-surface-inverse);
+    font-family: var(--font-heading);
+  }
+
+  .links {
+    display: grid;
+    padding: var(--sp-4);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: var(--font-size-1);
+    font-size: var(--font-size-1);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-5);
+  }
+
+  p {
+    font-size: var(--font-size-2);
+  }
+</style>
