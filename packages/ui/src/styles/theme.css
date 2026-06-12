@@ -137,4 +137,24 @@
     /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
   }
+
+  .brand--red {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-red);
+  }
+
+  .brand--blue {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-blue);
+  }
+
+  .brand--pink {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-pink);
+  }
+
+  .brand--teal {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-teal);
+  }
 }

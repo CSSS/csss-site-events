@@ -1,3 +1,5 @@
+import { brandColours } from './common.data';
+
 /**
  * The type of a navigation entry.
  */
@@ -11,13 +13,7 @@ export type NavItem =
       children: NavItem[];
     };
 
-export const socialLinks = {
-  website: 'https://sfucsss.org',
-  discord: 'https://discord.gg/sfucsss',
-  instagram: 'https://www.instagram.com/sfu_csss/',
-  linkedin: 'https://ca.linkedin.com/company/sfucsss',
-  facebook: 'https://www.facebook.com/sfucsss'
-};
+export type BrandColour = (typeof brandColours)[number];
 
 /**
  * The configuration for a website.

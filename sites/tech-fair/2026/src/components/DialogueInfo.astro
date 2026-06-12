@@ -1,0 +1,36 @@
+---
+import { type Dialogue } from '../config/site.types';
+import { getBrandColour } from '@csss-site-events/ui/common.data';
+
+interface Props {
+  sections: Dialogue[];
+}
+
+const { sections } = Astro.props;
+---
+
+<div class="qa">
+  {sections.map(({ first, second }, index) => (
+  <div class:list={['first', `brand--${getBrandColour(index)}`]}>{first}</div>
+  <div class="second">{second}</div>
+  ))}
+</div>
+
+<style>
+  .qa {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .first {
+    padding: var(--sp-4);
+    border-radius: var(--sp-3);
+    margin-right: auto;
+    font-family: var(--font-heading);
+  }
+
+  .second {
+    margin-right: auto;
+  }
+</style>

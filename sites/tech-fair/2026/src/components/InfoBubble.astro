@@ -10,7 +10,7 @@ interface Props {
 const { heading, icon: Icon, variant = 'red' } = Astro.props;
 ---
 
-<div class:list={['info-bubble', `info-bubble--${variant}`]}>
+<div class:list={['info-bubble', `brand--${variant}`]}>
   <div class="heading"><h3>{heading}</h3><Icon size={32} /></div>
   <p>
     <slot />
@@ -26,24 +26,7 @@ const { heading, icon: Icon, variant = 'red' } = Astro.props;
   .info-bubble {
     padding: var(--sp-6);
     border-radius: var(--sp-3);
-    color: var(--clr-text-inverse);
     margin: var(--sp-4) auto;
-  }
-
-  .info-bubble--red {
-    background-color: var(--clr-accent-red);
-  }
-
-  .info-bubble--blue {
-    background-color: var(--clr-accent-blue);
-  }
-
-  .info-bubble--pink {
-    background-color: var(--clr-accent-pink);
-  }
-
-  .info-bubble--teal {
-    background-color: var(--clr-accent-teal);
   }
 
   p {
