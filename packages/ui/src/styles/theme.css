@@ -50,6 +50,12 @@
     margin-bottom: var(--sp-4);
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
   :target {
     scroll-margin-top: var(--navbar-height);
   }

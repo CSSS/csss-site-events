@@ -1,0 +1,51 @@
+---
+import Section from '@csss-site-events/ui/components/Section.astro';
+import InfoBubble from './InfoBubble.astro';
+import { Calendar1, Clock10, MapPin, UserStar, type Icon as IconType } from '@lucide/astro';
+
+interface Detail {
+  heading: string;
+  content: string;
+  icon: typeof IconType;
+  variant: 'red' | 'blue' | 'pink' | 'teal';
+}
+
+const details: Detail[] = [
+  {
+    heading: 'Date',
+    content: 'November 4, 2026',
+    icon: Calendar1,
+    variant: 'red'
+  },
+  {
+    heading: 'Time',
+    content: '10AM - 4PM',
+    icon: Clock10,
+    variant: 'blue'
+  },
+  {
+    heading: 'Location',
+    content: 'SFU Burnaby Campus, Applied Sciences Building',
+    icon: MapPin,
+    variant: 'pink'
+  },
+  {
+    heading: 'Invitees',
+    content: 'YOU!',
+    icon: UserStar,
+    variant: 'teal'
+  }
+];
+---
+
+<Section>
+  <div class="info">
+    {
+      details.map(({ heading, content, icon, variant }) => (
+        <InfoBubble heading={heading} icon={icon} variant={variant}>
+          {content}
+        </InfoBubble>
+      ))
+    }
+  </div>
+</Section>

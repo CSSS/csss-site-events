@@ -2,9 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { siteConfig } from '../config/site.data';
+import About from '../components/About.astro';
+import EventDetails from '../components/EventDetails.astro';
+import { Image } from 'astro:assets';
+import boothImg from '../assets/booth.png';
 ---
 
 <Layout title={siteConfig.title} isFullHeightHero>
   <Hero slot="hero" />
-  <!-- <h1>{siteConfig.title}</h1> -->
+  <About />
+  <Image src={boothImg} alt="Tech Fair 2026" />
+  <EventDetails />
 </Layout>
+
+<style>
+  li {
+    list-style-type: disc;
+    margin-left: var(--sp-6);
+  }
+</style>

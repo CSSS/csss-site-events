@@ -11,7 +11,7 @@ const { image, isFullHeight, alt = '' } = Astro.props;
 const hasContent = Astro.slots.has('default');
 ---
 
-<section class:list={[`hero${isFullHeight ? '--full-height' : ''}`]}>
+<section class:list={['hero', `hero${isFullHeight ? '--full-height' : ''}`]}>
   {image && <Image class="hero__image" src={image} alt={alt} />}
   {hasContent && <slot />}
 </section>
@@ -23,6 +23,7 @@ const hasContent = Astro.slots.has('default');
       width: 100vw;
       height: 10svh;
       overflow: hidden;
+      margin-bottom: var(--section-gap);
     }
 
     .hero--full-height {
