@@ -12,7 +12,11 @@ const hasFooter = Astro.slots.has('footer');
   <slot name="header">
     <h2 class="section__heading">{title}</h2>
   </slot>
-  <slot />
+  <div class="section__content">
+    <slot name="left-gutter" />
+    <slot />
+    <slot name="right-gutter" />
+  </div>
   {
     hasFooter && (
       <div class="section__footer">
@@ -21,12 +25,15 @@ const hasFooter = Astro.slots.has('footer');
     )
   }
 </section>
-
 <style>
   .section__footer {
     display: flex;
     margin-top: var(--sp-4);
     justify-content: center;
     gap: var(--sp-4);
+  }
+
+  h2 {
+    margin-bottom: var(--sp-4);
   }
 </style>

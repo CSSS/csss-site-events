@@ -88,13 +88,7 @@
   }
 
   h3,
-  .h3 {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-heading-3);
-    line-height: var(--line-height-tight);
-    font-family: var(--font-heading);
-  }
-
+  .h3,
   h4,
   .h4 {
     font-weight: var(--font-weight-bold);
@@ -111,4 +105,3 @@
     font-family: var(--font-body);
   }
 }
-

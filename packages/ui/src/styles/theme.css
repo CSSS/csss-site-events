@@ -46,11 +46,6 @@
     color: var(--clr-link-inline);
   }
 
-  h2,
-  h3 {
-    margin-bottom: var(--sp-4);
-  }
-
   img {
     max-width: 100%;
     height: auto;
@@ -137,8 +132,8 @@
 
     /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
-    --border-radius-default: var(--sp-3);
-    --border-radius-lg: var(--sp-8);
+    --border-radius-default: 18px;
+    --border-radius-lg: 48px;
   }
 
   .brand--red {

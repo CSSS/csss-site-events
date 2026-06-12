@@ -1,4 +1,5 @@
 ---
+import Badge from '@csss-site-events/ui/components/Badge.astro';
 import { type Dialogue } from '../config/site.types';
 import { getBrandColour } from '@csss-site-events/ui/common.data';
 
@@ -10,27 +11,30 @@ const { sections } = Astro.props;
 ---
 
 <div class="qa">
-  {sections.map(({ first, second }, index) => (
-  <div class:list={['first', `brand--${getBrandColour(index)}`]}>{first}</div>
-  <div class="second">{second}</div>
-  ))}
+  {
+    sections.map(({ first, second }, index) => (
+      <div class="content">
+        <Badge tone={getBrandColour(index)}>
+          <h3>{first}</h3>
+        </Badge>
+        <div class="second">{second}</div>
+      </div>
+    ))
+  }
 </div>
 
 <style>
   .qa {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-6);
+    gap: var(--sp-8);
   }
 
-  .first {
-    padding: var(--sp-4);
-    border-radius: var(--sp-3);
-    margin-right: auto;
-    font-family: var(--font-heading);
+  h3 {
+    margin-bottom: 0;
   }
 
   .second {
-    margin-right: auto;
+    margin-top: var(--sp-4);
   }
 </style>

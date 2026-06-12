@@ -2,9 +2,7 @@
 import DialogueInfo from './DialogueInfo.astro';
 import { Image } from 'astro:assets';
 import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
-import ScrollListItem from '@csss-site-events/ui/components/scroll-list/ScrollListItem.astro';
 import Section from '@csss-site-events/ui/components/Section.astro';
-import icbc from '../assets/companies/icbc.png';
 import { type Dialogue } from '../config/site.types';
 import { ImageMetadata } from 'astro';
 
@@ -21,7 +19,8 @@ const sections: Dialogue[] = [
   },
   {
     first: "I'm only aiming for big tech, I don't care about anything smaller",
-    second: 'Okay lol'
+    second:
+      'There\'s a reason why they call Vancouver "Silicon Valley of the North" (it\'s because there are more tech companies here than you think).'
   },
   {
     first: 'What should I do to prepare?',
@@ -44,6 +43,7 @@ const imagesMeta = import.meta.glob<{ default: ImageMetadata }>('../assets/compa
 
 const images = Object.entries(imagesMeta).map(([path, mod]) => ({
   src: mod.default,
+  // Retrieves the name of the file without the extension
   alt: path
     .split('/')
     .at(-1)!
@@ -55,15 +55,17 @@ const images = Object.entries(imagesMeta).map(([path, mod]) => ({
 <Section id="students" title="Why Should I Go?">
   <DialogueInfo sections={sections} />
 </Section>
-<ScrollList>
-  {
-    images.map(({ src, alt }) => (
-      <li>
-        <Image class="logo" src={src} alt={alt} />
-      </li>
-    ))
-  }
-</ScrollList>
+<section id="companies">
+  <ScrollList>
+    {
+      images.map(({ src, alt }) => (
+        <li>
+          <Image class="logo" src={src} alt={alt} />
+        </li>
+      ))
+    }
+  </ScrollList>
+</section>
 
 <style>
   li {

@@ -1,0 +1,22 @@
+---
+import { type BrandColour } from '@csss-site-events/ui/types';
+
+interface Props {
+  tone?: BrandColour;
+}
+
+const { tone = 'blue' } = Astro.props;
+---
+
+<div class:list={['badge', `brand--${tone}`]}>
+  <slot />
+</div>
+
+<style>
+  .badge {
+    padding: var(--sp-4);
+    border-radius: var(--sp-3);
+    margin-right: auto;
+    font-family: var(--font-heading);
+  }
+</style>

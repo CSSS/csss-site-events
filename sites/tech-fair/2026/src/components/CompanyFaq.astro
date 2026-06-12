@@ -18,7 +18,7 @@ const sections: Dialogue[] = [
       'As a booth sponsor, your company will be featured in event promotions, signage, and materials for visibility before, during, and after the fair. It’ll leave a lasting impression to potential future hires.'
   },
   {
-    first: 'Real-time engagement and feedback',
+    first: 'Real-time Engagement and Feedback',
     second:
       'Conversations at your booth provide firsthand insight into what students value in employers, what technologies they’re learning, and how your opportunities are perceived on campus.'
   },
@@ -36,7 +36,9 @@ const sections: Dialogue[] = [
   <div slot="footer">
     <h3>Learn more!</h3>
     <div class="buttons">
-      <Button href={`${import.meta.env.BASE_URL}/tech-fair-2026-sponsorship.pdf`} tone="blue"><FileText />Sponsor Pack</Button>
+      <Button href={`${import.meta.env.BASE_URL}/tech-fair-2026-sponsorship.pdf`} tone="blue">
+        <FileText />Sponsor Pack
+      </Button>
       <EmailButton address="csss-techfair@sfu.ca" tone="red" />
     </div>
   </div>
