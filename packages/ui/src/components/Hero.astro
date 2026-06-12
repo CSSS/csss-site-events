@@ -13,13 +13,7 @@ const hasContent = Astro.slots.has('default');
 
 <section class:list={[`hero${isFullHeight ? '--full-height' : ''}`]}>
   {image && <Image class="hero__image" src={image} alt={alt} />}
-  {
-    hasContent && (
-      <div class="hero__content">
-        <slot />
-      </div>
-    )
-  }
+  {hasContent && <slot />}
 </section>
 
 <style>

@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { siteConfig } from '../config/site.data';
+---
+
+<Layout title={siteConfig.title} isFullHeightHero>
+  <Hero slot="hero" />
+  <!-- <h1>{siteConfig.title}</h1> -->
+</Layout>

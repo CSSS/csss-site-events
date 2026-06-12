@@ -62,7 +62,7 @@
     /* Don't override these in the sites */
     --csss-brand-black: hsl(0, 0%, 0%);
     --csss-brand-cream: hsl(55, 44%, 89%);
-    --csss-brand-green: hsl(166, 57%, 43);
+    --csss-brand-teal: hsl(166, 57%, 43%);
     --csss-brand-blue: hsl(240, 100%, 28%);
     --csss-brand-pink: hsl(357, 98%, 74%);
     --csss-brand-red: hsl(358, 98%, 65%);
@@ -82,8 +82,8 @@
     --clr-accent-pink-contrast: var(--csss-brand-cream);
     --clr-accent-red: var(--csss-brand-red);
     --clr-accent-red-contrast: var(--csss-brand-cream);
-    --clr-accent-green: var(--csss-brand-green);
-    --clr-accent-green-contrast: var(--csss-brand-cream);
+    --clr-accent-teal: var(--csss-brand-teal);
+    --clr-accent-teal-contrast: var(--csss-brand-cream);
 
     /* Spacing tokens */
     --sp-0: 0;

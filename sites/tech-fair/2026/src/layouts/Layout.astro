@@ -3,7 +3,6 @@ import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
 import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
 import { navItems, siteConfig } from '../config/site.data';
-import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
 
 interface Props {
   title: string;
@@ -16,7 +15,7 @@ const { title, heroImage, heroAlt, isFullHeightHero = false } = Astro.props;
 const hasHero = heroImage || Astro.slots.hero;
 ---
 
-<BaseLayout pageTitle={title} description={siteConfig.description} image={win}>
+<BaseLayout pageTitle={title} description={siteConfig.description}>
   <Navbar title={title} items={navItems} />
   {
     hasHero ? (
@@ -36,10 +35,14 @@ const hasHero = heroImage || Astro.slots.hero;
 <style>
   main {
     display: flex;
-    margin: 0 auto;
     flex-direction: column;
     gap: var(--section-gap);
-    padding: var(--sp-6) var(--sp-2);
+    padding: 0 min(var(--sp-2), 10vw) var(--sp-6);
     max-width: var(--site-content-width);
+    height: 200svh;
+  }
+
+  footer {
+    margin-top: var(--sp-6);
   }
 </style>
