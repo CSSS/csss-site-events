@@ -9,13 +9,19 @@ const hasFooter = Astro.slots.has('footer');
 ---
 
 <section id={id} class="section">
-  <slot name="header">
-    <h2 class="section__heading">{title}</h2>
-  </slot>
   <div class="section__content">
-    <slot name="left-gutter" />
-    <slot />
-    <slot name="right-gutter" />
+    <aside class="section__content__left">
+      <slot name="left-gutter" />
+    </aside>
+    <div class="section__content__main">
+      <slot name="header">
+        <h2 class="section__heading">{title}</h2>
+      </slot>
+      <slot />
+    </div>
+    <aside class="section__content__right">
+      <slot name="right-gutter" />
+    </aside>
   </div>
   {
     hasFooter && (
@@ -25,7 +31,17 @@ const hasFooter = Astro.slots.has('footer');
     )
   }
 </section>
+
 <style>
+  .section__content__main {
+    max-width: var(--site-content-width);
+  }
+
+  .section__content__right,
+  .section__content__left {
+    display: none;
+  }
+
   .section__footer {
     display: flex;
     margin-top: var(--sp-4);
@@ -35,5 +51,18 @@ const hasFooter = Astro.slots.has('footer');
 
   h2 {
     margin-bottom: var(--sp-4);
+  }
+
+  @media (min-width: 36rem) {
+    .section__content {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .section__content__right,
+    .section__content__left {
+      display: block;
+      flex: 1;
+    }
   }
 </style>

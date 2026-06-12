@@ -19,9 +19,15 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
 
 <footer>
   <h2>{config.name}</h2>
-  <div class="links">
-    {navLinks.map(nav => <a href={nav.href}>{nav.label}</a>)}
-  </div>
+  <nav class="links">
+    {
+      navLinks.map(nav => (
+        <div>
+          <a href={nav.href}>{nav.label}</a>
+        </div>
+      ))
+    }
+  </nav>
   <p>Follow the CSSS to join our other events!</p>
   <ul class="socials">
     <li><a href={socialLinks.website}><CsssIcon /></a></li>
