@@ -133,6 +133,9 @@ import Navbar from '$UI_DIR/components/Navbar.astro';
 import '$UI_DIR/styles/font-faces/ancizar-serif.css';
 import '$UI_DIR/styles/font-faces/boldonse.css';
 import '$UI_DIR/styles/font-faces/cal-sans.css';
+import ancizarSerifFont from '$UI_DIR/assets/fonts/ancizar-serif-v8-latin-regular.woff2?url';
+import boldonseFont from '$UI_DIR/assets/fonts/boldonse-v1-latin-regular.woff2?url';
+import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
 import { navItems, siteConfig } from '../config/site.data';
 
 interface Props {
@@ -147,6 +150,11 @@ const hasHero = heroImage || Astro.slots.hero;
 ---
 
 <BaseLayout pageTitle={title} description={siteConfig.description}>
+  <Fragment slot="head">
+    <link rel="preload" href={ancizarSerifFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={boldonseFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
+  </Fragment>
   <Navbar title={title} items={navItems} />
   {
     hasHero ? (

@@ -9,6 +9,7 @@
     "./styles/*": "./src/styles/*",
     "./common.data": "./src/common.data",
     "./types": "./src/types",
+    "./assets/fonts/*": "./assets/fonts/*",
     "./assets/icons/*": "./assets/icons/*",
     "./assets/images/*": "./assets/images/*"
   },
