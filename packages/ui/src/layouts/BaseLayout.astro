@@ -1,5 +1,7 @@
 ---
 import Seo from '../components/Seo.astro';
+import { getImage } from 'astro:assets';
+import brandTexture from '../../assets/images/brand-texture-primary.png';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/theme.css';
@@ -12,9 +14,11 @@ interface Props {
 }
 
 const { pageTitle, description, image, noindex = false } = Astro.props;
+const optimizedBrandTexture = await getImage({ src: brandTexture, format: 'avif', quality: 'low' });
 ---
 
-<html lang="en">
+<!-- Optimization done so that the texture doesn't cause more style attributes to be generated -->
+<html lang="en" style={`--csss-texture-bg: url(${optimizedBrandTexture.src})`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

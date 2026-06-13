@@ -4,7 +4,7 @@ const isProd = import.meta.env.PROD;
 
 export default defineConfig({
   base: isProd ? '/' : '/tech-fair/2026',
-  site: 'https://tech-fair.sfucsss.org',
+  site: 'https://tech-fair.sfucsss.org/tech-fair/2026',
   outDir: './dist',
   build: {
     assets: 'assets'

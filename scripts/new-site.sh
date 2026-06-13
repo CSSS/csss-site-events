@@ -130,6 +130,9 @@ cat >"$DIR/src/layouts/Layout.astro" <<EOF
 import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
 import Hero from '$UI_DIR/components/Hero.astro';
 import Navbar from '$UI_DIR/components/Navbar.astro';
+import '$UI_DIR/styles/font-faces/ancizar-serif.css';
+import '$UI_DIR/styles/font-faces/boldonse.css';
+import '$UI_DIR/styles/font-faces/cal-sans.css';
 import { navItems, siteConfig } from '../config/site.data';
 
 interface Props {

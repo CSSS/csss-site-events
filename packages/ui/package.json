@@ -6,6 +6,7 @@
     "./layouts/*": "./src/layouts/*",
     "./components/*": "./src/components/*",
     "./icons/*": "./src/icons/*",
+    "./styles/*": "./src/styles/*",
     "./common.data": "./src/common.data",
     "./types": "./src/types",
     "./assets/icons/*": "./assets/icons/*",
