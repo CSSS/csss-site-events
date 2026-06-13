@@ -22,13 +22,13 @@ mkdir -p "$DIR/src/"{pages,components,layouts,config}
 
 # astro.config.mjs
 cat >"$DIR/astro.config.mjs" <<EOF
-import { defineConfig } from 'astro/config';
+import { defineSiteConfig } from '../../../astro.shared.mjs';
 
 const isProd = import.meta.env.PROD;
 
-export default defineConfig({
+export default defineSiteConfig({
   base: isProd ? '/' : '/$EVENT/$YEAR',
-  site: 'https://$EVENT.sfucsss.org',
+  site: 'https://$EVENT.sfucsss.org/$YEAR',
   outDir: './dist',
   build: {
     assets: 'assets',
