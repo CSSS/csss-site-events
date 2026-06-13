@@ -8,10 +8,13 @@
     gap: var(--sp-4);
     padding: var(--sp-4) var(--sp-6);
     z-index: 10;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   @media (hover: none) {
     ul {
+      width: 100vw;
       justify-content: flex-start;
       flex-wrap: nowrap;
       overflow-x: scroll;

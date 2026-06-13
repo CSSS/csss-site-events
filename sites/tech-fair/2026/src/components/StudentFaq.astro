@@ -76,6 +76,8 @@ const images = Object.entries(imagesMeta).map(([path, mod]) => ({
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 16rem;
+    aspect-ratio: 1 / 1;
     flex-shrink: 0;
     padding: var(--sp-4);
   }
@@ -87,9 +89,17 @@ const images = Object.entries(imagesMeta).map(([path, mod]) => ({
     object-fit: contain;
   }
 
+  #companies {
+    max-width: var(--site-content-width);
+    margin: 0 auto;
+  }
+
   @media (hover: none) {
     li {
       scroll-snap-align: center;
     }
+  }
+
+  @media (min-width: 36rem) {
   }
 </style>
