@@ -18,41 +18,62 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
 ---
 
 <footer>
-  <h2>{config.name}</h2>
-  <nav class="links">
-    {
-      navLinks.map(nav => (
-        <div>
-          <a href={nav.href}>{nav.label}</a>
-        </div>
-      ))
-    }
-  </nav>
-  <p>Follow the CSSS to join our other events!</p>
-  <ul class="socials">
-    <li><a href={socialLinks.website}><CsssIcon /></a></li>
-    <li><a href={socialLinks.discord}><DiscordIcon /></a></li>
-    <li><a href={socialLinks.instagram}><InstagramIcon /></a></li>
-    <li><a href={socialLinks.linkedin}><LinkedInIcon /></a></li>
-    <li><a href={socialLinks.facebook}><FacebookIcon /></a></li>
-  </ul>
-  <p></p>
+  <div class="footer__container">
+    <h2>{config.name}</h2>
+    <nav>
+      {
+        navLinks.map(nav => (
+          <div>
+            <a href={nav.href}>{nav.label}</a>
+          </div>
+        ))
+      }
+    </nav>
+    <p>Follow the CSSS to join our other events!</p>
+    <ul class="socials">
+      <li>
+        <a href={socialLinks.website} target="_blank" rel="noopener noreferrer"><CsssIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.discord} target="_blank" rel="noopener noreferrer"><DiscordIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"
+          ><InstagramIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
+          ><LinkedInIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"
+          ><FacebookIcon /></a>
+      </li>
+    </ul>
+    <p class="copyright">&copy; 2026 Computing Science Student Society. All rights reserved.</p>
+  </div>
 </footer>
 
 <style>
   footer {
     display: flex;
-    flex-direction: column;
-    gap: var(--sp-2);
+    justify-content: center;
     margin-top: var(--sp-6);
     padding: var(--sp-8) var(--sp-4) var(--sp-4);
-    text-align: center;
     color: var(--clr-text-inverse);
     background-color: var(--clr-surface-inverse);
     font-family: var(--font-heading);
   }
 
-  .links {
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    text-align: center;
+    max-width: var(--site-content-width);
+  }
+
+  nav {
     display: grid;
     padding: var(--sp-4);
     grid-template-columns: 1fr 1fr;
@@ -69,5 +90,16 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
 
   p {
     font-size: var(--font-size-2);
+  }
+
+  .copyright {
+    font-size: var(--font-size-0);
+  }
+
+  @media (min-width: 36rem) {
+    nav {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: none;
+    }
   }
 </style>
