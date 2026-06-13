@@ -4,7 +4,6 @@ import About from '../components/About.astro';
 import CompanyFaq from '../components/CompanyFaq.astro';
 import EventDetails from '../components/EventDetails.astro';
 import Hero from '../components/Hero.astro';
-import Section from '@csss-site-events/ui/components/Section.astro';
 import StudentFaq from '../components/StudentFaq.astro';
 import { siteConfig } from '../config/site.data';
 import { Image } from 'astro:assets';
@@ -14,8 +13,15 @@ import boothImg from '../assets/booth.png';
 <Layout title={siteConfig.title} isFullHeightHero>
   <Hero slot="hero" />
   <About />
-  <Section><Image src={boothImg} alt="Tech Fair 2026" /></Section>
+  <div><Image src={boothImg} alt="Tech Fair 2026" /></div>
   <EventDetails />
   <StudentFaq />
   <CompanyFaq />
 </Layout>
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+  }
+</style>
