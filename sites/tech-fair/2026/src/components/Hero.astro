@@ -78,28 +78,24 @@
     height: 100%;
 
     display: grid;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 1fr auto;
   }
 
   .top {
     display: flex;
-    height: 100%;
     width: 100%;
+    min-height: 0;
     align-items: center;
     justify-content: center;
     padding: 3vw;
   }
 
   svg {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+    max-width: 483px;
+    max-height: 100%;
   }
 
   .title {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     display: flex;
     padding: 3svh 0;
     justify-content: center;
