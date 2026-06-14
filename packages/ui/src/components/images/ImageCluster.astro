@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import { type ImageClusterItem } from '../../types';
+
+interface Props {
+  images: ImageClusterItem[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="cluster">
+  {
+    images.map((image, index) => (
+      <div class="photo" style={`z-index: -${index + 1};`}>
+        <Image
+          class:list={['photo__img', `index-${index + 1}`]}
+          src={image.image}
+          alt={image.alt}
+        />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .cluster {
+    position: relative;
+    z-index: 0;
+    top: 0;
+    max-width: 30rem;
+  }
+
+  .photo {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: var(--corner-radius);
+    padding: 0.5rem;
+    rotate: var(--deg);
+  }
+
+  .photo:nth-child(odd) {
+    --deg: 5deg;
+  }
+
+  .photo:nth-child(even) {
+    --deg: -2deg;
+  }
+
+  /* FireFox does not support `sibling-count()` yet */
+  .photo:nth-child(1) {
+    position: relative;
+    top: 4rem;
+    left: 1rem;
+  }
+
+  .photo:nth-child(2) {
+    top: 2rem;
+    left: -1rem;
+  }
+
+  .photo:nth-child(3) {
+    top: 0;
+    left: 1rem;
+  }
+
+  .photo__img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--corner-radius);
+  }
+</style>

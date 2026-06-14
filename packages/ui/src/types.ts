@@ -1,3 +1,4 @@
+import { ImageMetadata } from 'astro';
 import { brandColours } from './common.data';
 
 /**
@@ -28,4 +29,9 @@ export interface SiteConfig {
   title: string;
   description: string;
   eventName: string;
+}
+
+export interface ImageClusterItem {
+  image: ImageMetadata;
+  alt: string;
 }

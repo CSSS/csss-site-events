@@ -131,6 +131,7 @@
 
     /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
+    --corner-radius: 10px;
     --border-radius-default: 18px;
     --border-radius-lg: 48px;
   }
