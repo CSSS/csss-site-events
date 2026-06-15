@@ -1,0 +1,28 @@
+---
+import Section from '@csss-site-events/ui/components/Section.astro';
+import ImageCluster from '@csss-site-events/ui/components/images/ImageCluster.astro';
+import icbc1 from '../assets/tf2025/icbc1.jpg';
+import icbc2 from '../assets/tf2025/icbc2.jpg';
+import icbc3 from '../assets/tf2025/icbc3.jpg';
+
+const images = [
+  {
+    image: icbc1,
+    alt: 'ICBC booth team',
+    description: 'The ICBC booth team'
+  },
+  {
+    image: icbc2,
+    alt: 'ICBC: Talking to students'
+  },
+  {
+    image: icbc3,
+    alt: 'icbc3'
+  }
+];
+---
+
+<Section id="gallery" title="Gallery">
+  <ImageCluster images={images} />
+  <ImageCluster images={images} />
+</Section>
