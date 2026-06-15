@@ -10,6 +10,21 @@ interface Props {
 const { images } = Astro.props;
 
 const optimizedPhotoWidthRem = 26;
+const optimizedPhotoWidthPx = optimizedPhotoWidthRem * 16 * 2;
+
+function getOptimizedDimensions(image: ImageClusterItem['image']) {
+  if (image.width >= image.height) {
+    return {
+      width: optimizedPhotoWidthPx,
+      height: Math.round((image.height / image.width) * optimizedPhotoWidthPx)
+    };
+  }
+
+  return {
+    width: Math.round((image.width / image.height) * optimizedPhotoWidthPx),
+    height: optimizedPhotoWidthPx
+  };
+}
 ---
 
 <image-cluster class="cluster">
@@ -20,7 +35,8 @@ const optimizedPhotoWidthRem = 26;
           class:list={['photo__img', `index-${index + 1}`]}
           src={image.image}
           alt={image.alt}
-          width={optimizedPhotoWidthRem * 16 * 2}
+          width={getOptimizedDimensions(image.image).width}
+          height={getOptimizedDimensions(image.image).height}
           loading={index === images.length - 1 ? 'eager' : 'lazy'}
         />
         {image.description && (
@@ -38,20 +54,23 @@ const optimizedPhotoWidthRem = 26;
 <style define:vars={{ optimizedPhotoWidthRem }}>
   .cluster {
     --photo-width: min(calc(var(--optimizedPhotoWidthRem) * 1rem), calc(100vw - 8rem));
-    --photo-hover-lift: 14rem;
+    --photo-frame-size: calc(var(--photo-width) + 1rem);
+    --photo-stack-offset: 8rem;
+    --photo-hover-lift: calc(var(--photo-frame-size) / 1.5);
     position: relative;
     display: block;
     z-index: 0;
     top: 0;
     inline-size: min(100%, calc(var(--photo-width) + 10rem));
-    block-size: calc(var(--photo-width) + var(--photo-hover-lift));
+    block-size: calc(var(--photo-frame-size) + var(--photo-stack-offset) + var(--photo-hover-lift));
   }
 
   .photo {
     position: absolute;
     bottom: var(--photo-bottom);
     left: var(--photo-left);
-    inline-size: var(--photo-width);
+    max-inline-size: var(--photo-frame-size);
+    max-block-size: var(--photo-frame-size);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,8 +149,11 @@ const optimizedPhotoWidthRem = 26;
   }
 
   .photo__img {
-    max-width: 100%;
+    max-inline-size: var(--photo-width);
+    max-block-size: var(--photo-width);
+    width: auto;
     height: auto;
+    object-fit: contain;
     border-radius: var(--corner-radius);
     transform: translateZ(0);
     backface-visibility: hidden;
