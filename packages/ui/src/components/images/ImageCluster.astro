@@ -67,7 +67,7 @@ const renderedImages = images.toReversed().map((image, index) => ({
     --photo-width: min(26rem, calc(100vw - 8rem));
     --photo-frame-size: calc(var(--photo-width) + 1rem);
     --photo-stack-offset: 8rem;
-    --photo-hover-lift: calc(var(--photo-frame-size) / 1.5);
+    --photo-hover-lift: calc(var(--photo-frame-size) / 2);
     position: relative;
     display: block;
     z-index: 0;
@@ -189,8 +189,9 @@ const renderedImages = images.toReversed().map((image, index) => ({
   }
 
   .cluster.is-loaded .photo:hover {
+    rotate: 0deg;
     transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
-    transition-delay: 0s;
+    /* transition-delay: 0s; */
   }
 
   .cluster.is-loaded .photo:nth-child(3):hover {
