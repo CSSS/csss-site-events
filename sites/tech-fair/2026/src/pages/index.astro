@@ -14,7 +14,7 @@ import boothGraphic from '../assets/booth.png';
 <Layout title={siteConfig.title} isFullHeightHero>
   <Hero slot="hero" />
   <About />
-  <div><Image src={boothGraphic} alt="Tech Fair 2026" /></div>
+  <div class="graphic"><Image src={boothGraphic} alt="Tech Fair 2026" /></div>
   <EventDetails />
   <StudentFaq />
   <CompanyFaq />
@@ -22,7 +22,7 @@ import boothGraphic from '../assets/booth.png';
 </Layout>
 
 <style>
-  div {
+  .graphic {
     display: flex;
     justify-content: center;
   }

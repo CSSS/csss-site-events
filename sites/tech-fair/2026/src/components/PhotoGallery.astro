@@ -38,16 +38,16 @@ import telus3 from '../assets/tf2025/telus3.jpg';
 const images: ImageClusterItem[] = [
   {
     image: icbc1,
-    alt: '',
-    description: 'The ICBC booth team'
+    alt: 'ICBC booth',
+    description: 'ICBC booth'
   },
   {
     image: icbc2,
-    alt: ''
+    alt: 'ICBC students talk'
   },
   {
     image: icbc3,
-    alt: ''
+    alt: 'ICBC organizer talk'
   },
   // {
   //   image: event1,
@@ -59,111 +59,120 @@ const images: ImageClusterItem[] = [
   // },
   {
     image: arista1,
-    alt: ''
+    alt: 'Arista booth',
+    description: 'Arista booth'
   },
   {
     image: arista2,
-    alt: ''
+    alt: 'Arista booth longshot'
   },
   {
     image: arista3,
-    alt: ''
+    alt: 'Arista booth farshot'
   },
   {
     image: fortisBC1,
-    alt: ''
+    alt: 'ForisBC booth',
+    description: 'FortisBC booth'
   },
   {
     image: fortisBC2,
-    alt: ''
+    alt: 'FortiBC booth explaining'
   },
   {
     image: fortisBC3,
-    alt: ''
+    alt: 'FortisBC booth listening'
   },
   {
     image: gatekeeper1,
-    alt: ''
+    alt: 'Gatekeeper booth',
+    description: 'Gatekeeper booth'
   },
   {
     image: gatekeeper2,
-    alt: ''
+    alt: 'Gatekeeper students visiting'
   },
   {
     image: gatekeeper3,
-    alt: ''
+    alt: 'Gatekeeper discussing'
   },
   {
     image: henryScheinOne1,
-    alt: ''
+    alt: 'Henry Schein One booth',
+    description: 'Henry Schein One booth'
   },
   {
     image: henryScheinOne2,
-    alt: ''
+    alt: 'Henry Schein One booth discussion'
   },
   {
     image: henryScheinOne3,
-    alt: ''
+    alt: 'Henry Schein One booth talking'
   },
   {
     image: infoblox1,
-    alt: ''
+    alt: 'Infoblox booth',
+    description: 'Infoblox booth'
   },
   {
     image: infoblox2,
-    alt: ''
+    alt: 'Infoblox discussion'
   },
   {
     image: infoblox3,
-    alt: ''
+    alt: 'Infoblox 1 on 1'
   },
   {
     image: kardium1,
-    alt: ''
+    alt: 'Kardium booth',
+    description: 'Kardium booth'
   },
   {
     image: kardium2,
-    alt: ''
+    alt: 'Kardium explaining'
   },
   {
     image: kardium3,
-    alt: ''
+    alt: 'Kardium students listening'
   },
   {
     image: planview1,
-    alt: ''
+    alt: 'Planview booth',
+    description: 'Planview booth'
   },
   {
     image: planview2,
-    alt: ''
+    alt: 'Students looking at laptop at Planview booth'
   },
   {
     image: planview3,
-    alt: ''
+    alt: 'Planview longshot'
   },
   {
     image: safeSoftware1,
-    alt: ''
+    alt: 'Safe Software booth',
+    description: 'Safe Software booth'
   },
   {
     image: safeSoftware2,
-    alt: ''
+    alt: 'Safe Software far shot'
   },
   {
     image: safeSoftware3,
-    alt: ''
+    alt: 'Safe Software happy to discuss'
   },
   {
     image: telus1,
-    alt: ''
+    alt: 'Telus booth',
+    description: 'Telus booth'
   },
   {
     image: telus2,
-    alt: ''
+    alt: 'Telus discussion with students'
   },
   {
     image: telus3,
-    alt: ''
+    alt: 'Telus far shot'
   }
 ];
 
@@ -172,17 +181,26 @@ const imageClusters = Array.from({ length: Math.ceil(images.length / 3) }, (_, i
 );
 ---
 
-<Section id="gallery" title="Gallery">
-  <div class="gallery">
+<section id="photo-gallery" class="photo-gallery">
+  <div class="photo-gallery__heading"><h2>Previous Tech Fairs</h2></div>
+  <div class="photo-gallery__photos">
     {imageClusters.map(cluster => <ImageCluster images={cluster} />)}
   </div>
-</Section>
+</section>
 
 <style>
-  .gallery {
+  .photo-gallery__heading {
+    width: min(100% - var(--sp-6), var(--site-content-width));
+    margin: 0 auto;
+    display: flex;
+    padding-inline: var(--sp-2);
+  }
+
+  .photo-gallery__photos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
     gap: var(--sp-8) var(--sp-6);
   }
 </style>
