@@ -38,7 +38,6 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: var(--site-body-texture);
     background-position: center;
     opacity: 0.5;
     pointer-events: none;
