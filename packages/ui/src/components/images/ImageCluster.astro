@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { images } = Astro.props;
+
+const optimizedPhotoWidthRem = 26;
 ---
 
 <image-cluster class="cluster">
@@ -18,6 +20,7 @@ const { images } = Astro.props;
           class:list={['photo__img', `index-${index + 1}`]}
           src={image.image}
           alt={image.alt}
+          width={optimizedPhotoWidthRem * 16 * 2}
           loading={index === images.length - 1 ? 'eager' : 'lazy'}
         />
         {image.description && (
@@ -32,9 +35,9 @@ const { images } = Astro.props;
   }
 </image-cluster>
 
-<style>
+<style define:vars={{ optimizedPhotoWidthRem }}>
   .cluster {
-    --photo-width: min(28rem, calc(100vw - 8rem));
+    --photo-width: min(calc(var(--optimizedPhotoWidthRem) * 1rem), calc(100vw - 8rem));
     --photo-hover-lift: 12rem;
     position: relative;
     display: block;
@@ -46,8 +49,8 @@ const { images } = Astro.props;
 
   .photo {
     position: absolute;
-    bottom: 0;
-    left: 6rem;
+    bottom: var(--photo-bottom);
+    left: var(--photo-left);
     inline-size: var(--photo-width);
     display: flex;
     align-items: center;
@@ -57,14 +60,12 @@ const { images } = Astro.props;
     padding: 0.5rem;
     rotate: 0deg;
     opacity: 0;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(var(--fan-start-x), var(--fan-start-y), 0);
     backface-visibility: hidden;
     will-change: transform, rotate;
 
     transition:
       rotate var(--animation-duration-regular) ease,
-      bottom var(--animation-duration-regular) ease,
-      left var(--animation-duration-regular) ease,
       transform var(--animation-duration-regular) ease;
     pointer-events: none;
   }
@@ -75,8 +76,12 @@ const { images } = Astro.props;
   }
 
   .cluster.is-loaded .photo {
-    animation: fan-out 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-    animation-delay: calc(0.18s + var(--fan-delay, 0s));
+    rotate: var(--deg);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .cluster.is-loaded:not(.is-fanned) .photo {
+    transition-delay: calc(0.18s + var(--fan-delay, 0s));
   }
 
   .photo__img {
@@ -91,12 +96,14 @@ const { images } = Astro.props;
     --deg: -2deg;
   }
 
-  /* FireFox does not support `sibling-count()` yet */
+  /* Firefox does not support `sibling-count()` yet */
   /* The photos are rendered in reverse order to that z-index is automatically managed,
      which means the image in front is actually the last sibling. */
   .photo:nth-child(3) {
     --photo-bottom: 0;
     --photo-left: 6rem;
+    --fan-start-x: 0;
+    --fan-start-y: 0;
     --badge-left: auto;
     --badge-right: -2rem;
     --fan-delay: 0.08s;
@@ -105,6 +112,8 @@ const { images } = Astro.props;
   .photo:nth-child(2) {
     --photo-bottom: 4rem;
     --photo-left: 2rem;
+    --fan-start-x: 4rem;
+    --fan-start-y: 4rem;
     --badge-left: -2rem;
     --badge-right: auto;
     --fan-delay: 0.16s;
@@ -113,6 +122,8 @@ const { images } = Astro.props;
   .photo:nth-child(1) {
     --photo-bottom: 8rem;
     --photo-left: 6rem;
+    --fan-start-x: 0;
+    --fan-start-y: 8rem;
     --badge-left: auto;
     --badge-right: -2rem;
     --fan-delay: 0.24s;
@@ -131,8 +142,6 @@ const { images } = Astro.props;
     bottom: 0.75rem;
     left: var(--badge-left, auto);
     right: var(--badge-right, auto);
-    max-width: min(18rem, calc(100% - 1.5rem));
-    --badge-padding: 0.35rem 0.55rem;
     opacity: 0;
     pointer-events: none;
     transform: rotate(calc(var(--deg) * -1));
@@ -142,6 +151,12 @@ const { images } = Astro.props;
   .photo:hover {
     pointer-events: auto;
     transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
+    transition-delay: 0s;
+  }
+
+  .cluster.is-loaded .photo:hover {
+    transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
+    transition-delay: 0s;
   }
 
   .photo:hover .photo__badge {
@@ -161,25 +176,11 @@ const { images } = Astro.props;
     pointer-events: auto;
   }
 
-  @keyframes fan-out {
-    from {
-      bottom: 0;
-      left: 6rem;
-      rotate: 0deg;
-    }
-
-    to {
-      bottom: var(--photo-bottom);
-      left: var(--photo-left);
-      rotate: var(--deg);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
+    .photo,
     .cluster.is-loaded .photo {
-      animation: none;
-      bottom: var(--photo-bottom);
-      left: var(--photo-left);
+      transition: none;
+      transform: translate3d(0, 0, 0);
       rotate: var(--deg);
     }
   }
@@ -256,6 +257,9 @@ const { images } = Astro.props;
 
       this.hasPlayed = true;
       this.classList.add('is-loaded');
+      window.setTimeout(() => {
+        this.classList.add('is-fanned');
+      }, 1200);
     }
   }
 
