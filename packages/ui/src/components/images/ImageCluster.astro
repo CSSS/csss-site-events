@@ -12,32 +12,40 @@ const { images } = Astro.props;
 const optimizedPhotoWidthRem = 26;
 const optimizedPhotoWidthPx = optimizedPhotoWidthRem * 16 * 2;
 
-function getOptimizedDimensions(image: ImageClusterItem['image']) {
-  if (image.width >= image.height) {
+function getOptimizedDimensions({ width, height }: ImageMetadata) {
+  const aspectRatio = width / height;
+
+  if (width >= height) {
     return {
       width: optimizedPhotoWidthPx,
-      height: Math.round((image.height / image.width) * optimizedPhotoWidthPx)
+      height: Math.round(optimizedPhotoWidthPx / aspectRatio)
     };
   }
 
   return {
-    width: Math.round((image.width / image.height) * optimizedPhotoWidthPx),
+    width: Math.round(optimizedPhotoWidthPx * aspectRatio),
     height: optimizedPhotoWidthPx
   };
 }
+
+const renderedImages = images.toReversed().map((image, index) => ({
+  ...image,
+  dimensions: getOptimizedDimensions(image.image),
+  isEager: index === images.length - 1
+}));
 ---
 
 <image-cluster class="cluster">
   {
-    images.toReversed().map((image, index) => (
-      <div class:list={['photo', { 'photo--eager': index === images.length - 1 }]}>
+    renderedImages.map((image, index) => (
+      <div class:list={['photo', { 'photo--eager': image.isEager }]}>
         <Image
           class:list={['photo__img', `index-${index + 1}`]}
           src={image.image}
           alt={image.alt}
-          width={getOptimizedDimensions(image.image).width}
-          height={getOptimizedDimensions(image.image).height}
-          loading={index === images.length - 1 ? 'eager' : 'lazy'}
+          width={image.dimensions.width}
+          height={image.dimensions.height}
+          loading={image.isEager ? 'eager' : 'lazy'}
         />
         {image.description && (
           <div class="photo__badge">
@@ -56,7 +64,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
     --photo-width: min(calc(var(--optimizedPhotoWidthRem) * 1rem), calc(100vw - 8rem));
     --photo-frame-size: calc(var(--photo-width) + 1rem);
     --photo-stack-offset: 8rem;
-    --photo-hover-lift: calc(var(--photo-frame-size) / 1.5);
+    --photo-hover-lift: calc(var(--photo-frame-size) / 1.25);
     position: relative;
     display: block;
     z-index: 0;
@@ -103,10 +111,6 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
     transition-delay: calc(0.18s + var(--fan-delay, 0s));
   }
 
-  .photo__img {
-    pointer-events: auto;
-  }
-
   .photo:nth-child(odd) {
     --deg: 5deg;
   }
@@ -116,7 +120,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
   }
 
   /* Firefox does not support `sibling-count()` yet */
-  /* The photos are rendered in reverse order to that z-index is automatically managed,
+  /* The photos are rendered in reverse order so z-index is automatically managed,
      which means the image in front is actually the last sibling. */
   .photo:nth-child(3) {
     --photo-bottom: 0;
@@ -157,6 +161,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
     border-radius: var(--corner-radius);
     transform: translateZ(0);
     backface-visibility: hidden;
+    pointer-events: auto;
   }
 
   .photo__badge {
@@ -217,6 +222,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
     private hasPlayed = false;
     private imagesAreLoaded = false;
     private isInViewportRange = false;
+    private fanOutTimer?: number;
     private observer?: IntersectionObserver;
 
     connectedCallback() {
@@ -257,6 +263,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
 
     disconnectedCallback() {
       this.observer?.disconnect();
+      window.clearTimeout(this.fanOutTimer);
     }
 
     private waitForImages() {
@@ -283,7 +290,7 @@ function getOptimizedDimensions(image: ImageClusterItem['image']) {
 
       this.hasPlayed = true;
       this.classList.add('is-loaded');
-      window.setTimeout(() => {
+      this.fanOutTimer = window.setTimeout(() => {
         this.classList.add('is-fanned');
       }, 1200);
     }
