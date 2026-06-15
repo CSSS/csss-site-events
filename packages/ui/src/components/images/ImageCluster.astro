@@ -174,8 +174,6 @@ const renderedImages = images.toReversed().map((image, index) => ({
     right: var(--badge-right, auto);
     opacity: 0;
     pointer-events: none;
-    transform: rotate(calc(var(--deg) * -1));
-    transform-origin: center;
   }
 
   .photo:nth-child(3) .photo__badge {
@@ -191,7 +189,6 @@ const renderedImages = images.toReversed().map((image, index) => ({
   .cluster.is-loaded .photo:hover {
     rotate: 0deg;
     transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
-    /* transition-delay: 0s; */
   }
 
   .cluster.is-loaded .photo:nth-child(3):hover {
@@ -277,15 +274,15 @@ const renderedImages = images.toReversed().map((image, index) => ({
     private waitForImages() {
       const images = Array.from(this.querySelectorAll<HTMLImageElement>('img'));
 
-      const imageLoads = images.map(image => {
-        if (image.complete) {
-          return Promise.resolve();
+      const imageLoads = images.map(async image => {
+        if (!image.complete) {
+          await new Promise<void>(resolve => {
+            image.addEventListener('load', () => resolve(), { once: true });
+            image.addEventListener('error', () => resolve(), { once: true });
+          });
         }
 
-        return new Promise<void>(resolve => {
-          image.addEventListener('load', () => resolve(), { once: true });
-          image.addEventListener('error', () => resolve(), { once: true });
-        });
+        await image.decode?.().catch(() => {});
       });
 
       return Promise.all(imageLoads);
