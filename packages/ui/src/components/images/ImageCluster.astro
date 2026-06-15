@@ -57,7 +57,9 @@ const { images } = Astro.props;
     padding: 0.5rem;
     rotate: 0deg;
     opacity: 0;
-    will-change: transform, rotate, bottom, left;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform, rotate;
 
     transition:
       rotate var(--animation-duration-regular) ease,
@@ -101,7 +103,7 @@ const { images } = Astro.props;
   }
 
   .photo:nth-child(2) {
-    --photo-bottom: 2rem;
+    --photo-bottom: 4rem;
     --photo-left: 2rem;
     --badge-left: -2rem;
     --badge-right: auto;
@@ -120,6 +122,8 @@ const { images } = Astro.props;
     max-width: 100%;
     height: auto;
     border-radius: var(--corner-radius);
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .photo__badge {
@@ -137,7 +141,7 @@ const { images } = Astro.props;
 
   .photo:hover {
     pointer-events: auto;
-    transform: translateY(calc(-1 * var(--photo-hover-lift)));
+    transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
   }
 
   .photo:hover .photo__badge {
@@ -145,11 +149,15 @@ const { images } = Astro.props;
   }
 
   /* This ensures the hover doesn't break when the photo hovers above the stack. */
-  .photo:hover:after {
+  .photo::after {
     content: '';
     position: absolute;
     inset: 0;
     bottom: calc(-100% - 4rem);
+    pointer-events: none;
+  }
+
+  .photo:hover::after {
     pointer-events: auto;
   }
 
