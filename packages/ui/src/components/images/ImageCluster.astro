@@ -38,7 +38,7 @@ const optimizedPhotoWidthRem = 26;
 <style define:vars={{ optimizedPhotoWidthRem }}>
   .cluster {
     --photo-width: min(calc(var(--optimizedPhotoWidthRem) * 1rem), calc(100vw - 8rem));
-    --photo-hover-lift: 12rem;
+    --photo-hover-lift: 14rem;
     position: relative;
     display: block;
     z-index: 0;
@@ -157,6 +157,10 @@ const optimizedPhotoWidthRem = 26;
   .cluster.is-loaded .photo:hover {
     transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
     transition-delay: 0s;
+  }
+
+  .cluster.is-loaded .photo:nth-child(3):hover {
+    transform: translate3d(0, 0, 0);
   }
 
   .photo:hover .photo__badge {
