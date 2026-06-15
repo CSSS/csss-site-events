@@ -3,20 +3,44 @@ import { type BrandColour } from '@csss-site-events/ui/types';
 
 interface Props {
   tone?: BrandColour;
+  variant?: 'outline' | 'solid';
 }
 
-const { tone = 'blue' } = Astro.props;
+const { tone = 'blue', variant = 'solid' } = Astro.props;
 ---
 
-<div class:list={['badge', `brand--${tone}`]}>
+<div class:list={[`badge--${variant}`, `brand--${tone}`]}>
   <slot />
 </div>
 
 <style>
-  .badge {
+  div {
     padding: var(--sp-4);
     border-radius: var(--sp-3);
     margin-right: auto;
     font-family: var(--font-heading);
+    line-height: 1.1;
+  }
+
+  .badge--outline {
+    border: 0.125rem solid var(--badge-outline-colour);
+    background-color: white;
+    color: var(--badge-outline-colour);
+  }
+
+  .badge--outline.brand--red {
+    --badge-outline-colour: var(--clr-accent-red);
+  }
+
+  .badge--outline.brand--blue {
+    --badge-outline-colour: var(--clr-accent-blue);
+  }
+
+  .badge--outline.brand--pink {
+    --badge-outline-colour: var(--clr-accent-pink);
+  }
+
+  .badge--outline.brand--teal {
+    --badge-outline-colour: var(--clr-accent-teal);
   }
 </style>

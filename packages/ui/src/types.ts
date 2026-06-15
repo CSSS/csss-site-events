@@ -34,4 +34,5 @@ export interface SiteConfig {
 export interface ImageClusterItem {
   image: ImageMetadata;
   alt: string;
+  description?: string;
 }

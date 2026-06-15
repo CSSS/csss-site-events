@@ -4,10 +4,31 @@ import About from '../components/About.astro';
 import CompanyFaq from '../components/CompanyFaq.astro';
 import EventDetails from '../components/EventDetails.astro';
 import Hero from '../components/Hero.astro';
+import ImageCluster from '@csss-site-events/ui/components/images/ImageCluster.astro';
 import StudentFaq from '../components/StudentFaq.astro';
 import { siteConfig } from '../config/site.data';
 import { Image } from 'astro:assets';
 import boothImg from '../assets/booth.png';
+import icbc1 from '../assets/tf2025/icbc1.jpg';
+import icbc2 from '../assets/tf2025/icbc2.jpg';
+import icbc3 from '../assets/tf2025/icbc3.jpg';
+
+const images = [
+  {
+    image: icbc1,
+    alt: 'icbc1',
+    description: 'hello'
+  },
+  {
+    image: icbc2,
+    alt: 'icbc2',
+    description: 'world'
+  },
+  {
+    image: icbc3,
+    alt: 'icbc3'
+  }
+];
 ---
 
 <Layout title={siteConfig.title} isFullHeightHero>
@@ -17,6 +38,10 @@ import boothImg from '../assets/booth.png';
   <EventDetails />
   <StudentFaq />
   <CompanyFaq />
+  <div>
+    <ImageCluster images={images} />
+    <ImageCluster images={images} />
+  </div>
 </Layout>
 
 <style>
