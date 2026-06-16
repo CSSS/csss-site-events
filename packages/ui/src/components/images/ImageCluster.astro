@@ -66,7 +66,7 @@ const renderedImages = images.toReversed().map((image, index) => ({
   .cluster {
     --photo-width: min(26rem, calc(100vw - 8rem));
     --photo-frame-size: calc(var(--photo-width) + 1rem);
-    --photo-stack-offset: calc(var(--photo-width) / 6);
+    --photo-stack-offset: calc(var(--photo-width) / 25);
     --photo-hover-lift: calc(var(--photo-frame-size) / 2);
     position: relative;
     display: block;
@@ -214,6 +214,9 @@ const renderedImages = images.toReversed().map((image, index) => ({
   }
 
   @media (max-width: 570px) {
+    .cluster {
+      --photo-stack-offset: calc(var(--photo-width) / 6);
+    }
     .photo:nth-child(3) {
       --photo-left: 0;
     }
