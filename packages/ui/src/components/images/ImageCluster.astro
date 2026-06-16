@@ -213,6 +213,12 @@ const renderedImages = images.toReversed().map((image, index) => ({
     pointer-events: auto;
   }
 
+  @media (max-width: 570px) {
+    .photo:nth-child(3) {
+      --photo-left: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .photo,
     .cluster.is-loaded .photo {
