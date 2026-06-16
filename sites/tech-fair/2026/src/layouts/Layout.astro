@@ -44,6 +44,27 @@ const hasHero = heroImage || Astro.slots.hero;
   <Footer config={siteConfig} navItems={navItems} />
 </BaseLayout>
 
+<style is:global>
+  .photo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .photo {
+    border-radius: var(--corner-radius);
+    background-color: white;
+    padding: var(--sp-2);
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .photo > img {
+    border-radius: var(--corner-radius);
+  }
+</style>
+
 <style>
   main {
     display: flex;

@@ -86,9 +86,6 @@ const renderedImages = images.toReversed().map((image, index) => ({
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border-radius: var(--corner-radius);
-    padding: 0.5rem;
     rotate: 0deg;
     opacity: 0;
     transform: translate3d(var(--fan-start-x), var(--fan-start-y), 0);
@@ -162,7 +159,6 @@ const renderedImages = images.toReversed().map((image, index) => ({
     width: auto;
     height: auto;
     object-fit: contain;
-    border-radius: var(--corner-radius);
     transform: translateZ(0);
     backface-visibility: hidden;
     pointer-events: auto;

@@ -1,7 +1,9 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
+import { Image } from 'astro:assets';
 import InfoBubble from './InfoBubble.astro';
 import { CalendarDays, Clock10, MapPin, UserStar, type Icon as IconType } from '@lucide/astro';
+import event1 from '../assets/tf2025/event1.jpg';
 
 interface Detail {
   heading: string;
@@ -39,6 +41,11 @@ const details: Detail[] = [
 ---
 
 <Section>
+  <div class="photo-container" slot="left-gutter">
+    <div class="photo">
+      <Image src={event1} alt="Tech Fair 2023 Avigilon" width={800} />
+    </div>
+  </div>
   <div class="info">
     {
       details.map(({ heading, content, icon, variant }) => (
@@ -52,6 +59,10 @@ const details: Detail[] = [
 
 <style>
   @media (min-width: 36rem) {
+    .photo {
+      display: block;
+    }
+
     .info {
       display: grid;
       grid-template-columns: 1fr 1fr;

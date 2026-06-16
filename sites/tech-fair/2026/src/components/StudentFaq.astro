@@ -5,6 +5,7 @@ import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.a
 import Section from '@csss-site-events/ui/components/Section.astro';
 import { type Dialogue } from '../config/site.types';
 import { ImageMetadata } from 'astro';
+import event2 from '../assets/tf2025/event2.jpg';
 
 const sections: Dialogue[] = [
   {
@@ -54,6 +55,11 @@ const images = Object.entries(imagesMeta).map(([path, mod]) => ({
 
 <Section id="students" title="Why Should I Go?">
   <DialogueInfo sections={sections} />
+  <div class="photo-container" slot="right-gutter">
+    <div class="photo">
+      <Image src={event2} alt="Tech Fair 2023 Applied Sciences Atrium" width={800} />
+    </div>
+  </div>
 </Section>
 <section id="companies">
   <!-- <ScrollList> -->
@@ -98,8 +104,5 @@ const images = Object.entries(imagesMeta).map(([path, mod]) => ({
     li {
       scroll-snap-align: center;
     }
-  }
-
-  @media (min-width: 36rem) {
   }
 </style>
