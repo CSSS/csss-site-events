@@ -1,6 +1,8 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
 import ImageCluster from '@csss-site-events/ui/components/images/ImageCluster.astro';
+import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
+import ScrollListItem from '@csss-site-events/ui/components/scroll-list/ScrollListItem.astro';
 import type { ImageClusterItem } from '@csss-site-events/ui/types';
 import arista1 from '../assets/tf2025/arista1.jpg';
 import arista2 from '../assets/tf2025/arista2.jpg';
@@ -183,9 +185,15 @@ const imageClusters = Array.from({ length: Math.ceil(images.length / 3) }, (_, i
 
 <section id="photo-gallery" class="photo-gallery">
   <div class="photo-gallery__heading"><h2>Previous Tech Fairs</h2></div>
-  <div class="photo-gallery__photos">
-    {imageClusters.map(cluster => <ImageCluster images={cluster} />)}
-  </div>
+  <ScrollList>
+    {
+      imageClusters.map(cluster => (
+        <ScrollListItem>
+          <ImageCluster images={cluster} />
+        </ScrollListItem>
+      ))
+    }
+  </ScrollList>
 </section>
 
 <style>
@@ -196,11 +204,13 @@ const imageClusters = Array.from({ length: Math.ceil(images.length / 3) }, (_, i
     padding-inline: var(--sp-2);
   }
 
-  .photo-gallery__photos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+  .photo-gallery :global(ul) {
     gap: var(--sp-8) var(--sp-6);
+  }
+
+  .photo-gallery :global(li) {
+    display: flex;
+    justify-content: center;
+    inline-size: min(calc(100vw - var(--sp-6)), 36rem);
   }
 </style>

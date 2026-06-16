@@ -72,7 +72,8 @@ const renderedImages = images.toReversed().map((image, index) => ({
     display: block;
     z-index: 0;
     top: 0;
-    inline-size: min(100%, calc(var(--photo-width) + 10rem));
+    inline-size: min(calc(100vw - var(--sp-6)), calc(var(--photo-width) + 10rem));
+    max-inline-size: 100%;
     block-size: calc(var(--photo-frame-size) + var(--photo-stack-offset) + var(--photo-hover-lift));
   }
 

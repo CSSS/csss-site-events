@@ -1,4 +1,5 @@
 <li>
+  <slot />
   <slot name="img" />
   <slot name="heading" />
   <slot name="content" />
@@ -7,5 +8,9 @@
 <style>
   li {
     list-style-type: none;
+    flex: 0 0 auto;
+    inline-size: fit-content;
+    min-width: 0;
+    scroll-snap-align: center;
   }
 </style>
