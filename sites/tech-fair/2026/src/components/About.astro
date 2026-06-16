@@ -1,18 +1,42 @@
 ---
+import { Image } from 'astro:assets';
 import Section from '@csss-site-events/ui/components/Section.astro';
+import confusedStudent from '@csss-site-events/ui/assets/images/confused-student.png';
 ---
 
-<Section id="about" title="What is Tech Fair?">
-  Long ago, when Java ran on less than 3 billion devices, Tech Fair was the <strong
-    >Computing Science Student Society's (CSSS)</strong
-  > way of making sure our society members learned about the world beyond SFU. As time marched on, Tech
-  Fair disappeared and was slowly forgotten...
-  <br /><br />
+<Section id="about">
+  <div class="header" slot="header">
+    <h2>What's a Tech Fair?</h2>
+  </div>
+  <Image class="confused" src={confusedStudent} alt="Confused student" width={200} />
+  <p>
+    Long ago, when Java ran on less than 3 billion devices, Tech Fair was the <strong
+      >Computing Science Student Society's (CSSS)</strong
+    > way of making sure our society members learned about the world beyond SFU. As time marched on, Tech
+    Fair disappeared and was slowly forgotten...
+    <br /><br />
 
-  ...but, just like everything else, Tech Fair was rebooted! Since 2022, Tech Fair has been growing
-  which means more booths, more students and more LinkedIn connections.
-  <br /><br />
+    ...but, just like everything else, Tech Fair was rebooted! Since 2022, Tech Fair has been
+    growing which means more booths, more students and more LinkedIn connections.
+    <br /><br />
 
-  Whether you're a first year or on your last semester, Tech Fair is your opportunity to find out
-  what companies are looking for.
+    <strong style="float: right;"
+      >Whether you're a first year or on your last semester, Tech Fair is your chance to meet the
+      industry!</strong
+    >
+  </p>
 </Section>
+
+<style>
+  .confused {
+    display: none;
+  }
+
+  @media (min-width: 36rem) {
+    .confused {
+      display: inline;
+      float: left;
+      margin-right: var(--sp-4);
+    }
+  }
+</style>
