@@ -66,7 +66,7 @@ const renderedImages = images.toReversed().map((image, index) => ({
   .cluster {
     --photo-width: min(26rem, calc(100vw - 8rem));
     --photo-frame-size: calc(var(--photo-width) + 1rem);
-    --photo-stack-offset: 8rem;
+    --photo-stack-offset: calc(var(--photo-width) / 6);
     --photo-hover-lift: calc(var(--photo-frame-size) / 2);
     position: relative;
     display: block;
