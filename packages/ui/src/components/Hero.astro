@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  image?: ImageMetadata;
+  isFullHeight?: boolean;
+  alt?: string;
+}
+
+const { image, isFullHeight, alt = '' } = Astro.props;
+const hasContent = Astro.slots.has('default');
+---
+
+<section class:list={['hero', `hero${isFullHeight ? '--full-height' : ''}`]}>
+  {image && <Image class="hero__image" src={image} alt={alt} />}
+  {hasContent && <slot />}
+</section>
+
+<style>
+  @layer base {
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 10svh;
+      overflow: hidden;
+      margin-bottom: var(--section-gap);
+    }
+
+    .hero--full-height {
+      height: calc(100svh - var(--navbar-height));
+    }
+
+    .hero__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+</style>

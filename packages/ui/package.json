@@ -1,0 +1,19 @@
+{
+  "name": "@csss-site-events/ui",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./layouts/*": "./src/layouts/*",
+    "./components/*": "./src/components/*",
+    "./icons/*": "./src/icons/*",
+    "./styles/*": "./src/styles/*",
+    "./common.data": "./src/common.data",
+    "./types": "./src/types",
+    "./assets/fonts/*": "./assets/fonts/*",
+    "./assets/icons/*": "./assets/icons/*",
+    "./assets/images/*": "./assets/images/*"
+  },
+  "peerDependencies": {
+    "astro": "^6.0.0"
+  }
+}

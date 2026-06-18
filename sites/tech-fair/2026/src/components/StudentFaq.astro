@@ -1,0 +1,108 @@
+---
+import DialogueInfo from './DialogueInfo.astro';
+import { Image } from 'astro:assets';
+import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
+import Section from '@csss-site-events/ui/components/Section.astro';
+import { type Dialogue } from '../config/site.types';
+import { ImageMetadata } from 'astro';
+import event2 from '../assets/tf2025/event2.jpg';
+
+const sections: Dialogue[] = [
+  {
+    first: "I'm a good student and I have side projects, I'm fine",
+    second:
+      'Think about how many people are in the Computing Science program. How many of them are doing similar projects or doing the same interview prep as you? Your resumes are going to look very similar. This is an opportunity to have recruiters learn about you and maybe even get your resume past their filters.'
+  },
+  {
+    first: "I'm only in first or second year so there's no point in me going",
+    second:
+      "Of course there is! Your Computing Science degree will teach you many things, but it can't teach you everything. Talk to recruiters about their tech stack, what made them want to hire their last few employees, and learn about companies that you have probably never heard of."
+  },
+  {
+    first: "I'm only aiming for big tech, I don't care about anything smaller",
+    second:
+      'There\'s a reason why they call Vancouver "Silicon Valley of the North" (it\'s because there are more tech companies here than you think).'
+  },
+  {
+    first: 'What should I do to prepare?',
+    second:
+      'Look up the companies that are attending, prepare some interesting questions, and come with an open mind (and maybe a few printed off resumes).'
+  },
+  {
+    first: "I'm still not convinced",
+    second: "It's a free event and the companies sometimes give out stuff"
+  },
+  {
+    first: "Who's coming?",
+    second: ''
+  }
+];
+
+const imagesMeta = import.meta.glob<{ default: ImageMetadata }>('../assets/companies/*.{png,jpg}', {
+  eager: true
+});
+
+const images = Object.entries(imagesMeta).map(([path, mod]) => ({
+  src: mod.default,
+  // Retrieves the name of the file without the extension
+  alt: path
+    .split('/')
+    .at(-1)!
+    .replace(/\.[^.]+$/, '')
+    .replace(/-|_/g, ' ')
+}));
+---
+
+<Section id="students" title="Why Should I Go?">
+  <DialogueInfo sections={sections} />
+  <div class="photo-container" slot="right-gutter">
+    <div class="photo">
+      <Image src={event2} alt="Tech Fair 2023 Applied Sciences Atrium" width={800} />
+    </div>
+  </div>
+</Section>
+<section id="companies">
+  <!-- <ScrollList> -->
+  <!--   { -->
+  <!--     images.map(({ src, alt }) => ( -->
+  <!--       <li> -->
+  <!--         <Image class="logo" src={src} alt={alt} /> -->
+  <!--       </li> -->
+  <!--     )) -->
+  <!--   } -->
+  <!-- </ScrollList> -->
+</section>
+
+<style>
+  li {
+    list-style-type: none;
+    background-color: white;
+    border-radius: 0 var(--border-radius-lg) 0 var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 16rem;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    padding: var(--sp-4);
+  }
+
+  .logo {
+    height: auto;
+    width: 90%;
+    max-width: unset;
+    object-fit: contain;
+  }
+
+  #companies {
+    max-width: var(--site-content-width);
+    margin: 0 auto;
+  }
+
+  @media (hover: none) {
+    li {
+      scroll-snap-align: center;
+    }
+  }
+</style>

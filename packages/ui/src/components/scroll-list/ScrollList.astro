@@ -1,0 +1,27 @@
+<ul>
+  <slot />
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-6);
+    z-index: 10;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (hover: none) {
+    ul {
+      width: 100vw;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      padding-block-end: var(--sp-8);
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+  }
+</style>

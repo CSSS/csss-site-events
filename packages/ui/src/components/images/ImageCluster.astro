@@ -1,0 +1,313 @@
+---
+import { Image } from 'astro:assets';
+import Badge from '../Badge.astro';
+import { type BrandColour, type ImageClusterItem } from '../../types';
+
+interface Props {
+  images: ImageClusterItem[];
+  tone?: BrandColour | BrandColour[];
+}
+
+const OPTIMIZED_PHOTO_DIM_PX = 26 * 16 * 2;
+
+function getOptimizedDimensions({ width, height }: ImageMetadata) {
+  const aspectRatio = width / height;
+
+  if (width >= height) {
+    return {
+      width: OPTIMIZED_PHOTO_DIM_PX,
+      height: Math.round(OPTIMIZED_PHOTO_DIM_PX / aspectRatio)
+    };
+  }
+
+  return {
+    width: Math.round(OPTIMIZED_PHOTO_DIM_PX * aspectRatio),
+    height: OPTIMIZED_PHOTO_DIM_PX
+  };
+}
+
+const { images, tone = 'red' } = Astro.props;
+
+const renderedImages = images.toReversed().map((image, index) => ({
+  ...image,
+  dimensions: getOptimizedDimensions(image.image),
+  isEager: index === images.length - 1
+}));
+---
+
+<image-cluster class="cluster">
+  {
+    renderedImages.map((image, index) => (
+      <div class:list={['photo', { 'photo--eager': image.isEager }]}>
+        <Image
+          class:list={['photo__img', `index-${index + 1}`]}
+          src={image.image}
+          alt={image.alt}
+          width={image.dimensions.width}
+          height={image.dimensions.height}
+          loading={image.isEager ? 'eager' : 'lazy'}
+        />
+        {image.description && (
+          <div class="photo__badge">
+            <Badge
+              tone={typeof tone === 'string' ? tone : tone[(tone.length - 1 - index) % tone.length]}
+              variant="outline"
+            >
+              {image.description}
+            </Badge>
+          </div>
+        )}
+      </div>
+    ))
+  }
+</image-cluster>
+
+<style>
+  .cluster {
+    --photo-width: min(26rem, calc(100vw - 8rem));
+    --photo-frame-size: calc(var(--photo-width) + 1rem);
+    --photo-stack-offset: calc(var(--photo-width) / 25);
+    --photo-hover-lift: calc(var(--photo-frame-size) / 2);
+    position: relative;
+    display: block;
+    z-index: 0;
+    top: 0;
+    inline-size: min(calc(100vw - var(--sp-6)), calc(var(--photo-width) + 10rem));
+    max-inline-size: 100%;
+    block-size: calc(var(--photo-frame-size) + var(--photo-stack-offset) + var(--photo-hover-lift));
+  }
+
+  .photo {
+    position: absolute;
+    bottom: var(--photo-bottom);
+    left: var(--photo-left);
+    max-inline-size: var(--photo-frame-size);
+    max-block-size: var(--photo-frame-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    rotate: 0deg;
+    opacity: 0;
+    transform: translate3d(var(--fan-start-x), var(--fan-start-y), 0);
+    backface-visibility: hidden;
+    will-change: transform, rotate;
+
+    transition:
+      rotate var(--animation-duration-regular) ease,
+      transform var(--animation-duration-regular) ease;
+    pointer-events: none;
+  }
+
+  .photo--eager,
+  .cluster.is-loaded .photo {
+    opacity: 1;
+  }
+
+  .cluster.is-loaded .photo {
+    rotate: var(--deg);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .cluster.is-loaded:not(.is-fanned) .photo {
+    transition-delay: calc(0.18s + var(--fan-delay, 0s));
+  }
+
+  .photo:nth-child(odd) {
+    --deg: 5deg;
+  }
+
+  .photo:nth-child(even) {
+    --deg: -2deg;
+  }
+
+  /* Firefox does not support `sibling-count()` yet */
+  /* The photos are rendered in reverse order so z-index is automatically managed,
+     which means the image in front is actually the last sibling. */
+  .photo:nth-child(3) {
+    --photo-bottom: 0;
+    --photo-left: 5rem;
+    --fan-start-x: 0;
+    --fan-start-y: 0;
+    --badge-left: auto;
+    --badge-right: -2rem;
+    --fan-delay: 0.08s;
+  }
+
+  .photo:nth-child(2) {
+    --photo-bottom: 4rem;
+    --photo-left: 2rem;
+    --fan-start-x: 4rem;
+    --fan-start-y: 4rem;
+    --badge-left: -1.5rem;
+    --badge-right: auto;
+    --fan-delay: 0.16s;
+  }
+
+  .photo:nth-child(1) {
+    --photo-bottom: 8rem;
+    --photo-left: 5rem;
+    --fan-start-x: 0;
+    --fan-start-y: 8rem;
+    --badge-left: auto;
+    --badge-right: -1.15rem;
+    --fan-delay: 0.24s;
+  }
+
+  .photo__img {
+    max-inline-size: var(--photo-width);
+    max-block-size: var(--photo-width);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    pointer-events: auto;
+  }
+
+  .photo__badge {
+    position: absolute;
+    bottom: -1rem;
+    left: var(--badge-left, auto);
+    right: var(--badge-right, auto);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .photo:nth-child(3) .photo__badge {
+    opacity: 1;
+  }
+
+  .photo:hover {
+    pointer-events: auto;
+    transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
+    transition-delay: 0s;
+  }
+
+  .cluster.is-loaded .photo:hover {
+    rotate: 0deg;
+    transform: translate3d(0, calc(-1 * var(--photo-hover-lift)), 0);
+  }
+
+  .cluster.is-loaded .photo:nth-child(3):hover {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .photo:hover .photo__badge {
+    opacity: 1;
+  }
+
+  /* This ensures the hover doesn't break when the photo hovers above the stack. */
+  .photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    bottom: calc(-100% - 4rem);
+    pointer-events: none;
+  }
+
+  .photo:hover::after {
+    pointer-events: auto;
+  }
+
+  @media (max-width: 570px) {
+    .cluster {
+      --photo-stack-offset: calc(var(--photo-width) / 6);
+    }
+    .photo:nth-child(3) {
+      --photo-left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo,
+    .cluster.is-loaded .photo {
+      transition: none;
+      transform: translate3d(0, 0, 0);
+      rotate: var(--deg);
+    }
+  }
+</style>
+
+<script>
+  class ImageClusterElement extends HTMLElement {
+    private hasPlayed = false;
+    private imagesAreLoaded = false;
+    private isInViewportRange = false;
+    private fanOutTimer?: number;
+    private observer?: IntersectionObserver;
+
+    connectedCallback() {
+      if (this.hasPlayed || this.classList.contains('is-loaded')) {
+        this.hasPlayed = true;
+        return;
+      }
+
+      void this.waitForImages().then(() => {
+        this.imagesAreLoaded = true;
+        this.playWhenReady();
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        this.isInViewportRange = true;
+        this.playWhenReady();
+        return;
+      }
+
+      this.observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting) {
+            return;
+          }
+
+          this.isInViewportRange = true;
+          this.observer?.disconnect();
+          this.playWhenReady();
+        },
+        {
+          rootMargin: '0px 0px -10% 0px',
+          threshold: 0
+        }
+      );
+
+      this.observer.observe(this);
+    }
+
+    disconnectedCallback() {
+      this.observer?.disconnect();
+      window.clearTimeout(this.fanOutTimer);
+    }
+
+    private waitForImages() {
+      const images = Array.from(this.querySelectorAll<HTMLImageElement>('img'));
+
+      const imageLoads = images.map(async image => {
+        if (!image.complete) {
+          await new Promise<void>(resolve => {
+            image.addEventListener('load', () => resolve(), { once: true });
+            image.addEventListener('error', () => resolve(), { once: true });
+          });
+        }
+
+        await image.decode?.().catch(() => {});
+      });
+
+      return Promise.all(imageLoads);
+    }
+
+    private playWhenReady() {
+      if (this.hasPlayed || !this.imagesAreLoaded || !this.isInViewportRange) {
+        return;
+      }
+
+      this.hasPlayed = true;
+      this.classList.add('is-loaded');
+      this.fanOutTimer = window.setTimeout(() => {
+        this.classList.add('is-fanned');
+      }, 1200);
+    }
+  }
+
+  if (!customElements.get('image-cluster')) {
+    customElements.define('image-cluster', ImageClusterElement);
+  }
+</script>

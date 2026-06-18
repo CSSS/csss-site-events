@@ -1,0 +1,30 @@
+{
+  "name": "tech-fair-2026",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": ["type:site", "event:tech-fair", "year:2026"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "astro build",
+        "cwd": "sites/tech-fair/2026"
+      },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "astro dev",
+        "cwd": "sites/tech-fair/2026"
+      }
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "astro preview",
+        "cwd": "sites/tech-fair/2026"
+      }
+    }
+  }
+}

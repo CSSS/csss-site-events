@@ -1,0 +1,39 @@
+---
+import Seo from '../components/Seo.astro';
+import { getImage } from 'astro:assets';
+import brandTexture from '../../assets/images/brand-texture-primary.png';
+import '../styles/reset.css';
+import '../styles/fonts.css';
+import '../styles/theme.css';
+
+interface Props {
+  pageTitle: string;
+  description?: string;
+  image?: ImageMetadata | string;
+  noindex?: boolean;
+}
+
+const { pageTitle, description, image, noindex = false } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const optimizedBrandTexture = await getImage({ src: brandTexture, format: 'avif', quality: 'low' });
+---
+
+<!-- Optimization done so that the texture doesn't cause more style attributes to be generated -->
+<html lang="en" style={`--csss-texture-bg: url(${optimizedBrandTexture.src})`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href={`${baseUrl}favicon-96x96.png`} sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="shortcut icon" href={`${baseUrl}favicon.ico`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl}apple-touch-icon.png`} />
+    <meta name="apple-mobile-web-app-title" content="CSSS" />
+    <link rel="manifest" href={`${baseUrl}site.webmanifest`} />
+    <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
+    <!-- For any extra meta tags a page may need -->
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
