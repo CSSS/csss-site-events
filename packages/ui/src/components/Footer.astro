@@ -19,7 +19,7 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
 
 <footer>
   <div class="footer__container">
-    <h2>{config.name}</h2>
+    <a href="#"><h2>{config.name}</h2></a>
     <nav>
       {
         navLinks.map(nav => (
@@ -39,15 +39,16 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
       </li>
       <li>
         <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"
-          ><InstagramIcon /></a>
+          ><InstagramIcon /></a
+        >
       </li>
       <li>
-        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
-          ><LinkedInIcon /></a>
+        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a
+        >
       </li>
       <li>
-        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"
-          ><FacebookIcon /></a>
+        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon /></a
+        >
       </li>
     </ul>
     <p class="copyright">&copy; 2026 Computing Science Student Society. All rights reserved.</p>
