@@ -15,6 +15,7 @@ The project graph will show you the dependencies of each site.
 
 | Description         | Command                      |
 |---------------------|-------------------------------|
+| Create a new event site    | `npm run new-site <event> <year>`       |
 | Develop one site    | `nx dev <event>-<year>`       |
 | Build one site      | `nx build <event>-<year>`     |
 | Build all sites     | `nx run-many --target=build`  |

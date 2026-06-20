@@ -1,4 +1,5 @@
 import Compress from '@playform/compress';
+import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 export function defineSiteConfig(config, compressOptions = {}) {
@@ -8,6 +9,6 @@ export function defineSiteConfig(config, compressOptions = {}) {
       inlineStylesheets: 'always',
       ...(config.build ?? {})
     },
-    integrations: [...(config.integrations ?? []), Compress(compressOptions)]
+    integrations: [...(config.integrations ?? []), sitemap(), Compress(compressOptions)]
   });
 }

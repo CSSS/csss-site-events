@@ -1,6 +1,7 @@
 import { defineSiteConfig } from '../../../astro.shared.mjs';
 
-const isProd = import.meta.env.PROD;
+const isLocal = process.env.LOCAL === 'true';
+const isProd = process.env.NODE_ENV === 'production' && !isLocal;
 
 export default defineSiteConfig({
   base: isProd ? '/' : '/tech-fair/2026',

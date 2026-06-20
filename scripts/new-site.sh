@@ -19,12 +19,14 @@ DIR="sites/$EVENT/$YEAR"
 echo "Creating $NAME at $DIR..."
 
 mkdir -p "$DIR/src/"{pages,components,layouts,config}
+mkdir -p "$DIR/public"
 
 # astro.config.mjs
 cat >"$DIR/astro.config.mjs" <<EOF
 import { defineSiteConfig } from '../../../astro.shared.mjs';
 
-const isProd = import.meta.env.PROD;
+const isLocal = process.env.LOCAL === 'true';
+const isProd = process.env.NODE_ENV === 'production' && !isLocal;
 
 export default defineSiteConfig({
   base: isProd ? '/' : '/$EVENT/$YEAR',
@@ -195,6 +197,15 @@ import { siteConfig } from '../config/site.data';
 <Layout title={siteConfig.title}>
   <h1>{siteConfig.title}</h1>
 </Layout>
+EOF
+
+# robots.txt
+# Sitemap is generated when the site is built
+cat >"$DIR/public/robots.txt" <<EOF
+User-agent: *
+Allow: /
+
+Sitemap: https://$EVENT.sfucsss.org/sitemap-index.xml
 EOF
 
 echo "Done. Run: nx dev $NAME"
