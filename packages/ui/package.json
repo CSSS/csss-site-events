@@ -14,11 +14,11 @@
     "./assets/images/*": "./assets/images/*"
   },
   "peerDependencies": {
-    "astro": "^6.0.0"
+    "astro": "^7.0.0"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@lucide/astro": "^1.21.0",
+    "@lucide/astro": "^1.28.0",
     "simple-icons": "^16.23.0"
   }
 }
