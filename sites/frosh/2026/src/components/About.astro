@@ -1,6 +1,8 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
 import { siteConfig } from '../config/site.data';
+import { Image } from 'astro:assets';
+import jepi from '../assets/jepi-sun.png';
 ---
 
 <Section id="about" title="What's a FROSH?">
@@ -18,4 +20,11 @@ import { siteConfig } from '../config/site.data';
   {siteConfig.eventName} continues this tradition, running from <strong
     >{siteConfig.startDate}th</strong
   > to <strong>{siteConfig.endDate}th</strong>.
+  <Image class="jepi" src={jepi} alt="Jepi" width={525} />
 </Section>
+
+<style>
+  .jepi {
+    margin: var(--section-gap) auto 0;
+  }
+</style>
