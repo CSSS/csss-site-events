@@ -1,11 +1,11 @@
 ---
-import type { SiteConfig, NavItem } from '../types';
+import { socialLinks } from '../common.data';
+import CsssIcon from '../icons/CsssIcon.astro';
 import DiscordIcon from '../icons/DiscordIcon.astro';
 import FacebookIcon from '../icons/FacebookIcon.astro';
 import InstagramIcon from '../icons/InstagramIcon.astro';
 import LinkedInIcon from '../icons/LinkedInIcon.astro';
-import CsssIcon from '../icons/CsssIcon.astro';
-import { socialLinks } from '../common.data';
+import type { NavItem, SiteConfig } from '../types';
 
 interface Props {
   config: SiteConfig;
@@ -15,16 +15,32 @@ interface Props {
 const { config, navItems } = Astro.props;
 
 const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
+const currentYear = new Date().getFullYear();
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+function resolveHref(href: string) {
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(href)) return href;
+  if (href.startsWith('#')) return `${baseUrl}${href}`;
+  return `${baseUrl}${href.replace(/^\.?\//, '')}`;
+}
 ---
 
 <footer>
   <div class="footer__container">
-    <a href="#"><h2>{config.name}</h2></a>
+    <a href={baseUrl}><h2>{config.name}</h2></a>
     <nav>
       {
         navLinks.map(nav => (
           <div>
-            <a href={nav.href}>{nav.label}</a>
+            <a
+              href={resolveHref(nav.href)}
+              target={nav.external ? '_blank' : undefined}
+              rel={nav.external ? 'noopener noreferrer' : undefined}
+            >
+              {nav.label}
+            </a>
           </div>
         ))
       }
@@ -51,7 +67,9 @@ const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
         >
       </li>
     </ul>
-    <p class="copyright">&copy; 2026 Computing Science Student Society. All rights reserved.</p>
+    <p class="copyright">
+      &copy; {currentYear} Computing Science Student Society. All rights reserved.
+    </p>
   </div>
 </footer>
 

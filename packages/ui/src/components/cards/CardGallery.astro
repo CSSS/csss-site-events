@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import type { Polymorphic } from 'astro/types';
+import { getBrandColour } from '../../common.data';
+import type { CardItem } from '../../types';
+import LabelCard from './LabelCard.astro';
+
+type GalleryElement = 'nav' | 'section';
+
+type Props<Tag extends GalleryElement> = Polymorphic<{ as: Tag }> & {
+  items: CardItem[];
+  loading?: 'lazy' | 'eager';
+  minWidth?: number;
+  maxWidth?: number;
+  quality?: number | 'max' | 'high' | 'mid' | 'low';
+};
+
+const {
+  as: Gallery = 'section',
+  class: className,
+  items,
+  loading = 'lazy',
+  minWidth = 160,
+  maxWidth = 400,
+  quality = 'high',
+  ...props
+} = Astro.props as Props<GalleryElement>;
+
+const gridWidthVariables = `--minWidth: ${minWidth}px; --maxWidth: ${maxWidth}px;`;
+---
+
+<Gallery class:list={[className]} {...props}>
+  <ul class="card-gallery" style={gridWidthVariables}>
+    {
+      items.map((item, index) => {
+        const card = (
+          <LabelCard class="card image-reveal" label={item.label} colour={getBrandColour(index)}>
+            <Image
+              class="card__img"
+              src={item.img}
+              alt={item.label}
+              loading={loading}
+              quality={quality}
+              width={maxWidth}
+            />
+          </LabelCard>
+        );
+
+        return <li>{item.href ? <a href={item.href}>{card}</a> : card}</li>;
+      })
+    }
+  </ul>
+</Gallery>
+
+<style>
+  li {
+    list-style: none;
+  }
+
+  .card,
+  a {
+    height: 100%;
+  }
+
+  a {
+    display: block;
+  }
+
+  .card__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card-gallery {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(
+      var(--card-grid-columns),
+      minmax(var(--minWidth), var(--maxWidth))
+    );
+    gap: var(--content-gap);
+  }
+
+  @media (min-width: 35rem) {
+    .card-gallery {
+      --card-grid-columns: 2;
+    }
+  }
+
+  @media (min-width: 70rem) {
+    .card-gallery {
+      --card-grid-columns: 4;
+    }
+  }
+</style>

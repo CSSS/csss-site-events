@@ -17,6 +17,10 @@ export const navItems: NavItem[] = [
   {
     label: 'Sponsors',
     href: '#sponsors'
+  },
+  {
+    label: 'FAQ',
+    href: '#faq'
   }
 ];
 

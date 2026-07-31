@@ -1,0 +1,46 @@
+@layer base {
+  :root {
+    --font-body: 'Ancizar Serif', serif;
+    --font-navbar: 'Cal Sans', sans-serif;
+    --font-title: 'Boldonse', sans-serif;
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-fancy: 'Cal Sans', sans-serif;
+
+    --font-size-heading-1: var(--font-size-8);
+    --font-size-heading-2: var(--font-size-6);
+    --font-size-heading-3: var(--font-size-5);
+    --font-size-body: var(--font-size-4);
+
+    --site-content-width: 60rem;
+    --site-breakout-width: 60rem;
+    --breakout-width: 0rem;
+
+    --border-radius-default: 18px;
+    --border-default: 1px solid var(--clr-surface-inverse);
+  }
+}
+
+@layer theme {
+  :root {
+    --csss-brand-cream: hsl(55, 44%, 89%);
+    --csss-brand-teal: hsl(166, 57%, 43%);
+
+    --clr-surface-base: var(--csss-brand-cream);
+    --clr-surface-inverse: var(--csss-brand-grey);
+    --clr-text-primary: var(--csss-brand-black);
+    --clr-text-inverse: var(--csss-brand-cream);
+    --clr-surface-hover: var(--csss-brand-grey);
+    --clr-border-default: hsl(0, 0%, 0%, 0.15);
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4 {
+    font-weight: var(--font-weight-bold);
+  }
+}

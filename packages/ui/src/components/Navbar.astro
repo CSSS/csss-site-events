@@ -1,6 +1,7 @@
 ---
+import { ExternalLink, Menu, X } from '@lucide/astro';
+
 import type { NavItem } from '../types';
-import { Menu, X, ChevronDown } from '@lucide/astro';
 
 interface Props {
   title: string;
@@ -8,14 +9,22 @@ interface Props {
 }
 
 const { title, items = [] } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+function resolveHref(href: string) {
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(href)) return href;
+  if (href.startsWith('#')) return `${baseUrl}${href}`;
+  return `${baseUrl}${href.replace(/^\.?\//, '')}`;
+}
 ---
 
-<header class="navbar">
+<header class="navbar" transition:persist="site-navbar">
   <div class="navbar__content">
-    <a class="navbar__left" href="#">
-      <slot name="icon" />
-      <span class="navbar__title">{title}</span>
-    </a>
+    <div class="navbar__left">
+      <a class="navbar__title chip" href={baseUrl}>{title}</a>
+    </div>
     <nav class="navbar__nav" id="navbar-menu">
       <div class="navbar__menu-header">
         <button class="navbar__close" type="button" aria-label="Close navigation">
@@ -24,83 +33,132 @@ const { title, items = [] } = Astro.props;
       </div>
       <ul class="navbar__list">
         {
-          items.map(item => (
-            <li>
-              {'href' in item ? (
-                <a class="navbar__link" href={item.href}>
-                  {item.label}
-                </a>
-              ) : (
-                <div class="dropdown">
-                  <button class="navbar__link">
+          items.map(item => {
+            return (
+              <li>
+                {'href' in item ? (
+                  <a
+                    class="navbar__link"
+                    href={resolveHref(item.href)}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                  >
                     {item.label}
-                    <ChevronDown size={16} />
-                  </button>
-                  <ul class="dropdown__menu">
-                    {item.children.map(child => (
-                      <li>
-                        {'href' in child ? (
-                          <a class="navbar__link" href={child.href}>
-                            {child.label}
-                          </a>
-                        ) : (
-                          <span class="navbar__link">{child.label}</span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </li>
-          ))
+                    {item.external && <ExternalLink size={14} aria-hidden="true" />}
+                  </a>
+                ) : (
+                  <Fragment>
+                    <div class="dropdown dropdown--mobile">
+                      <button class="navbar__link" type="button" aria-expanded="false">
+                        {item.label}
+                      </button>
+                      <ul class="dropdown__menu">
+                        {item.children.map(child => (
+                          <li>
+                            {'href' in child ? (
+                              <a
+                                class="navbar__link"
+                                href={resolveHref(child.href)}
+                                target={child.external ? '_blank' : undefined}
+                                rel={child.external ? 'noopener noreferrer' : undefined}
+                              >
+                                {child.label}
+                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                              </a>
+                            ) : (
+                              <span class="navbar__link">{child.label}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div class="dropdown dropdown--desktop">
+                      <button class:list={['navbar__link', 'chip']} type="button">
+                        {item.label}
+                      </button>
+                      <ul class="dropdown__menu">
+                        {item.children.map(child => (
+                          <li>
+                            {'href' in child ? (
+                              <a
+                                class="navbar__link"
+                                href={resolveHref(child.href)}
+                                target={child.external ? '_blank' : undefined}
+                                rel={child.external ? 'noopener noreferrer' : undefined}
+                              >
+                                {child.label}
+                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                              </a>
+                            ) : (
+                              <span class="navbar__link">{child.label}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Fragment>
+                )}
+              </li>
+            );
+          })
         }
       </ul>
     </nav>
-    <div class="navbar__right">
-      <button
-        class="navbar__toggle"
-        type="button"
-        aria-controls="navbar-menu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <Menu />
-      </button>
-    </div>
+    <button
+      class="navbar__toggle"
+      type="button"
+      aria-controls="navbar-menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <Menu />
+    </button>
   </div>
 </header>
 
 <script>
-  const navbar = document.querySelector('.navbar') as HTMLElement;
-  const toggleButton = navbar.querySelector('.navbar__toggle') as HTMLButtonElement | null;
-  const closeButton = navbar.querySelector('.navbar__close') as HTMLButtonElement | null;
-  const navLinks = navbar.querySelectorAll('a.navbar__link');
-  const dropdownButtons = navbar.querySelectorAll('.dropdown > button');
+  const navbar = document.querySelector<HTMLElement>('.navbar');
+
+  if (!navbar) {
+    throw new Error('Navbar script could not find the navbar element.');
+  }
+  const navbarElement = navbar;
+  const toggleButton = navbarElement.querySelector('.navbar__toggle') as HTMLButtonElement | null;
+  const closeButton = navbarElement.querySelector('.navbar__close') as HTMLButtonElement | null;
+  const navLinks = navbarElement.querySelectorAll<HTMLAnchorElement>('a.navbar__link');
+  const dropdownButtons = navbarElement.querySelectorAll<HTMLButtonElement>(
+    '.dropdown--mobile > button'
+  );
+  const desktopDropdowns = navbarElement.querySelectorAll<HTMLElement>('.dropdown--desktop');
 
   function closeMenu() {
-    navbar.classList.add('navbar--menu-animate');
-    navbar.classList.remove('navbar--menu-open');
+    navbarElement.classList.add('navbar--menu-animate');
+    navbarElement.classList.remove('navbar--menu-open');
     toggleButton?.setAttribute('aria-expanded', 'false');
   }
 
-  // If the user has scrolled down the navbar recedes a bit
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      navbar.classList.toggle('navbar--scrolled', !entry.isIntersecting);
-    },
-    { threshold: 0 }
-  );
+  let isNavigating = false;
 
-  const sentinel = document.createElement('div');
-  sentinel.style.position = 'absolute';
-  sentinel.style.top = '0';
-  document.body.prepend(sentinel);
-  observer.observe(sentinel);
+  const updateScrolledState = () => {
+    if (!isNavigating) {
+      navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
+    }
+  };
+
+  updateScrolledState();
+  window.addEventListener('scroll', updateScrolledState, { passive: true });
+  document.addEventListener('astro:before-preparation', () => {
+    isNavigating = true;
+  });
+  document.addEventListener('astro:page-load', () => {
+    isNavigating = false;
+    updateScrolledState();
+  });
 
   if (toggleButton) {
     toggleButton.addEventListener('click', () => {
-      navbar.classList.add('navbar--menu-animate');
-      const isOpen = navbar.classList.toggle('navbar--menu-open');
+      navbarElement.classList.add('navbar--menu-animate');
+      const isOpen = navbarElement.classList.toggle('navbar--menu-open');
       toggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
@@ -108,12 +166,36 @@ const { title, items = [] } = Astro.props;
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeMenu();
+      const desktopDropdown = link.closest('.dropdown--desktop');
+      if (desktopDropdown) {
+        desktopDropdown.classList.add('dropdown--dismissed');
+        link.blur();
+      }
+    });
+  });
+
+  desktopDropdowns.forEach(dropdown => {
+    const triggerButton = dropdown.querySelector<HTMLButtonElement>(':scope > button');
+
+    dropdown.addEventListener('pointerleave', () => {
+      dropdown.classList.remove('dropdown--dismissed');
+    });
+
+    triggerButton?.addEventListener('focus', () => {
+      dropdown.classList.remove('dropdown--dismissed');
+    });
+
+    triggerButton?.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      triggerButton.blur();
     });
   });
 
   dropdownButtons.forEach(button => {
     button.addEventListener('click', () => {
-      button.closest('.dropdown')?.classList.toggle('dropdown--open');
+      const dropdown = button.closest('.dropdown--mobile');
+      const isOpen = dropdown?.classList.toggle('dropdown--open') ?? false;
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
 
@@ -124,35 +206,46 @@ const { title, items = [] } = Astro.props;
   }
 
   const resetMenuForViewport = () => {
-    navbar.classList.remove('navbar--menu-open');
-    navbar.classList.remove('navbar--menu-animate');
+    navbarElement.classList.remove('navbar--menu-open');
+    navbarElement.classList.remove('navbar--menu-animate');
     toggleButton?.setAttribute('aria-expanded', 'false');
-    navbar.querySelectorAll('.dropdown--open').forEach(dropdown => {
+    navbarElement.querySelectorAll('.dropdown--open').forEach(dropdown => {
       dropdown.classList.remove('dropdown--open');
     });
+    desktopDropdowns.forEach(dropdown => dropdown.classList.remove('dropdown--dismissed'));
+    dropdownButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
   };
 
-  window.matchMedia('(max-width: 36rem)').addEventListener('change', resetMenuForViewport);
+  window.matchMedia('(max-width: 48rem)').addEventListener('change', resetMenuForViewport);
 </script>
 
 <style>
   .navbar {
-    --nav-clr-bg: var(--clr-surface-base);
-    --nav-clr-fg: var(--clr-surface-inverse);
-    --menu-clr-bg: var(--clr-surface-inverse);
-    --menu-clr-fg: var(--clr-surface-base);
+    /* Navbar colour controls */
+    --navbar-clr-bg: var(--clr-surface-base);
+    --navbar-clr-text: var(--clr-surface-inverse);
+    --navbar-clr-border: var(--clr-surface-inverse);
+    --navbar-clr-scrolled-border: var(--csss-brand-grey);
+    --navbar-clr-control-hover-bg: var(--clr-surface-inverse);
+    --navbar-clr-control-hover-text: var(--clr-text-inverse);
+    --navbar-clr-dropdown-bg: var(--clr-surface-base);
+    --navbar-clr-dropdown-hover-bg: var(--csss-brand-black);
+    --navbar-clr-dropdown-hover-text: var(--clr-text-inverse);
+
+    --navbar-font-size: var(--font-size-2);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: var(--navbar-z-index);
     width: 100vw;
-    background-color: var(--nav-clr-bg);
-    color: var(--nav-clr-fg);
+    background-color: var(--navbar-clr-bg);
+    color: var(--navbar-clr-text);
     height: var(--navbar-height);
+    border-bottom: 1.5px solid transparent;
     transition:
       height var(--animation-duration-regular) ease,
-      box-shadow var(--animation-duration-regular) ease;
+      border-color var(--animation-duration-regular) ease;
     padding: 0 var(--sp-2);
 
     display: flex;
@@ -164,8 +257,7 @@ const { title, items = [] } = Astro.props;
     justify-content: space-between;
     align-items: center;
     gap: var(--sp-6);
-    width: 100%;
-    max-width: var(--site-content-width);
+    width: var(--site-breakout-width);
   }
 
   .navbar__nav {
@@ -175,10 +267,9 @@ const { title, items = [] } = Astro.props;
     width: 16.5rem;
     max-width: 100vw;
     height: 100vh;
-    background-color: var(--menu-clr-bg);
+    background-color: var(--navbar-clr-dropdown-bg);
     transform: translateX(100%);
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     gap: var(--sp-4);
     padding: var(--sp-6);
@@ -192,14 +283,13 @@ const { title, items = [] } = Astro.props;
 
   .navbar--menu-open .navbar__nav {
     transform: translateX(0);
-    color: var(--clr-surface-base);
+    color: var(--navbar-clr-text);
+    border-left: 1px solid var(--navbar-clr-border);
   }
 
   .navbar--scrolled {
     height: var(--navbar-height-scrolled);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --nav-clr-bg: var(--clr-surface-inverse);
-    --nav-clr-fg: var(--clr-surface-base);
+    border-bottom-color: var(--navbar-clr-scrolled-border);
   }
 
   .navbar__left {
@@ -209,15 +299,18 @@ const { title, items = [] } = Astro.props;
   }
 
   .navbar__title {
-    font-size: var(--font-size-3);
-    font-family: var(--font-title);
+    font-size: var(--navbar-font-size);
+    font-family: var(--font-navbar);
+    font-weight: var(--font-weight-regular);
     white-space: nowrap;
   }
 
+  .navbar__title:hover {
+    color: var(--navbar-clr-control-hover-text);
+    background-color: var(--navbar-clr-control-hover-bg);
+  }
+
   .navbar__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -225,21 +318,32 @@ const { title, items = [] } = Astro.props;
   }
 
   .navbar__link {
-    font-family: var(--font-heading);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-family: var(--font-navbar);
     font-weight: var(--font-weight-regular);
+    font-size: var(--navbar-font-size);
     text-decoration: none;
-    color: var(--menu-clr-fg);
+    color: var(--navbar-clr-text);
   }
 
   .dropdown {
     position: relative;
   }
 
+  .dropdown--desktop {
+    display: none;
+  }
+
   .dropdown button {
     background: none;
-    border: none;
     cursor: pointer;
-    font-size: inherit;
+    font-size: var(--navbar-font-size);
+  }
+
+  .dropdown--open .dropdown__menu {
+    display: flex;
   }
 
   .dropdown__menu {
@@ -247,37 +351,35 @@ const { title, items = [] } = Astro.props;
     top: 100%;
     left: 0;
     flex-direction: column;
-    gap: 0;
     min-width: 10rem;
-    padding: 0 var(--sp-2);
-    background-color: var(--clr-surface-inverse);
-  }
-
-  .dropdown--open .dropdown__menu {
-    display: flex;
+    overflow: hidden;
+    gap: var(--sp-2);
+    margin-top: var(--sp-2);
   }
 
   .dropdown__menu li {
     width: 100%;
-    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown__menu li:is(:hover, :focus-within) {
+    background-color: var(--navbar-clr-dropdown-hover-bg);
+  }
+
+  .dropdown__menu li:is(:hover, :focus-within) > .navbar__link {
+    color: var(--navbar-clr-dropdown-hover-text);
   }
 
   .dropdown__menu a {
-    display: block;
-    padding: var(--sp-2) 0rem;
-    white-space: nowrap;
-  }
-
-  .navbar__right {
     display: flex;
-    justify-content: flex-end;
+    width: 100%;
+    padding: var(--sp-2);
+    white-space: nowrap;
   }
 
   .navbar__toggle {
     display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.35rem;
     padding: var(--sp-2);
     background: none;
     border: none;
@@ -302,10 +404,13 @@ const { title, items = [] } = Astro.props;
     color: inherit;
   }
 
-  @media (min-width: 36rem) {
+  ExternalLink {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media (min-width: 48rem) {
     .navbar {
-      --menu-clr-bg: var(--clr-surface-base);
-      --menu-clr-fg: var(--clr-surface-inverse);
       justify-content: center;
       padding: 0;
     }
@@ -313,7 +418,6 @@ const { title, items = [] } = Astro.props;
     .navbar__content {
       display: grid;
       grid-template-columns: 1fr 2fr 0;
-      max-width: var(--site-content-width);
       padding: 0 var(--sp-4);
     }
 
@@ -323,7 +427,6 @@ const { title, items = [] } = Astro.props;
       max-width: none;
       height: auto;
       transform: none;
-      padding: 0;
       background-color: transparent;
       justify-content: center;
       overflow: visible;
@@ -344,20 +447,55 @@ const { title, items = [] } = Astro.props;
       display: none;
     }
 
-    .navbar--scrolled {
-      --menu-clr-bg: var(--clr-surface-inverse);
-      --menu-clr-fg: var(--clr-surface-base);
-    }
-
     .dropdown__menu {
       position: absolute;
-      background-color: var(--menu-clr-bg);
-      border: 1px solid var(--menu-clr-fg);
+      top: calc(100% + var(--sp-1));
+      margin-top: 0;
+      background-color: var(--navbar-clr-dropdown-bg);
+      border: 1px solid var(--navbar-clr-border);
+      border-radius: var(--border-radius-default);
     }
 
-    .dropdown:hover .dropdown__menu,
-    .dropdown:focus-within .dropdown__menu {
+    .dropdown--mobile {
+      display: none;
+    }
+
+    .dropdown--desktop {
+      display: block;
+    }
+
+    .dropdown--desktop > button.navbar__link {
+      position: relative;
+    }
+
+    .dropdown--desktop > button.navbar__link::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: var(--sp-2);
+      pointer-events: none;
+    }
+
+    .dropdown--desktop:hover > button.navbar__link::after,
+    .dropdown--desktop:focus-within > button.navbar__link::after {
+      pointer-events: auto;
+    }
+
+    .dropdown--desktop:hover .dropdown__menu,
+    .dropdown--desktop:focus-within .dropdown__menu {
       display: flex;
+    }
+
+    .dropdown--desktop:hover > button.navbar__link,
+    .dropdown--desktop:focus-within > button.navbar__link {
+      color: var(--navbar-clr-control-hover-text);
+      background-color: var(--navbar-clr-control-hover-bg);
+    }
+
+    .dropdown--desktop.dropdown--dismissed .dropdown__menu {
+      display: none;
     }
   }
 </style>

@@ -2,6 +2,7 @@
 set -e
 
 UI_DIR="@csss-site-events/ui"
+FAVICON_DIR="packages/ui/assets/favicons"
 
 EVENT=$1 # e.g. fall-hacks, frosh, madness, tech-fair
 YEAR=$2  # e.g. 2026
@@ -51,7 +52,7 @@ cat >"$DIR/package.json" <<EOF
   },
   "dependencies": {
     "$UI_DIR": "*",
-    "astro": "^6.0.0"
+    "astro": "^7.0.0"
   }
 }
 EOF
@@ -105,7 +106,7 @@ import type { NavItem, SiteConfig } from '$UI_DIR/types';
 export const navItems: NavItem[] = [
   {
     label: 'Link',
-    href: '/$EVENT/$YEAR'
+    href: '#content'
   },
   {
     label: 'Dropdown',
@@ -130,14 +131,13 @@ EOF
 cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
 import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import Footer from '$UI_DIR/components/Footer.astro';
 import Hero from '$UI_DIR/components/Hero.astro';
 import Navbar from '$UI_DIR/components/Navbar.astro';
-import '$UI_DIR/styles/font-faces/ancizar-serif.css';
-import '$UI_DIR/styles/font-faces/boldonse.css';
 import '$UI_DIR/styles/font-faces/cal-sans.css';
-import ancizarSerifFont from '$UI_DIR/assets/fonts/ancizar-serif-v8-latin-regular.woff2?url';
-import boldonseFont from '$UI_DIR/assets/fonts/boldonse-v1-latin-regular.woff2?url';
+import '$UI_DIR/styles/font-faces/geist-mono.css';
 import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
+import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import { navItems, siteConfig } from '../config/site.data';
 
 interface Props {
@@ -153,9 +153,8 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <BaseLayout pageTitle={title} description={siteConfig.description}>
   <Fragment slot="head">
-    <link rel="preload" href={ancizarSerifFont} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={boldonseFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistMonoRegularFont} as="font" type="font/woff2" crossorigin />
   </Fragment>
   <Navbar title={title} items={navItems} />
   {
@@ -170,7 +169,7 @@ const hasHero = heroImage || Astro.slots.hero;
   <main>
     <slot />
   </main>
-  <footer></footer>
+  <Footer config={siteConfig} navItems={navItems} />
 </BaseLayout>
 
 <style>
@@ -195,9 +194,17 @@ import { siteConfig } from '../config/site.data';
 ---
 
 <Layout title={siteConfig.title}>
-  <h1>{siteConfig.title}</h1>
+  <h1 id="content">{siteConfig.title}</h1>
 </Layout>
 EOF
+
+cp "$FAVICON_DIR/apple-touch-icon.png" "$DIR/public/apple-touch-icon.png"
+cp "$FAVICON_DIR/favicon-96x96.png" "$DIR/public/favicon-96x96.png"
+cp "$FAVICON_DIR/favicon.ico" "$DIR/public/favicon.ico"
+cp "$FAVICON_DIR/favicon.svg" "$DIR/public/favicon.svg"
+cp "$FAVICON_DIR/site.webmanifest" "$DIR/public/site.webmanifest"
+cp "$FAVICON_DIR/web-app-manifest-192x192.png" "$DIR/public/web-app-manifest-192x192.png"
+cp "$FAVICON_DIR/web-app-manifest-512x512.png" "$DIR/public/web-app-manifest-512x512.png"
 
 # robots.txt
 # Sitemap is generated when the site is built

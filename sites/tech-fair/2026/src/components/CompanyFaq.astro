@@ -1,5 +1,5 @@
 ---
-import Button from '@csss-site-events/ui/components/Button.astro';
+import Button from '@csss-site-events/ui/components/buttons/Button.astro';
 import DialogueInfo from './DialogueInfo.astro';
 import EmailButton from '@csss-site-events/ui/components/buttons/EmailButton.astro';
 import Section from '@csss-site-events/ui/components/Section.astro';
@@ -28,6 +28,10 @@ const sections: Dialogue[] = [
       'Your participation helps foster career development and strengthen ties between academia and industry that helps reinforce your reputation as a company that invests in future talent.'
   }
 ];
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <Section id="sponsors" title="Calling All Tech Companies!">
@@ -36,7 +40,7 @@ const sections: Dialogue[] = [
   <div slot="footer">
     <h3>Learn more!</h3>
     <div class="buttons">
-      <Button href={`${import.meta.env.BASE_URL}tech-fair-2026-sponsorship.pdf`} tone="blue">
+      <Button href={`${baseUrl}tech-fair-2026-sponsorship.pdf`} tone="blue">
         <FileText />Sponsor Pack
       </Button>
       <EmailButton address="csss-techfair@sfu.ca" tone="red" />

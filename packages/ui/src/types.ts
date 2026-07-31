@@ -1,4 +1,4 @@
-import { ImageMetadata } from 'astro';
+import type { ImageMetadata } from 'astro';
 import { brandColours } from './common.data';
 
 /**
@@ -8,6 +8,7 @@ export type NavItem =
   | {
       label: string;
       href: string;
+      external?: boolean;
     }
   | {
       label: string;
@@ -15,6 +16,12 @@ export type NavItem =
     };
 
 export type BrandColour = (typeof brandColours)[number];
+
+export interface CardItem {
+  label: string;
+  href?: string;
+  img: ImageMetadata;
+}
 
 /**
  * The configuration for a website.

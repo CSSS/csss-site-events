@@ -1,30 +1,17 @@
 ---
-import Button from '../Button.astro';
 import { Mail } from '@lucide/astro';
+import type { BrandColour } from '../../types';
+import Button from './Button.astro';
 
 interface Props {
   address: string;
-  type?: 'button' | 'submit' | 'reset';
-  variant?: 'solid' | 'outline' | 'ghost';
-  tone?: 'blue' | 'pink' | 'red' | 'green';
-  size?: 'sm' | 'md' | 'lg';
-  target?: '_blank' | '_self' | '_parent' | '_top';
-  rel?: string;
+  tone?: BrandColour;
   class?: string;
 }
 
-const {
-  address,
-  type = 'button',
-  variant = 'solid',
-  tone = 'blue',
-  size = 'md',
-  rel,
-  class: className,
-  ...rest
-} = Astro.props;
+const { address, tone = 'blue', class: className, ...rest } = Astro.props;
 ---
 
-<Button target="_blank" href={`mailto:${address}`} tone={tone} {...rest}
-  ><Mail /><slot>Email</slot></Button
->
+<Button class:list={[className]} target="_blank" href={`mailto:${address}`} tone={tone} {...rest}>
+  <Mail /><slot>Email</slot>
+</Button>

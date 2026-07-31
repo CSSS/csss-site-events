@@ -1,10 +1,12 @@
 ---
-import Seo from '../components/Seo.astro';
-import { getImage } from 'astro:assets';
-import brandTexture from '../../assets/images/brand-texture-primary.png';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/theme.css';
+
+import type { ImageMetadata } from 'astro';
+import { ClientRouter } from 'astro:transitions';
+
+import Seo from '../components/Seo.astro';
 
 interface Props {
   pageTitle: string;
@@ -14,12 +16,13 @@ interface Props {
 }
 
 const { pageTitle, description, image, noindex = false } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
-const optimizedBrandTexture = await getImage({ src: brandTexture, format: 'avif', quality: 'low' });
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
-<!-- Optimization done so that the texture doesn't cause more style attributes to be generated -->
-<html lang="en" style={`--csss-texture-bg: url(${optimizedBrandTexture.src})`}>
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,10 +33,83 @@ const optimizedBrandTexture = await getImage({ src: brandTexture, format: 'avif'
     <meta name="apple-mobile-web-app-title" content="CSSS" />
     <link rel="manifest" href={`${baseUrl}site.webmanifest`} />
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
-    <!-- For any extra meta tags a page may need -->
     <slot name="head" />
+    <ClientRouter fallback="swap" />
   </head>
   <body>
     <slot />
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      let revealContext: ReturnType<typeof gsap.context> | undefined;
+      let revealGeneration = 0;
+
+      function initializeScrollReveals() {
+        const generation = ++revealGeneration;
+        revealContext?.revert();
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          revealContext = undefined;
+          return;
+        }
+
+        revealContext = gsap.context(context => {
+          const elements = gsap.utils.toArray<HTMLElement>('.image-reveal');
+          const imageReady = new WeakMap<Element, Promise<void>>();
+
+          elements.forEach(element => {
+            const images = element.querySelectorAll<HTMLImageElement>('img');
+            const ready = Promise.all(
+              Array.from(images, image =>
+                image.decode().catch(() => {
+                  // A failed decode should not prevent its card from appearing.
+                })
+              )
+            ).then(() => undefined);
+
+            imageReady.set(element, ready);
+          });
+
+          gsap.set(elements, { autoAlpha: 0, y: 12 });
+          ScrollTrigger.batch(elements, {
+            start: 'top 90%',
+            onEnter: async (batch, triggers) => {
+              triggers.forEach(trigger => trigger.kill());
+
+              await Promise.all(batch.map(element => imageReady.get(element)));
+
+              if (generation !== revealGeneration) return;
+
+              const connectedBatch = batch.filter(element => element.isConnected);
+              if (connectedBatch.length === 0) return;
+
+              context.add(() => {
+                gsap.set(connectedBatch, { willChange: 'transform,opacity' });
+                gsap.to(connectedBatch, {
+                  autoAlpha: 1,
+                  y: 0,
+                  duration: 0.5,
+                  ease: 'power2.out',
+                  stagger: 0.1,
+                  clearProps: 'transform,opacity,visibility,willChange'
+                });
+              });
+            }
+          });
+        });
+
+        ScrollTrigger.refresh();
+      }
+
+      document.addEventListener('astro:before-swap', () => {
+        revealGeneration += 1;
+        revealContext?.revert();
+        revealContext = undefined;
+      });
+      document.addEventListener('astro:page-load', initializeScrollReveals);
+    </script>
   </body>
 </html>

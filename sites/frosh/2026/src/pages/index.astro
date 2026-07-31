@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '@csss-site-events/ui/components/Section.astro';
-import Button from '@csss-site-events/ui/components/Button.astro';
+import Button from '@csss-site-events/ui/components/buttons/Button.astro';
 import { siteConfig } from '../config/site.data';
 import Faq from '../components/Faq.astro';
 import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
@@ -9,6 +9,10 @@ import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
 import { socialLinks } from '@csss-site-events/ui/common.data';
 import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
 import { Mail } from '@lucide/astro';
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <Layout title="Frosh 2026" heroImage={win} heroAlt="Hero">
@@ -29,10 +33,10 @@ import { Mail } from '@lucide/astro';
     > to <strong>{siteConfig.endDate}th</strong>. This year's Frosh is inspired by TODO.
     <Fragment slot="footer">
       <p>Button test</p>
-      <Button href="/" variant="solid">Solid</Button>
-      <Button href="/" variant="outline" tone="pink">Outline</Button>
-      <Button href="/" variant="ghost" tone="green">Ghost</Button>
-      <Button href="/" variant="solid" tone="red">Solid</Button>
+      <Button href={baseUrl} variant="solid">Solid</Button>
+      <Button href={baseUrl} variant="outline" tone="pink">Outline</Button>
+      <Button href={baseUrl} variant="ghost" tone="teal">Ghost</Button>
+      <Button href={baseUrl} variant="solid" tone="red">Solid</Button>
     </Fragment>
   </Section>
   <Section title="Who's organizing this?">
@@ -48,8 +52,8 @@ import { Mail } from '@lucide/astro';
       >bi-weekly board game nights</strong
     >, <strong>hikes</strong>, <strong>seasonal parties</strong>, and more!
     <Fragment slot="footer">
-      <Button href={socialLinks.discordHref} variant="solid"><DiscordIcon />Discord</Button>
-      <Button href="/registration" variant="solid"><CsssIcon />Waiver</Button>
+      <Button href={socialLinks.discord} variant="solid"><DiscordIcon />Discord</Button>
+      <Button href={`${baseUrl}registration`} variant="solid"><CsssIcon />Waiver</Button>
     </Fragment>
   </Section>
   <Section id="schedule" title="Schedule">
