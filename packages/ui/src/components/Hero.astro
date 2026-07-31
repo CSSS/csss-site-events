@@ -12,7 +12,8 @@ const { image, isFullHeight, bgColor, alt = '' } = Astro.props;
 const hasContent = Astro.slots.has('default');
 ---
 
-<section class:list={['hero', `hero${isFullHeight ? '--full-height' : ''}`]}
+<section
+  class:list={[`hero${isFullHeight ? '--full-height' : ''}`]}
   style={bgColor ? `background-color: ${bgColor};` : undefined}
 >
   {image && <Image class="hero__image" src={image} alt={alt} />}
@@ -21,20 +22,18 @@ const hasContent = Astro.slots.has('default');
 
 <style>
   @layer base {
-    .hero {
+    .hero,
+    .hero--full-height {
       position: relative;
       width: 100vw;
-      height: 10svh;
       overflow: hidden;
       margin-bottom: var(--section-gap);
-      height: calc(100svh - var(--navbar-height));
+      min-height: calc(100svh - var(--navbar-height));
     }
 
-    .hero--full-height > .hero__image {
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
+    .hero--full-height > hero__image {
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero__image {

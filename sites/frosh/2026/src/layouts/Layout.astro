@@ -14,10 +14,11 @@ interface Props {
   title: string;
   heroImage?: ImageMetadata;
   heroAlt?: string;
+  heroBgColour?: string;
   isFullHeightHero?: boolean;
 }
 
-const { title, heroImage, heroAlt, isFullHeightHero = false } = Astro.props;
+const { title, heroImage, heroAlt, heroBgColour, isFullHeightHero = false } = Astro.props;
 const hasHero = heroImage || Astro.slots.hero;
 ---
 
@@ -29,7 +30,7 @@ const hasHero = heroImage || Astro.slots.hero;
   <Navbar title={title} items={navItems} />
   {
     hasHero ? (
-      <Hero image={heroImage} alt={heroAlt} isFullHeight={isFullHeightHero}>
+      <Hero image={heroImage} alt={heroAlt} isFullHeight={isFullHeightHero} bgColor={heroBgColour}>
         <slot name="hero" />
       </Hero>
     ) : (
@@ -44,7 +45,8 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <style>
   main {
-    gap: var(--section-gap);
+    width: 100%;
+    row-gap: var(--section-gap);
     padding: var(--sp-6) 0;
   }
 </style>

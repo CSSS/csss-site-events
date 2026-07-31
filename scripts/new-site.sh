@@ -175,7 +175,7 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <style>
   main {
-    gap: var(--section-gap);
+    row-gap: var(--section-gap);
     padding: var(--sp-6);
   }
 

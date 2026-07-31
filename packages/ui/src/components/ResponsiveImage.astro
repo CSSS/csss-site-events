@@ -1,0 +1,66 @@
+---
+import { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+interface Props {
+  smallSrc: string | ImageMetadata;
+  largeSrc: string | ImageMetadata;
+  alt: string;
+  imgWidths: [number, number];
+  imgHeights: [number, number];
+  breakpoint: number;
+  fullHeight?: boolean;
+  quality: number | 'max' | 'high' | 'm';
+  fetchPriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+
+const {
+  smallSrc,
+  largeSrc,
+  alt,
+  imgWidths,
+  imgHeights,
+  breakpoint,
+  fullHeight = false,
+  fetchPriority = 'auto',
+  quality = 80,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const smallImg = await getImage({
+  src: smallSrc,
+  format: 'webp',
+  width: imgWidths[0],
+  height: imgHeights[0],
+  quality,
+  fetchPriority
+});
+
+const largeImg = await getImage({
+  src: largeSrc,
+  format: 'webp',
+  width: imgWidths[1],
+  height: imgHeights[1],
+  quality,
+  fetchPriority
+});
+---
+
+<picture class:list={[className]} {...rest}>
+  <source media={`(max-width: ${breakpoint - 1}px)`} srcset={smallImg.src} />
+  <source media={`(min-width: ${breakpoint}px)`} srcset={largeImg.src} />
+  <img class:list={[fullHeight && 'full-height']} src={largeImg.src} alt={alt} />
+</picture>
+
+<style>
+  img {
+    width: 100%;
+  }
+
+  .full-height {
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

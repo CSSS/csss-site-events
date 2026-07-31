@@ -22,7 +22,7 @@
   --clr-surface-inverse: var(--clr-frosh-purple);
 
   --font-navbar-title: var(--font-title);
-  --font-size-navbar-title: var(--font-size-6);
+  --font-size-navbar-title: var(--font-size-5);
 }
 
 .navbar {

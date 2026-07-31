@@ -7,16 +7,29 @@ import Faq from '../components/Faq.astro';
 import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
 import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
 import { socialLinks } from '@csss-site-events/ui/common.data';
-import banner from '../assets/banner_full.png';
+import banner from '../assets/banner-full-standard.png';
+import bannerSmall from '../assets/banner-small-alt.png';
 import { Mail } from '@lucide/astro';
 import Schedule from '../components/Schedule.astro';
+import ResponsiveImage from '@csss-site-events/ui/components/ResponsiveImage.astro';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 ---
 
-<Layout title="Once Upon a Frosh" heroImage={banner} isFullHeightHero={true} heroAlt="Hero">
+<Layout title="Once Upon a Frosh" heroBgColour="#010101">
+  <ResponsiveImage
+    smallSrc={bannerSmall}
+    largeSrc={banner}
+    imgWidths={[1280, 1920]}
+    imgHeights={[1440, 1080]}
+    breakpoint={850}
+    quality={90}
+    alt="Frosh 2026 Banner"
+    fetchPriority="high"
+    slot="hero"
+  />
   <Section id="about" title="What's a FROSH?">
     <strong>FROSH Week</strong> is a series of events run by the Computing Science Student Society at
     Simon Fraser University in collaboration with the School of Computing Science.
