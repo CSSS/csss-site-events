@@ -1,0 +1,21 @@
+---
+import Section from '@csss-site-events/ui/components/Section.astro';
+import { siteConfig } from '../config/site.data';
+---
+
+<Section id="about" title="What's a FROSH?">
+  <strong>FROSH Week</strong> is a series of events run by the Computing Science Student Society at Simon
+  Fraser University in collaboration with the School of Computing Science.
+  <br />
+  <br />
+  FROSH Week occurs during the fall semester to welcome <strong>
+    hundreds of new undergraduate students
+  </strong> into the School of Computing Science with the help of 80+ volunteers. Starting a degree is
+  a pivotal moment in a student's academic journey, and Frosh Week helps forge lasting memories and strong
+  friendships.
+  <br />
+  <br />
+  {siteConfig.eventName} continues this tradition, running from <strong
+    >{siteConfig.startDate}th</strong
+  > to <strong>{siteConfig.endDate}th</strong>.
+</Section>
