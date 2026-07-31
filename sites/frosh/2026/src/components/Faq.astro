@@ -1,5 +1,8 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
+import Button from '@csss-site-events/ui/components/buttons/Button.astro';
+import GoogleIcon from '@csss-site-events/ui/icons/GoogleIcon.astro';
+import { FileText } from '@lucide/astro';
 ---
 
 <Section id="faq" title="Frequently Asked Questions">
@@ -64,6 +67,16 @@ import Section from '@csss-site-events/ui/components/Section.astro';
     >. Simply input the room number (e.g. ASB 9703), and it will highlight the room on an
     interactive campus map. This works for the Burnaby, Surrey, and Vancouver campuses.
   </p>
+  <h3>How do I sign up?</h3>
+  <p>RSVP for the event, fill out the waiver, and turn it in to us.</p>
+  <Fragment slot="footer">
+    <Button href="https://forms.gle/APXScQvi2jGoCSKb6" size="lg" target="_blank" variant="solid"
+      ><GoogleIcon />RSVP</Button
+    >
+    <Button href="sfss-frosh-2026-waiver.pdf" target="_blank" size="lg" variant="solid"
+      ><FileText />Waiver</Button
+    >
+  </Fragment>
 </Section>
 
 <style>

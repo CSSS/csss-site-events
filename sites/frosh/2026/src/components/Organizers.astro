@@ -1,13 +1,6 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
-import Button from '@csss-site-events/ui/components/buttons/Button.astro';
-import { socialLinks } from '@csss-site-events/ui/common.data';
-import DiscordIcon from '@csss-site-events/ui/icons/DiscordIcon.astro';
-import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
-
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+import DiscordButton from '@csss-site-events/ui/components/buttons/DiscordButton.astro';
 ---
 
 <Section title="Who's organizing this?">
@@ -23,7 +16,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     >bi-weekly board game nights</strong
   >, <strong>hikes</strong>, <strong>seasonal parties</strong>, and more!
   <Fragment slot="footer">
-    <Button href={socialLinks.discord} variant="solid"><DiscordIcon />Discord</Button>
-    <Button href={`${baseUrl}registration`} variant="solid"><CsssIcon />Waiver</Button>
+    <DiscordButton size="lg" />
   </Fragment>
 </Section>
