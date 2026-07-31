@@ -30,7 +30,7 @@ const isLocal = process.env.LOCAL === 'true';
 const isProd = process.env.NODE_ENV === 'production' && !isLocal;
 
 export default defineSiteConfig({
-  base: isProd ? '/' : '/$EVENT/$YEAR',
+  base: isProd ? '/' : '/$YEAR',
   site: 'https://$EVENT.sfucsss.org/$YEAR',
   outDir: './dist',
   build: {
