@@ -8,7 +8,7 @@ import '@csss-site-events/ui/styles/font-faces/geist-mono.css';
 import calSansFont from '@csss-site-events/ui/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
 import geistMonoRegularFont from '@csss-site-events/ui/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import { navItems, siteConfig } from '../config/site.data';
-import win from '@csss-site-events/ui/assets/images/placeholders/win.jpg';
+import '../styles.css';
 
 interface Props {
   title: string;
@@ -21,7 +21,7 @@ const { title, heroImage, heroAlt, isFullHeightHero = false } = Astro.props;
 const hasHero = heroImage || Astro.slots.hero;
 ---
 
-<BaseLayout pageTitle={title} description={siteConfig.description} image={win}>
+<BaseLayout pageTitle={title} description={siteConfig.description}>
   <Fragment slot="head">
     <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={geistMonoRegularFont} as="font" type="font/woff2" crossorigin />
@@ -36,7 +36,7 @@ const hasHero = heroImage || Astro.slots.hero;
       <slot name="hero" />
     )
   }
-  <main>
+  <main class="content-grid full-width">
     <slot />
   </main>
   <Footer config={siteConfig} navItems={navItems} />
@@ -44,11 +44,7 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <style>
   main {
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
     gap: var(--section-gap);
-    padding: var(--sp-6) var(--sp-2);
-    max-width: var(--site-content-width);
+    padding: var(--sp-6) 0;
   }
 </style>

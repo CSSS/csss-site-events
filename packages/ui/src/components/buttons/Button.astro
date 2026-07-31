@@ -16,9 +16,9 @@ interface Props {
 
 const {
   href,
+  tone,
   type = 'button',
   variant = 'solid',
-  tone = 'blue',
   size = 'md',
   fullWidth = false,
   disabled = false,
@@ -58,7 +58,7 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
       class:list={[
         'button',
         `button--${variant}`,
-        `button--${tone}`,
+        { tone: `button--${tone}` },
         `button--${size}`,
         fullWidth && 'button--full',
         disabled && 'button--disabled',
@@ -75,8 +75,8 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
 
 <style>
   .button {
-    --btn-accent: var(--clr-accent-blue);
-    --btn-accent-contrast: var(--clr-accent-blue-fg);
+    --btn-accent: var(--clr-primary-bg);
+    --btn-accent-contrast: var(--clr-primary-fg);
     --btn-border-width: 2px;
     --btn-border-radius: 10px;
 

@@ -10,7 +10,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const { tone = 'blue', class: className, size = 'md', ...rest } = Astro.props;
+const { tone, class: className, size = 'md', ...rest } = Astro.props;
 ---
 
 <Button

@@ -28,7 +28,7 @@ export const siteConfig: Frosh2026SiteConfig = {
   name: 'Frosh 2026',
   title: 'Frosh 2026',
   description: "Frosh Week 2026 hosted by SFU's Computing Science Student Society",
-  eventName: 'Frosh 2026',
-  startDate: 'September 8',
-  endDate: 'September 13'
+  eventName: 'Once Upon a Frosh',
+  startDate: 'September 14',
+  endDate: 'September 19'
 };

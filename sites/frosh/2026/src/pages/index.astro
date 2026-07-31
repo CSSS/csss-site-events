@@ -9,6 +9,7 @@ import CsssIcon from '@csss-site-events/ui/icons/CsssIcon.astro';
 import { socialLinks } from '@csss-site-events/ui/common.data';
 import banner from '../assets/banner_full.png';
 import { Mail } from '@lucide/astro';
+import Schedule from '../components/Schedule.astro';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
@@ -16,13 +17,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
 ---
 
 <Layout title="Once Upon a Frosh" heroImage={banner} isFullHeightHero={true} heroAlt="Hero">
-  <Section id="about" title="What's a Frosh?">
-    <strong>Frosh Week</strong> is a series of events run by the Computing Science Student Society at
+  <Section id="about" title="What's a FROSH?">
+    <strong>FROSH Week</strong> is a series of events run by the Computing Science Student Society at
     Simon Fraser University in collaboration with the School of Computing Science.
     <br />
     <br />
-    Frosh Week occurs during the fall semester to welcome <strong>
-      300+ new undergraduate students
+    FROSH Week occurs during the fall semester to welcome <strong>
+      hundreds of new undergraduate students
     </strong> into the School of Computing Science with the help of 80+ volunteers. Starting a degree
     is a pivotal moment in a student's academic journey, and Frosh Week helps forge lasting memories and
     strong friendships.
@@ -30,12 +31,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     <br />
     {siteConfig.eventName} continues this tradition, running from <strong
       >{siteConfig.startDate}th</strong
-    > to <strong>{siteConfig.endDate}th</strong>. This year's Frosh is inspired by TODO.
+    > to <strong>{siteConfig.endDate}th</strong>.
   </Section>
   <Section title="Who's organizing this?">
     The SFU <strong>Computing Science Student Society (CSSS)</strong> is a student-led organization supporting
     over
-    <strong>2,500 undergraduate computing science students</strong> at Simon Fraser University. All SFU
+    <strong> 2,500 undergraduate computing science students</strong> at Simon Fraser University. All SFU
     students—whether majoring, minoring, or just taking a computing science course—are automatically members.
     Everyone is welcome to get involved!
     <br />
@@ -49,20 +50,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
       <Button href={`${baseUrl}registration`} variant="solid"><CsssIcon />Waiver</Button>
     </Fragment>
   </Section>
-  <Section id="schedule" title="Schedule">
-    <strong>{siteConfig.eventName}</strong> is happening over 5 days (and one night) from <strong
-      >{siteConfig.startDate}</strong
-    > to <strong>{siteConfig.endDate}</strong>
-    <br />
-    <br />
-    There's something for everyone at Frosh, so we hope to see you at as many events as possible! If there
-    are any changes in the schedule, we will notify everyone through <strong>email</strong> and <strong
-      >announcements on Discord</strong
-    >, so make sure you've signed up or joined the server.
-    <br />
-    <br />
-    Here's a summary of what's to come:
-  </Section>
+  <Schedule />
   <Section id="sponsors" title="Sponsors">
     Every Frosh Week takes months of planning and wouldn't be possible without the CSSS executives
     and volunteers. There is one last piece to making Frosh a success: sponsors.

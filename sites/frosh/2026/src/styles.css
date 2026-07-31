@@ -1,0 +1,41 @@
+:root {
+  --clr-frosh-purple: hsl(244, 35%, 42%);
+  --clr-frosh-cream: hsl(60, 100%, 98%);
+  --clr-frosh-lavendar: hsl(240, 100%, 88%);
+  --clr-frosh-pink: hsl(340, 100%, 82%);
+  --clr-frosh-black: hsl(330, 30%, 11%);
+
+  --clr-surface-base: var(--clr-frosh-cream);
+  --clr-surface-inverse: var(--clr-frosh-black);
+  --clr-text-primary: var(--clr-frosh-black);
+  --clr-text-inverse: var(--clr-frosh-cream);
+  --clr-navbar-hover-fg: var(--clr-frosh-purple);
+
+  --clr-primary-bg: var(--clr-frosh-purple);
+  --clr-primary-fg: var(--clr-text-inverse);
+  --clr-secondary-bg: var(--clr-frosh-lavendar);
+  --clr-secondary-fg: var(--clr-text-inverse);
+  --clr-tertiary-bg: var(--clr-frosh-pink);
+  --clr-tertiary-fg: var(--clr-text-inverse);
+
+  --clr-link-inline: var(--clr-frosh-purple);
+  --clr-surface-inverse: var(--clr-frosh-purple);
+}
+
+.navbar {
+  --navbar-clr-bg: var(--clr-frosh-purple);
+  --navbar-clr-text: var(--clr-text-inverse);
+}
+
+body {
+  background-color: var(--clr-frosh-purple);
+}
+
+.hero {
+  margin-bottom: 0;
+}
+
+main,
+.hero {
+  background-color: var(--clr-surface-base);
+}

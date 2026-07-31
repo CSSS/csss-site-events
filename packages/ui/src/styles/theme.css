@@ -62,7 +62,7 @@
     --corner-radius: 10px;
     --border-radius-default: 15px;
     --border-radius-lg: 48px;
-    --border-default: 1.5px solid var(--clr-surface-inverse);
+    --border-default: 1.5px solid var(--clr-text-inverse);
     --card-grid-columns: 1;
 
     /* Height of the navbar header element */
@@ -171,7 +171,7 @@
     --clr-surface-inverse: var(--csss-brand-black);
     --clr-text-primary: var(--csss-brand-black);
     --clr-text-inverse: var(--csss-brand-cream);
-    --clr-surface-hover: var(--csss-brand-black);
+
     --clr-accent-blue: var(--csss-brand-blue);
     --clr-accent-blue-fg: var(--csss-brand-cream);
     --clr-accent-pink: var(--csss-brand-pink);
@@ -181,6 +181,8 @@
     --clr-accent-teal: var(--csss-brand-teal);
     --clr-accent-teal-fg: var(--csss-brand-cream);
     --clr-border-default: var(--csss-brand-black);
+    --clr-navbar-hover-bg: var(--clr-surface-base);
+    --clr-navbar-hover-fg: var(--clr-text-primary);
 
     --chip-padding-inline: 0.75rem;
     --chip-padding-block: 0.25rem;

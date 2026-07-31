@@ -167,7 +167,7 @@ const hasHero = heroImage || Astro.slots.hero;
       <slot name="hero" />
     )
   }
-  <main>
+  <main class="content-grid full-width">
     <slot />
   </main>
   <Footer config={siteConfig} navItems={navItems} />
@@ -175,10 +175,8 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <style>
   main {
-    display: flex;
-    flex-direction: column;
     gap: var(--section-gap);
-    padding-bottom: var(--sp-6);
+    padding: var(--sp-6);
   }
 
   footer {
