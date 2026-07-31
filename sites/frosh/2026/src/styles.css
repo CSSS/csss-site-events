@@ -14,9 +14,9 @@
   --clr-primary-bg: var(--clr-frosh-purple);
   --clr-primary-fg: var(--clr-text-inverse);
   --clr-secondary-bg: var(--clr-frosh-lavendar);
-  --clr-secondary-fg: var(--clr-text-inverse);
+  --clr-secondary-fg: black;
   --clr-tertiary-bg: var(--clr-frosh-pink);
-  --clr-tertiary-fg: var(--clr-text-inverse);
+  --clr-tertiary-fg: black;
 
   --clr-link-inline: var(--clr-frosh-purple);
   --clr-surface-inverse: var(--clr-frosh-purple);
@@ -27,16 +27,13 @@
 
 .navbar {
   --navbar-clr-bg: var(--clr-frosh-purple);
-  --navbar-clr-dropdown-bg: var(--clr-frosh-purple);
+  --navbar-clr-dropdown-bg: var(--clr-primary-bg);
   --navbar-clr-text: var(--clr-text-inverse);
+  --navbar-clr-scrolled-border: var(--clr-primary-bg);
 }
 
 body {
   background-color: var(--clr-frosh-purple);
-}
-
-.hero {
-  margin-bottom: 0;
 }
 
 main {

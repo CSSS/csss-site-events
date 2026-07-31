@@ -27,11 +27,10 @@ const hasContent = Astro.slots.has('default');
       position: relative;
       width: 100vw;
       overflow: hidden;
-      margin-bottom: var(--section-gap);
-      min-height: calc(100svh - var(--navbar-height));
+      height: calc(100svh - var(--navbar-height));
     }
 
-    .hero--full-height > hero__image {
+    .hero--full-height > .hero__image {
       height: 100%;
       object-fit: cover;
     }
