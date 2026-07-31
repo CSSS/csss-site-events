@@ -225,6 +225,8 @@ function resolveHref(href: string) {
       /* Navbar colour controls */
       --navbar-clr-bg: var(--clr-surface-base);
       --navbar-clr-text: var(--clr-text-base);
+      --nav-menu-clr-bg: var(--clr-primary-bg);
+      --nav-menu-clr-fg: var(--clr-primary-fg);
       --navbar-clr-border: var(--clr-surface-inverse);
       --navbar-clr-scrolled-border: var(--csss-brand-grey);
       --navbar-clr-control-hover-bg: var(--clr-surface-inverse);
@@ -300,8 +302,8 @@ function resolveHref(href: string) {
     }
 
     .navbar__title {
-      font-size: var(--navbar-font-size);
-      font-family: var(--font-navbar);
+      font-size: var(--font-size-navbar-title);
+      font-family: var(--font-navbar-title);
       font-weight: var(--font-weight-regular);
       white-space: nowrap;
     }

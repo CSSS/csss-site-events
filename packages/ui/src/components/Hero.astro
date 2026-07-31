@@ -3,15 +3,18 @@ import { Image } from 'astro:assets';
 
 interface Props {
   image?: ImageMetadata;
-  isFullHeight?: boolean;
   alt?: string;
+  isFullHeight?: boolean;
+  bgColor?: string;
 }
 
-const { image, isFullHeight, alt = '' } = Astro.props;
+const { image, isFullHeight, bgColor, alt = '' } = Astro.props;
 const hasContent = Astro.slots.has('default');
 ---
 
-<section class:list={['hero', `hero${isFullHeight ? '--full-height' : ''}`]}>
+<section class:list={['hero', `hero${isFullHeight ? '--full-height' : ''}`]}
+  style={bgColor ? `background-color: ${bgColor};` : undefined}
+>
   {image && <Image class="hero__image" src={image} alt={alt} />}
   {hasContent && <slot />}
 </section>
@@ -24,17 +27,18 @@ const hasContent = Astro.slots.has('default');
       height: 10svh;
       overflow: hidden;
       margin-bottom: var(--section-gap);
+      height: calc(100svh - var(--navbar-height));
     }
 
-    .hero--full-height {
-      height: calc(100svh - var(--navbar-height));
+    .hero--full-height > .hero__image {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
 
     .hero__image {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
     }
   }
 </style>

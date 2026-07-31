@@ -21,9 +21,15 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   : `${import.meta.env.BASE_URL}/`;
 
 function resolveHref(href: string) {
-  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(href)) return href;
-  if (href.startsWith('#')) return `${baseUrl}${href}`;
-  return `${baseUrl}${href.replace(/^\.?\//, '')}`;
+  if (/^(?:[a-z][a-z\d+.-]*:|[/][/])/i.test(href)) {
+    return href;
+  }
+
+  if (href.startsWith('#')) {
+    return `${baseUrl}${href}`;
+  }
+
+  return `${baseUrl}${href.replace(/^\.?[/]/, '')}`;
 }
 ---
 
@@ -79,7 +85,7 @@ function resolveHref(href: string) {
     justify-content: center;
     padding: var(--sp-8) var(--sp-4) var(--sp-4);
     color: var(--clr-text-inverse);
-    background-color: var(--clr-surface-inverse);
+    background-color: var(--clr);
     font-family: var(--font-heading);
   }
 

@@ -23,7 +23,6 @@
 
     /* Typography tokens */
     --font-body: 'Geist Mono', monospace;
-    --font-navbar: 'Geist Mono', monospace;
     --font-title: 'Cal Sans', sans-serif;
     --font-heading: 'Cal Sans', sans-serif;
     --font-fancy: 'Cal Sans', sans-serif;
@@ -157,6 +156,7 @@
 @layer theme {
   :root {
     /* CSSS brand palette */
+    /* Don't touch these unless the brand is changing */
     --csss-brand-black: hsl(0, 0%, 0%);
     --csss-brand-cream: hsl(55, 71%, 97%);
     --csss-brand-selago: hsl(235, 76%, 97%);
@@ -186,6 +186,10 @@
 
     --chip-padding-inline: 0.75rem;
     --chip-padding-block: 0.25rem;
+
+    --font-navbar: 'Geist Mono', monospace;
+    --font-navbar-title: 'Geist Mono', monospace;
+    --font-size-navbar-title: 'Geist Mono', monospace;
   }
 
   [class^='chip'] {
