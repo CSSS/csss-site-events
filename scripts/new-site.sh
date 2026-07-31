@@ -139,6 +139,7 @@ import '$UI_DIR/styles/font-faces/geist-mono.css';
 import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
 import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import { navItems, siteConfig } from '../config/site.data';
+import '..styles.css';
 
 interface Props {
   title: string;
@@ -213,6 +214,11 @@ User-agent: *
 Allow: /
 
 Sitemap: https://$EVENT.sfucsss.org/sitemap-index.xml
+EOF
+
+# Global styles
+cat >"$DIR/src/styles.css" <<EOF
+/* Place global styles here */
 EOF
 
 echo "Done. Run: nx dev $NAME"
