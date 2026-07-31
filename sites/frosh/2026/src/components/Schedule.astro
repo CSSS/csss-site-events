@@ -1,6 +1,64 @@
 ---
 import Section from '@csss-site-events/ui/components/Section.astro';
 import { siteConfig } from '../config/site.data';
+
+interface Event {
+  title: string;
+  location: string;
+  time: string;
+  day: string;
+  description: string;
+}
+
+const events: Event[] = [
+  {
+    title: 'The Potion Parlour',
+    location: 'ASB 9971',
+    time: '1:30PM - 6:30PM',
+    day: 'Monday',
+    description:
+      'Kick off Frosh Week with a social featuring our themed drinks and ice-cream. Come hang out, meet your fellow first-years (froshees), and start your week with a bang!'
+  },
+  {
+    title: 'Info Session',
+    location: 'ASB 10900',
+    time: '11:00PM - 2:30PM',
+    day: 'Tuesday',
+    description: 'Learn everything you need to know about SFU: co-op clubs, resources, and more.'
+  },
+  {
+    title: 'Paint the Night',
+    location: 'AQ Pond',
+    time: '5:30PM - 9:00PM',
+    day: 'Tuesday',
+    description:
+      'Paint lanterns, picnic on the grass, and stargaze with your new friends. Your lanterns will make a special appearance later in the week!'
+  },
+  {
+    title: 'Pac-Macro',
+    location: 'ASB 9703',
+    time: '1:30PM - 3:30PM',
+    day: 'Wednesday',
+    description:
+      "Ever wanted to be inside a video game? Pac-Macro is a life-sized Pac-Man game played across SFU's campus using custom CSSS-built software. A Frosh classic!"
+  },
+  {
+    title: "The Mad Hatter's Lounge",
+    location: 'SUB Ballroom',
+    time: '12:00PM - 4:00PM',
+    day: 'Thursday',
+    description:
+      'Unwind in our Wonderland-themed lounge with high tea, board games, themed trivia, and a movie on the big screen. The perfect mid-week reset!'
+  },
+  {
+    title: 'Midnight Madness',
+    location: 'TASC 9204',
+    time: '7:00PM - 9:00AM',
+    day: 'Friday',
+    description:
+      'The grand finale... a 14 hour overnight extravaganza to close out the week in style!'
+  }
+];
 ---
 
 <Section id="schedule" title="Schedule">
@@ -15,5 +73,90 @@ import { siteConfig } from '../config/site.data';
   up or joined the server.
   <br />
   <br />
-  Here's a summary of what's to come:
+  Here's what we've got lined up:
+  <br /><br />
+  <section class="events">
+    {
+      events.map(e => (
+        <div class="event">
+          <div class="inner">
+            <div class="h5">
+              {e.day}
+              <span class="h5">{e.time}</span>
+            </div>
+            <div class="h4">
+              {e.title}
+              <span class="h5">{e.location}</span>
+            </div>
+            <br />
+            <p>{e.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </section>
 </Section>
+
+<style>
+  .events {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--content-gap);
+  }
+
+  .event {
+    padding: 1rem;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    border: solid 5px var(--clr-frosh-black);
+    background-color: var(--clr-frosh-lavendar);
+
+    > .inner {
+      height: 100%;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 255px 5px 225px 15px / 5px 225px 15px 255px;
+      border: solid 2px var(--clr-frosh-black);
+    }
+  }
+
+  span.h5 {
+    float: right;
+  }
+
+  @media (min-width: 36rem) {
+    .events {
+      display: grid;
+      grid-template-areas:
+        'a a'
+        'b c'
+        'd d'
+        'e e'
+        'f f';
+    }
+
+    .event:nth-child(1) {
+      grid-area: a;
+    }
+
+    .event:nth-child(2) {
+      grid-area: b;
+    }
+
+    .event:nth-child(3) {
+      grid-area: c;
+    }
+
+    .event:nth-child(4) {
+      grid-area: d;
+    }
+
+    .event:nth-child(5) {
+      grid-area: e;
+    }
+
+    .event:nth-child(6) {
+      grid-area: f;
+    }
+  }
+</style>

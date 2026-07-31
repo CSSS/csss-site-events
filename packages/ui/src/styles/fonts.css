@@ -25,6 +25,16 @@
     font-family: var(--font-heading);
   }
 
+  h5,
+  .h5,
+  h5,
+  .h5 {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-heading-5);
+    line-height: var(--line-height-tight);
+    font-family: var(--font-heading);
+  }
+
   body,
   .text-body {
     font-weight: var(--font-weight-regular);
