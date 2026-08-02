@@ -1,5 +1,5 @@
-import Compress from '@playform/compress';
 import sitemap from '@astrojs/sitemap';
+import Compress from '@playform/compress';
 import { defineConfig } from 'astro/config';
 
 export function defineSiteConfig(config, compressOptions = {}) {

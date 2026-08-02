@@ -1,10 +1,8 @@
 ---
 import DialogueInfo from './DialogueInfo.astro';
 import { Image } from 'astro:assets';
-import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
 import Section from '@csss-site-events/ui/components/Section.astro';
 import { type Dialogue } from '../config/site.types';
-import { ImageMetadata } from 'astro';
 import event2 from '../assets/tf2025/event2.jpg';
 
 const sections: Dialogue[] = [
@@ -37,20 +35,6 @@ const sections: Dialogue[] = [
     second: ''
   }
 ];
-
-const imagesMeta = import.meta.glob<{ default: ImageMetadata }>('../assets/companies/*.{png,jpg}', {
-  eager: true
-});
-
-const images = Object.entries(imagesMeta).map(([path, mod]) => ({
-  src: mod.default,
-  // Retrieves the name of the file without the extension
-  alt: path
-    .split('/')
-    .at(-1)!
-    .replace(/\.[^.]+$/, '')
-    .replace(/-|_/g, ' ')
-}));
 ---
 
 <Section id="students" title="Why Should I Go?">

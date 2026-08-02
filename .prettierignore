@@ -1,3 +1,9 @@
-node_modules
-dist
-.nx
+.astro/
+.nx/
+dist/
+legacy/
+node_modules/
+out-tsc/
+public/
+tmp/
+package-lock.json

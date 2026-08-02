@@ -4,19 +4,12 @@
     "moduleResolution": "bundler",
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "paths": {
-      "@csss-site-events/ui/*": [
-        "./packages/ui/src/*"
-      ],
-      "@csss-site-events/assets/*": [
-        "./packages/ui/assets/*"
-      ]
+      "@csss-site-events/ui/*": ["./packages/ui/src/*"],
+      "@csss-site-events/assets/*": ["./packages/ui/assets/*"]
     }
   }
 }
