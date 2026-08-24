@@ -18,14 +18,27 @@ _Note:_ Make sure you put the hyphen between `<event>` and `<year>`; this is als
 | Description                   | Command                                         |
 | ----------------------------- | ----------------------------------------------- |
 | Create a new event site       | `npm run new-site <event> <year>`               |
-| Develop one site              | `nx dev <event>-<year>`                         |
-| Build one site                | `nx build <event>-<year>`                       |
-| Build all sites               | `nx run-many --target=build`                    |
-| Build changed sites           | `nx affected --target=build`                    |
-| See changed sites             | `nx show projects --affected`                   |
-| See project graph             | `nx graph`                                      |
+| Develop one site              | `npx nx dev <event>-<year>`                         |
+| Build one site                | `npx nx build <event>-<year>`                       |
+| Build all sites               | `npx nx run-many --target=build`                    |
+| Build changed sites           | `npx nx affected --target=build`                    |
+| See changed sites             | `npx nx show projects --affected`                   |
+| See project graph             | `npx nx graph`                                      |
 | Lint active code              | `npm run lint`                                  |
 | Format active code            | `npm run format`                                |
 | Check formatting              | `npm run format:check`                          |
 | Install package for all sites | `npm install <library> -w`                      |
 | Install package for one site  | `npm install <library> --workspace=<site-name>` |
+
+## Development
+
+You'll need:
+- `node`: Check the version required in `.node-version`.
+- `git-lfs`: Follow the instructions on their [website](https://git-lfs.com/) to set it up.
+
+1. Clone the repo, forking it if you need to.
+2. `cd /path/to/csss-site-events`
+3. `git lfs pull`
+4. `npm ci`
+
+Then, you can run sites using the commands above.
