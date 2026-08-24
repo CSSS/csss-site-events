@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="google-site-verification" content="cqWcS1zaOJ2pgBionnStXvsaOEvnyCylR_lZGVaKgyk"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Geist+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- Primary Meta Tags -->
+    <title>Fall Hacks 2026 | CSSS</title>
+    <meta name="title" content="Fall Hacks 2026 | CSSS" />
+    <meta name="description" content="Fall Hacks is an annual, beginner-first, 12 hour hackathon, hosted at Simon Fraser University on November 7th.
+
+    Intended to welcome new students into the world of competitive programming and foster the growing passions of recurring participants, Fall Hacks prioritizes the student experience in every way; from free workshops for attendees, to mentorship help throughout the event." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fall-hacks.sfucsss.org/" />
+    <meta property="og:title" content="Fall Hacks 2026 | CSSS" />
+    <meta property="og:description" content="Fall Hacks is an annual, beginner-first, 12 hour hackathon, hosted at Simon Fraser University on November 7th.
+
+    Intended to welcome new students into the world of competitive programming and foster the growing passions of recurring participants, Fall Hacks prioritizes the student experience in every way; from free workshops for attendees, to mentorship help throughout the event." />
+    <meta property="og:image" content="img/meta_thumb.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://fall-hacks.sfucsss.org/" />
+    <meta property="twitter:title" content="Fall Hacks 2026 | CSSS" />
+    <meta property="twitter:description" content="Fall Hacks is an annual, beginner-first, 12 hour hackathon, hosted at Simon Fraser University on November 7th.
+
+    Intended to welcome new students into the world of competitive programming and foster the growing passions of recurring participants, Fall Hacks prioritizes the student experience in every way; from free workshops for attendees, to mentorship help throughout the event." />
+    <meta property="twitter:image" content="img/meta_thumb.jpg" />
+
+  <style>
+    body{
+        background-color:#FDFCF0;
+    }
+    .tan{
+        color:#FDFCF0
+    }
+    h1{
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    #dropdown-content a{
+        color: #000;
+        font-family: "Geist Mono";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    .navbar{
+        position: sticky;
+        top:-1px;
+        z-index:5;
+        display: flex;
+        background-color: #FDFCF0;
+        border-bottom: solid 1.5px black;
+        flex-wrap: wrap;
+        padding:10px 10px 10px 10px;
+        justify-content: space-between;
+    }
+    .dropbtn {
+        background-color: #FDFCF0;
+        color: black;
+        padding: 3px 13px 3px 13px;
+        font-size: 15px;
+        border: solid 1.5px black;
+        border-radius:15px;
+    }
+
+    .ntext{
+        color: #000;
+        font-family: "Geist Mono";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+    
+    #navbar{
+        position: sticky;
+        width: 100%;
+        transition: 0.3s;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        gap:10px;
+        background-color: #FDFCF0;
+        border-bottom: none;
+        flex-wrap: wrap;
+        padding:20px 30px 20px 30px;
+        justify-content: space-between;
+    }
+    #dropbtn {
+        background-color: #FDFCF0;
+        color: black;
+        padding: 3px 13px 3px 13px;
+        font-size: 15px;
+        border: solid 1.5px black;
+        border-radius:15px;
+    }
+
+    #dropdown {
+        position: relative;
+        /* display: inline-block; */
+    }
+
+    #dropdown-content {
+        display: none;
+        margin-top:0px;
+        overflow:hidden;
+        flex-direction:column;
+        position: absolute;
+        background-color: #FDFCF0;
+        min-width: 180px;
+        z-index: 1;
+        gap:5px;
+        border-radius: 15px;
+        border: 1.5px solid #000;
+    }
+
+    #dropdown-content a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding:10px 10px 10px 10px;
+    }
+
+    #dropdown-content a:hover {background-color: black;color:#FDFCF0}
+
+    #dropdown:hover #dropdown-content {display: block;}
+
+    #dropdown:hover #dropbtn {background-color: black;color:#FDFCF0}
+
+    @media (min-width: 768px) {
+        .hero {
+            font-size: 96px !important;
+        }
+    }
+    @media (max-width: 768px) {
+        #footer{
+            padding: 20px !important;
+            
+        }
+    }    
+    @media (min-width: 768px) {
+        #footer{
+            padding: 20px;
+        }
+    }    
+    @media (min-width: 500px) {
+        .tagline {
+            font-size: 16px !important;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .banner-title h1 {
+            font-size: 50px !important;
+        }
+        .banner-title img {
+            max-width: 90px !important;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .desktop-car{
+            display: none !important;
+        }
+        #navbar{
+            display: none !important;
+        }
+    }
+    @media (min-width: 800px) {
+        .mobile-car{
+            display: none !important;
+        }
+        .navbar{
+            display: none !important;
+        }
+    }
+
+
+  </style>
+  
+  </head>
+  <body>
+    <div id="navbar">
+        <div id="dropdown">
+            <button id="dropbtn"class="ntext" onclick="window.location.href='#';">FALL HACKS 2026</button>
+        </div>
+
+        <div style=" display: flex;flex-direction: row;flex-wrap: wrap;gap:10px">
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext">The CSSS</button>
+                <div id="dropdown-content">
+                    <a href="https://www.instagram.com/sfu_csss/"target="_blank">instagram</a>
+                    <a href="https://sfucsss.org"target="_blank">website</a>
+                    <a href="https://discord.gg/sfucsss"target="_blank">discord server</a>
+                    <a href="/2025"target="_blank">fall hacks 2025</a>
+                </div>
+            </div>
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext"onclick="window.location.href='#about';">About</button>
+            </div>
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext"onclick="window.location.href='#register';">Register</button>
+            </div> 
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext"onclick="window.location.href='#faq';">FAQ</button>
+            </div>            
+        </div>
+    </div>
+
+
+<div class="navbar" style="font-family: 'Geist Mono'">
+    <div class="dropdown">
+        <button class="dropbtn ntext" onclick="window.location.href='#';">FALL HACKS 2026</button>
+    </div>
+
+        <button style="border-radius: 20px;border-color: black;"class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#about">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#register">REGISTER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                THE CSSS
+              </a>
+              <ul class="dropdown-menu" style="background-color: #FDFCF0;border-radius: 20px;border-color: black;">
+                <li><a class="dropdown-item" href="https://www.instagram.com/sfu_csss/"target="_blank">INSTAGRAM</a></li>
+                <li><a class="dropdown-item" href="https://sfucsss.org"target="_blank">WEBSITE</a></li>
+                <li><a class="dropdown-item" href="https://discord.gg/sfucsss"target="_blank">DISCORD SERVER</a></li>
+                <li><hr style="border-color: black;"class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/2025"target="_blank">FALL HACKS 2025</a></li>
+              </ul>
+            </li>
+        </div>
+
+</div>
+
+    <div id="carouselExampleFade" class="desktop-car carousel slide carousel-fade mt-2 m-5" data-bs-ride="carousel">
+  <div class="carousel-inner" style="border: solid black 2px;border-radius: 10px;box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1.00);">
+    <div class="carousel-item active">
+      <img src="/img/banner1.jpg" class="d-block w-100" alt="Fall hacks banner image">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/banner2.jpg" class="d-block w-100" alt="Fall hacks banner image">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/banner3.jpg" class="d-block w-100" alt="Fall hacks banner image">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/banner4.jpg" class="d-block w-100" alt="Fall hacks banner image">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <div class="banner-title"style="position:absolute;bottom:0;z-index:1;justify-content: space-between;display: flex;flex-wrap: wrap;width:100%;align-items: end;"><h1 class="ms-3 tan"style="font-size:6rem;">Fall Hacks 2026</h1><img src="img/light_logo.svg" alt="CSSS Logo"></div>
+</div>
+
+<div id="carouselExampleFade" class="mobile-car carousel slide carousel-fade mt-0" data-bs-ride="carousel">
+  <div class="carousel-inner" style="height: 400px;" >
+    <div class="carousel-item active c-item" style="height: 100%;">
+      <img src="/img/banner1.jpg" class="d-block w-100 c-img" alt="Fall hacks banner image" style="height: 100%;width: 100%;object-fit: cover;">
+        <div class="carousel-caption" style="left:0%;bottom:0%;right:0%;text-align: left;padding: 0px;">
+        <h1 style="color: #FDFCF0;font-size: 50px;margin-left: 8px;">Fall Hacks 2026</h1>
+      </div>
+    </div>
+    <div class="carousel-item c-item" style="height: 100%;">
+      <img src="/img/banner2.jpg" class="d-block w-100 c-img" alt="Fall hacks banner image" style="height: 100%;width: 100%;object-fit: cover;">
+      <div class="carousel-caption" style="left:0%;bottom:0%;right:0%;text-align: left;padding: 0px;">
+        <h1 style="color: #FDFCF0;font-size: 50px;margin-left: 8px;">Fall Hacks 2026</h1>
+      </div>
+    </div>
+    <div class="carousel-item c-item" style="height: 100%;">
+      <img src="/img/banner3.jpg" class="d-block w-100 c-img" alt="Fall hacks banner image" style="object-position:80% center;height: 100%;width: 100%;object-fit: cover;">
+      <div class="carousel-caption" style="left:0%;bottom:0%;right:0%;text-align: left;padding: 0px;">
+        <h1 style="color: #FDFCF0;font-size: 50px;margin-left: 8px;">Fall Hacks 2026</h1>
+      </div>
+    </div>
+    <div class="carousel-item c-item" style="height: 100%;">
+      <img src="/img/banner4.jpg" class="d-block w-100 c-img" alt="Fall hacks banner image" style="object-position:20% center;height: 100%;width: 100%;object-fit: cover;">
+      <div class="carousel-caption" style="left:0%;bottom:0%;right:0%;text-align: left;padding: 0px;">
+        <h1 style="color: #FDFCF0;font-size: 60px;margin-left: 8px;">Fall Hacks 2026</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="m-5"style="display: flex;justify-content: center;align-items: center;">  
+<div class="tagline"id="about"style="font-size:12px;margin:auto; background-color: #FD4E53;color:#FDFCF0; display: inline-flex;padding: 5px 40px;justify-content: center;align-items: center;">
+    <i>SFU's Student First Hackathon.</i>
+</div></div>
+<div class="mx-auto d-block"style="background-position:left center;background-size:cover;background-image: url(img/fallhacks_illustration.png);max-width:917px;height:350px;">
+</div>
+<div class="row align-items-start m-3 m-sm-5 m-lg-6">
+    <div class="col-md-6 mb-3"><a style="font-family:'Geist Mono';font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;">What is Fall Hacks?</a><br><br>
+    <p class="hero" style="font-size: 50px;font-family: 'Cal Sans';font-weight: 400;line-height: 90%;">
+        Start Now or Never
+    </p></div>
+    <div class="col-md-6">
+        <a style="font-family: 'Geist Mono';font-size: 14px;font-style: normal;font-weight: 400;">
+            <b>Fall Hacks 2026 will be the sixth Fall Hacks hosted at Simon Fraser University.<br><br> Fall Hacks is an annual, beginner-first, 12 hour hackathon,</b> intended to welcome new students into the world of competitive programming and foster the growing passions of recurring participants. Fall Hacks prioritizes the student experience in every way; from free workshops for attendees, to mentorship help throughout the event, Fall Hacks is designed to give back to the SFU computing science community. This year Fall Hacks will be on <b>November 7th.</b><br><br>Students participate in a team to bring a project to life, utilizing programming and design skills. They are given 10 hours to brainstorm, develop, and present their projects to industry judges; developing real-world skills for a competitive job market.
+        </a>
+    </div>
+</div>
+
+
+<div class="py-5 py-md-3 px-lg-5 my-5" style="background-color: #FFF9DA;">
+<div class="row align-items-start m-sm-4 m-lg-6 m-3 g-lg-5 g-md-3">
+    <div id="register"class="col-md-5 mb-3 mb-md-1 mt-0 px-0">
+        <img src="/img/register.jpg" style="max-width:100%;border-radius: 15px;border: solid black 2px;box-shadow: 2px 2px 0px 0px black;">
+    </div>
+    <div class="col-md-7 align-self-stretch">
+        <div class="d-flex flex-column align-content-center py-lg-5 py-md-3 py-4" style="min-height: 100%;">
+            <div class="mb-auto p-2"><img src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-black.svg" alt="MLH Logo" style="height: 63px;"></div>
+            <div class="p-2"><p class="heroo mt-5 mt-md-3" style="font-size: 60px;font-family: 'Cal Sans';font-weight: 400;line-height: 90%;">
+            Registrations open soon!
+            </p></div>
+            <div class="p-2"><p style="font-family: 'Geist Mono';font-size: 24px;font-weight: 700;">Check back later!</p></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="d-flex justify-content-center pt-5"><img src="img/jepi.svg" alt="Jepi mascot illustration" style="max-width: 150px;"></div>
+
+<div class="m-5"style="display: flex;justify-content: center;align-items: center;">  
+<div class="tagline"style="font-size:12px;margin:auto; background-color: #FD4E53;color:#FDFCF0; display: inline-flex;padding: 5px 40px;justify-content: center;align-items: center;">
+    <i>More information coming soon...</i>
+</div></div>
+
+<div class="row align-items-start m-sm-4 m-lg-6 m-3 g-lg-5 g-md-3 mt-5">
+    <div id="faq"class="col-md-6 mb-3 mb-md-1 d-flex justify-content-sm-center justify-content-end">
+        <img src="/img/faq.png" style="max-width: 90%;">
+    </div>
+    <div class="col-md-6 align-self-stretch">
+        <div class="d-flex flex-column align-content-center py-lg-5 py-md-3 py-4" style="min-height: 100%;">
+            <div class="p-2"><a style="font-family:'Geist Mono';font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;">Frequently Asked Questions</a><br><br><p class="hero " style="font-size: 70px;font-family: 'Cal Sans';font-weight: 400;line-height: 90%;;">
+            FAQ
+            </p></div>
+            <div class="p-2"><p style="font-family: 'Geist Mono';font-size: 16px;">
+                <b>Wait, what actually is a hackathon?</b><br><br>
+
+                A hackathon is an competitive event where several teams develop a programming project inspired by an event-provided theme/prompt. You will have 12 hours to develop something cool from scratch at Fall Hacks.<br><br>
+
+                <b>Can I participate solo?</b><br><br>
+
+                Yes! If you prefer to not participate in a team, you may participate in Fall Hacks solo. There a prize category dedicated just for solo hackers.<br><br>
+
+                <b>Where is Fall Hacks?</b><br><br>
+
+                This year, Fall Hacks will be in-person at Simon Fraser University. Hacker sign-ins will be at the Applied Science Building (ASB) entrance. Workshops will also be hosted in the ASB. During the event, you are free to work in any open study space at SFU.<br><br>
+
+                <b>Why should I participate?</b><br><br>
+
+                By participating you will get real experience with new technologies and navigate teamwork dynamics to accomplish a goal. Hackathon projects are also a great addition to a resume! There are also prizes and free food.<br><br>
+
+                <b>I am in my first year/don't have much experience, should I still participate?</b><br><br>
+
+                Yes! This hackathon is a great learning opportunity for people with less development experience. Think of Fall Hacks as a hackathon with training wheels to prepare you for larger hackathons. We'll also be hosting HACKATHON 101 workshops the week leading up to Fall Hacks to prepare you for the event.<br><br>
+
+                <b>Can I work on my previous projects?</b><br><br>
+
+                No, we want you to create something awesome from scratch in 12 hours. Starting from an existing project is against the spirit of the event. Existing open-source libraries and frameworks are fine, of course. Ask an organizer if you are unsure.
+            </p></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="footer"class="row align-items-stretch pb-3" style="border-top: 1.5px solid black;padding: 40px 120px 10px 120px;">
+    <div class="col-md-6">
+        <img src="img/dark_logo.svg" alt="CSSS Logo">
+        <div id="dropdown">
+            <button id="dropbtn"class="ntext" onclick="window.open('https://sfucsss.org', '_blank')">BROUGHT TO YOU BY THE CSSS</button>
+        </div>
+    </div>
+    <div class="col-md-6" style="min-height:100%;display:flex;flex-direction: column;justify-content: space-between">
+
+        <p class="my-5 my-md-0"style="font-family: 'Geist Mono';font-size: 14px;font-style: normal;font-weight: 400;text-transform: uppercase;">
+            <b>Fall hacks 2026 chaired by sia garg + mengna ma<br>
+                website made by mengna ma<br>
+                tagline inspired by alex mei</b>
+            </p>
+
+        <div style=" display: flex;flex-direction: row;flex-wrap: wrap;gap:10px">
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext"onclick="window.location.href='mailto:csss-hackathonchair@sfu.ca';">Email</button>
+            </div>
+            <div id="dropdown">
+                <button id="dropbtn"class=" ntext"onclick="window.open('https://drive.google.com/file/d/1AIdRni8b5RYJ965LBjAGNN-W90MaRD3D/view?usp=sharing', '_blank')">Sponsorship Package</button>
+            </div>          
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+        document.getElementById("navbar").style.padding = "10px 120px 10px 120px";
+        document.getElementById("navbar").style.borderBottom = "solid 1.5px black";
+    } else {
+        document.getElementById("navbar").style.padding = "20px 30px 30px 20px";
+        document.getElementById("navbar").style.borderBottom = "none";
+    }
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
