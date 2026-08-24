@@ -20,7 +20,7 @@ function resolveHref(href: string) {
 }
 ---
 
-<header class="navbar" transition:persist="site-navbar">
+<header class="navbar">
   <div class="navbar__content">
     <div class="navbar__left">
       <a class="navbar__title" href={baseUrl}>{title}</a>
@@ -137,23 +137,12 @@ function resolveHref(href: string) {
     toggleButton?.setAttribute('aria-expanded', 'false');
   }
 
-  let isNavigating = false;
-
   const updateScrolledState = () => {
-    if (!isNavigating) {
-      navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
-    }
+    navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
   };
 
   updateScrolledState();
   window.addEventListener('scroll', updateScrolledState, { passive: true });
-  document.addEventListener('astro:before-preparation', () => {
-    isNavigating = true;
-  });
-  document.addEventListener('astro:page-load', () => {
-    isNavigating = false;
-    updateScrolledState();
-  });
 
   if (toggleButton) {
     toggleButton.addEventListener('click', () => {

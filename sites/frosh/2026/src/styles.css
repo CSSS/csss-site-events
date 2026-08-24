@@ -18,7 +18,7 @@
   --clr-tertiary-bg: var(--clr-frosh-pink);
   --clr-tertiary-fg: black;
 
-  --clr-link-inline: var(--clr-frosh-purple);
+  --clr-link-inline: color-mix(in oklch, var(--clr-frosh-purple), white 20%);
   --clr-surface-inverse: var(--clr-frosh-purple);
 
   --font-navbar-title: var(--font-title);
