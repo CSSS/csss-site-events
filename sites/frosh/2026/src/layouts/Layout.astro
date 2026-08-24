@@ -1,15 +1,18 @@
 ---
-import type { ImageMetadata } from 'astro';
-import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import '@csss-site-events/ui/styles/font-faces/cal-sans.css';
+import '@csss-site-events/ui/styles/font-faces/geist-mono.css';
+import '../styles.css';
+
+import calSansFont from '@csss-site-events/ui/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
+import geistMonoRegularFont from '@csss-site-events/ui/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import Footer from '@csss-site-events/ui/components/Footer.astro';
 import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
-import '@csss-site-events/ui/styles/font-faces/cal-sans.css';
-import '@csss-site-events/ui/styles/font-faces/geist-mono.css';
-import calSansFont from '@csss-site-events/ui/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
-import geistMonoRegularFont from '@csss-site-events/ui/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
+import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
+import { type NavItem } from '@csss-site-events/ui/types';
+import type { ImageMetadata } from 'astro';
+
 import { navItems, siteConfig } from '../config/site.data';
-import '../styles.css';
 
 interface Props {
   title: string;
@@ -17,6 +20,7 @@ interface Props {
   heroAlt?: string;
   heroBgColour?: string;
   isFullHeightHero?: boolean;
+  navItems?: NavItem[];
 }
 
 const { title, heroImage, heroAlt, heroBgColour, isFullHeightHero = false } = Astro.props;

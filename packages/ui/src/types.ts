@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+
 import { brandColours } from './common.data';
 
 /**

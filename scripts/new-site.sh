@@ -130,16 +130,19 @@ EOF
 # Default layout extending @csss-site-events/ui
 cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
-import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import '$UI_DIR/styles/font-faces/cal-sans.css';
+import '$UI_DIR/styles/font-faces/geist-mono.css';
+import '../styles.css';
+
+import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
+import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import Footer from '$UI_DIR/components/Footer.astro';
 import Hero from '$UI_DIR/components/Hero.astro';
 import Navbar from '$UI_DIR/components/Navbar.astro';
-import '$UI_DIR/styles/font-faces/cal-sans.css';
-import '$UI_DIR/styles/font-faces/geist-mono.css';
-import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
-import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
+import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
+import type { ImageMetadata } from 'astro';
+
 import { navItems, siteConfig } from '../config/site.data';
-import '..styles.css';
 
 interface Props {
   title: string;
@@ -188,8 +191,8 @@ EOF
 # Default index page
 cat >"$DIR/src/pages/index.astro" <<EOF
 ---
-import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../config/site.data';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title={siteConfig.title}>
