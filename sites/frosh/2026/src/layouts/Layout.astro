@@ -1,4 +1,6 @@
 ---
+// BaseLayout must be at the top
+import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
 import '@csss-site-events/ui/styles/font-faces/cal-sans.css';
 import '@csss-site-events/ui/styles/font-faces/geist-mono.css';
 import '../styles.css';
@@ -8,7 +10,6 @@ import geistMonoRegularFont from '@csss-site-events/ui/assets/fonts/geist-mono-v
 import Footer from '@csss-site-events/ui/components/Footer.astro';
 import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
-import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
 import { type NavItem } from '@csss-site-events/ui/types';
 import type { ImageMetadata } from 'astro';
 

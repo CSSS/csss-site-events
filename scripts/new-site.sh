@@ -130,6 +130,8 @@ EOF
 # Default layout extending @csss-site-events/ui
 cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
+// BaseLayout must be at the top
+import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
 import '$UI_DIR/styles/font-faces/cal-sans.css';
 import '$UI_DIR/styles/font-faces/geist-mono.css';
 import '../styles.css';
@@ -139,7 +141,6 @@ import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regul
 import Footer from '$UI_DIR/components/Footer.astro';
 import Hero from '$UI_DIR/components/Hero.astro';
 import Navbar from '$UI_DIR/components/Navbar.astro';
-import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
 import type { ImageMetadata } from 'astro';
 
 import { navItems, siteConfig } from '../config/site.data';

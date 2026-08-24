@@ -13,7 +13,6 @@
     "prettier-plugin-astro",
     "prettier-plugin-astro-organize-imports"
   ],
-  "astroOrganizeImportsMode": "All",
   "overrides": [
     {
       "files": "*.astro",
