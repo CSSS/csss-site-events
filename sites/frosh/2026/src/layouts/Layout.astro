@@ -1,17 +1,14 @@
 ---
 // BaseLayout must be at the top
 import BaseLayout from '@csss-site-events/ui/layouts/BaseLayout.astro';
-import '@csss-site-events/ui/styles/font-faces/cal-sans.css';
-import '@csss-site-events/ui/styles/font-faces/geist-mono.css';
 import '../styles.css';
 
-import calSansFont from '@csss-site-events/ui/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
-import geistMonoRegularFont from '@csss-site-events/ui/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import Footer from '@csss-site-events/ui/components/Footer.astro';
 import Hero from '@csss-site-events/ui/components/Hero.astro';
 import Navbar from '@csss-site-events/ui/components/Navbar.astro';
 import { type NavItem } from '@csss-site-events/ui/types';
 import type { ImageMetadata } from 'astro';
+import { Font } from 'astro:assets';
 
 import { navItems, siteConfig } from '../config/site.data';
 
@@ -30,8 +27,8 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <BaseLayout pageTitle={title} description={siteConfig.description}>
   <Fragment slot="head">
-    <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={geistMonoRegularFont} as="font" type="font/woff2" crossorigin />
+    <Font cssVariable="--font-geist-mono" />
+    <Font cssVariable="--font-cal-sans" />
   </Fragment>
   <Navbar title={title} items={navItems} />
   {

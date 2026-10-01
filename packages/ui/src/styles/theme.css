@@ -14,10 +14,10 @@
     --sp-10: 8rem;
 
     /* Typography tokens */
-    --font-body: 'Geist Mono', monospace;
-    --font-title: 'Cal Sans', sans-serif;
-    --font-heading: 'Cal Sans', sans-serif;
-    --font-fancy: 'Cal Sans', sans-serif;
+    --font-body: var(--font-geist-mono);
+    --font-title: var(--font-cal-sans);
+    --font-heading: var(--font-cal-sans);
+    --font-fancy: var(--font-cal-sans);
 
     --font-size-0: 0.75rem;
     --font-size-1: 0.875rem;
