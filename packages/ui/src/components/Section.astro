@@ -8,7 +8,7 @@ const { id, title } = Astro.props;
 const hasFooter = Astro.slots.has('footer');
 ---
 
-<section id={id} class="section content-grid full-width">
+<section id={id} class="content-grid full-width">
   <div class="section__content content-grid full-width">
     <aside class="section__content__left">
       <slot name="left-gutter" />
@@ -33,10 +33,22 @@ const hasFooter = Astro.slots.has('footer');
 </section>
 
 <style>
+  section {
+    container-type: inline-size;
+  }
+
   .section__content__right,
   .section__content__left {
     display: none;
     position: relative;
+  }
+
+  .section__content__left {
+    grid-column: full-width / content-start;
+  }
+
+  .section__content__right {
+    grid-column: content-end / full-width-end;
   }
 
   .section__footer {
@@ -50,7 +62,7 @@ const hasFooter = Astro.slots.has('footer');
     margin-bottom: var(--sp-4);
   }
 
-  @media (min-width: 36rem) {
+  @container (min-width: 120rem) {
     .section__content__right,
     .section__content__left {
       display: block;

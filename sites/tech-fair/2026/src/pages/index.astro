@@ -12,7 +12,7 @@ import { siteConfig } from '../config/site.data';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title={siteConfig.title} isFullHeightHero>
+<Layout title={siteConfig.title} isFullHeightHero={true}>
   <Hero slot="hero" />
   <About />
   <div class="graphic"><Image src={boothGraphic} alt="Tech Fair 2026" /></div>
