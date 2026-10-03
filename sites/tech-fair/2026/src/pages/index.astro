@@ -8,16 +8,18 @@ import EventDetails from '../components/EventDetails.astro';
 import Hero from '../components/Hero.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
 import StudentFaq from '../components/StudentFaq.astro';
+import Companies from '../components/Companies.astro';
 import { siteConfig } from '../config/site.data';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title={siteConfig.title} isFullHeightHero>
+<Layout title={siteConfig.title} isFullHeightHero={true}>
   <Hero slot="hero" />
   <About />
   <div class="graphic"><Image src={boothGraphic} alt="Tech Fair 2026" /></div>
   <EventDetails />
   <StudentFaq />
+  <Companies />
   <CompanyFaq />
   <PhotoGallery />
 </Layout>

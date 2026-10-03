@@ -1,22 +1,27 @@
 @layer base {
   :root {
-    --font-body: 'Ancizar Serif', serif;
-    --font-navbar: 'Cal Sans', sans-serif;
-    --font-title: 'Boldonse', sans-serif;
-    --font-heading: 'Cal Sans', sans-serif;
-    --font-fancy: 'Cal Sans', sans-serif;
+    --font-body: var(--font-ancizar-serif);
+    --font-navbar: var(--font-cal-sans);
+    --font-title: var(--font-cal-sans);
+    --font-heading: var(--font-cal-sans);
+    --font-fancy: var(--font-cal-sans);
 
     --font-size-heading-1: var(--font-size-8);
     --font-size-heading-2: var(--font-size-6);
     --font-size-heading-3: var(--font-size-5);
     --font-size-body: var(--font-size-4);
 
-    --site-content-width: 60rem;
-    --site-breakout-width: 60rem;
-    --breakout-width: 0rem;
+    --site-content-width: 70rem;
+    --site-breakout-width: 90rem;
+    --breakout-width: calc((var(--site-breakout-width) - var(--site-content-width)) / 2);
 
     --border-radius-default: 18px;
     --border-default: 1px solid var(--clr-surface-inverse);
+  }
+
+  body {
+    position: relative;
+    padding-top: var(--navbar-height, 0);
   }
 }
 
@@ -25,6 +30,7 @@
     --csss-brand-cream: hsl(55, 44%, 89%);
     --csss-brand-teal: hsl(166, 57%, 43%);
 
+    --clr-primary-bg: var(--csss-brand-grey);
     --clr-surface-base: var(--csss-brand-cream);
     --clr-surface-inverse: var(--csss-brand-grey);
     --clr-text-primary: var(--csss-brand-black);

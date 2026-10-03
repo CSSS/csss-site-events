@@ -24,6 +24,7 @@ mkdir -p "$DIR/public"
 
 # astro.config.mjs
 cat >"$DIR/astro.config.mjs" <<EOF
+import { fontProviders } from 'astro/config';
 import { defineSiteConfig } from '../../../astro.shared.mjs';
 
 const isLocal = process.env.LOCAL === 'true';
@@ -36,6 +37,20 @@ export default defineSiteConfig({
   build: {
     assets: 'assets',
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Geist Mono',
+      cssVariable: '--font-geist-mono',
+      styles: ['normal', 'italic'],
+      weights: ['400', '700']
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Cal Sans',
+      cssVariable: '--font-cal-sans'
+    }
+  ]
 });
 EOF
 
@@ -132,16 +147,13 @@ cat >"$DIR/src/layouts/Layout.astro" <<EOF
 ---
 // BaseLayout must be at the top
 import BaseLayout from '$UI_DIR/layouts/BaseLayout.astro';
-import '$UI_DIR/styles/font-faces/cal-sans.css';
-import '$UI_DIR/styles/font-faces/geist-mono.css';
 import '../styles.css';
 
-import calSansFont from '$UI_DIR/assets/fonts/cal-sans-v2-latin-regular.woff2?url';
-import geistMonoRegularFont from '$UI_DIR/assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 import Footer from '$UI_DIR/components/Footer.astro';
 import Hero from '$UI_DIR/components/Hero.astro';
 import Navbar from '$UI_DIR/components/Navbar.astro';
 import type { ImageMetadata } from 'astro';
+import { Font } from 'astro:assets';
 
 import { navItems, siteConfig } from '../config/site.data';
 
@@ -158,8 +170,8 @@ const hasHero = heroImage || Astro.slots.hero;
 
 <BaseLayout pageTitle={title} description={siteConfig.description}>
   <Fragment slot="head">
-    <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={geistMonoRegularFont} as="font" type="font/woff2" crossorigin />
+    <Font cssVariable="--font-geist-mono" />
+    <Font cssVariable="--font-cal-sans" />
   </Fragment>
   <Navbar title={title} items={navItems} />
   {
