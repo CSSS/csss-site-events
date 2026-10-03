@@ -292,7 +292,6 @@ td {
 a[aria-disabled="true"] {
     opacity: 0.5;
     text-decoration: line-through;
-    cursor: now-allowed;
     pointer-events: none;
 }
 
