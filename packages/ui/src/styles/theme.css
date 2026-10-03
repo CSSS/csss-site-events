@@ -40,9 +40,7 @@
     --line-height-relaxed: 1.7;
 
     --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
+    --font-weight-bold: 400;
 
     --padding-inline: 1rem;
     --site-content-width: 70rem;

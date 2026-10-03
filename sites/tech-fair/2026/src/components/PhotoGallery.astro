@@ -49,14 +49,6 @@ const images: ImageClusterItem[] = [
     image: icbc3,
     alt: 'ICBC organizer talk'
   },
-  // {
-  //   image: event1,
-  //   alt: ''
-  // },
-  // {
-  //   image: event2,
-  //   alt: ''
-  // },
   {
     image: arista1,
     alt: 'Arista booth',
@@ -195,21 +187,18 @@ const imageClusters = Array.from({ length: Math.ceil(images.length / 3) }, (_, i
 </section>
 
 <style>
+  section {
+    --scroll-list-min-width: 36rem;
+    --scroll-list-row-gap: var(--sp-8);
+    --scroll-list-column-gap: var(--sp-6);
+    --scroll-list-vw: 30rem;
+  }
+
   .photo-gallery__heading {
     width: min(100% - var(--sp-6), var(--site-content-width));
     margin: 0 auto;
     display: flex;
     justify-content: center;
     padding-inline: var(--sp-2);
-  }
-
-  .photo-gallery :global(ul) {
-    gap: var(--sp-8) var(--sp-6);
-  }
-
-  .photo-gallery :global(li) {
-    display: flex;
-    justify-content: center;
-    inline-size: min(calc(100vw - var(--sp-6)), 36rem);
   }
 </style>

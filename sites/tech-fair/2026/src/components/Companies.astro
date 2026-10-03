@@ -1,0 +1,51 @@
+---
+import ScrollList from '@csss-site-events/ui/components/scroll-list/ScrollList.astro';
+import ScrollListItem from '@csss-site-events/ui/components/scroll-list/ScrollListItem.astro';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const imgFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/companies/*.{jpeg,jpg,png}',
+  { eager: true }
+);
+---
+
+<section>
+  <ScrollList>
+    {
+      Object.entries(imgFiles).map(([path, imgModule]) => (
+        <ScrollListItem>
+          <div class="img-container">
+            <Image
+              class="logo"
+              src={imgModule.default}
+              alt={path.split('/').pop() ?? 'Company Logo'}
+              width="240"
+            />
+          </div>
+        </ScrollListItem>
+      ))
+    }
+  </ScrollList>
+</section>
+
+<style>
+  section {
+    --scroll-list-min-width: 20rem;
+    --scroll-list-row-gap: var(--sp-6);
+    --scroll-list-vw: 20rem;
+  }
+
+  .img-container {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: var(--sp-3);
+  }
+
+  .logo {
+    object-fit: scale-down;
+  }
+</style>

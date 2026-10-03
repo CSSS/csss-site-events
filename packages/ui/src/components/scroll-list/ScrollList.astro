@@ -4,24 +4,28 @@
 
 <style>
   ul {
-    display: flex;
-    gap: var(--sp-4);
-    padding: var(--sp-4) var(--sp-6);
-    z-index: 10;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--scroll-list-min-width, 15rem), 1fr));
+    column-gap: var(--scroll-list-column-gap, var(--sp-4));
+    row-gap: var(--scroll-list-row-gap, var(--sp-4));
   }
 
   @media (hover: none) {
     ul {
+      /* Allow the horizontal direction to be scrollable */
       width: 100vw;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      overflow-x: scroll;
+      overflow-x: auto;
       overflow-y: hidden;
-      padding-block-end: var(--sp-8);
       scroll-snap-type: x mandatory;
-      scrollbar-width: none;
+
+      /* Force a single row */
+      grid-template-columns: none;
+      grid-template-rows: none;
+      grid-auto-flow: column;
+      grid-auto-columns: var(--scroll-list-vw, max-content);
+
+      padding-block-end: var(--sp-8);
+      place-items: center;
     }
   }
 </style>

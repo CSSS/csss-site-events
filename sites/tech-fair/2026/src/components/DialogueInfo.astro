@@ -14,7 +14,7 @@ const { sections } = Astro.props;
 <div class="qa">
   {
     sections.map(({ first, second }, index) => (
-      <div class="content">
+      <div id={index === sections.length - 1 ? 'companies' : undefined} class="content">
         <Badge tone={getBrandColour(index)}>
           <h3>{first}</h3>
         </Badge>
