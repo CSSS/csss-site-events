@@ -4,10 +4,16 @@
 
 <style>
   ul {
+    --item-min-width: var(--scroll-list-min-width, 10rem);
+    --item-max-width: var(--scroll-list-max-width, 100vw);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--scroll-list-min-width, 15rem), 1fr));
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--item-min-width, var(--item-max-width)), 1fr)
+    );
     column-gap: var(--scroll-list-column-gap, var(--sp-4));
     row-gap: var(--scroll-list-row-gap, var(--sp-4));
+    place-items: center;
   }
 
   @media (hover: none) {
@@ -17,6 +23,7 @@
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
+      scrollbar-gutter: stable;
 
       /* Force a single row */
       grid-template-columns: none;
@@ -24,8 +31,8 @@
       grid-auto-flow: column;
       grid-auto-columns: var(--scroll-list-vw, max-content);
 
+      padding-inline: var(--sp-2);
       padding-block-end: var(--sp-8);
-      place-items: center;
     }
   }
 </style>
