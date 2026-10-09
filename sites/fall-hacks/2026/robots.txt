@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fall-hacks.sfucsss.org/sitemap.xml
