@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site.data';
+---
+
+<Layout title={siteConfig.title} noindex>
+  <section class="not-found" aria-labelledby="not-found-title">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 id="not-found-title">Page not found</h1>
+    <p>Hey, you aren't suppose to be here! Let's get you back.</p>
+    <a class="not-found__link" href={import.meta.env.BASE_URL}>Back to Frosh 2026</a>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: calc(100svh - var(--navbar-height) - var(--sp-8));
+    place-content: center;
+    justify-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-8) var(--padding-inline);
+    text-align: center;
+  }
+
+  .not-found__code {
+    margin: 0;
+    color: var(--clr-primary-bg);
+    font-family: var(--font-heading);
+    font-size: clamp(5rem, 20vw, 12rem);
+    line-height: 0.8;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--font-size-heading-1);
+  }
+
+  .not-found p:not(.not-found__code) {
+    max-width: 32rem;
+    margin: 0;
+  }
+
+  .not-found__link {
+    display: inline-block;
+    margin-top: var(--sp-3);
+    padding: var(--sp-3) var(--sp-5);
+    color: var(--clr-primary-fg);
+    background-color: var(--clr-primary-bg);
+    border: 1.5px solid currentColor;
+    border-radius: var(--border-radius-default);
+    font-family: var(--font-heading);
+  }
+
+  .not-found__link:hover,
+  .not-found__link:focus-visible {
+    color: var(--clr-primary-bg);
+    background-color: var(--clr-primary-fg);
+  }
+</style>
