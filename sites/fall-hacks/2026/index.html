@@ -81,14 +81,12 @@
   <body>
     <div id="navbar">
       <div id="dropdown">
-        <button id="dropbtn" class="ntext" onclick="window.location.href = '#'">
-          FALL HACKS 2026
-        </button>
+        <button class="dropbtn ntext" onclick="window.scrollTo(0, 0)">FALL HACKS 2026</button>
       </div>
 
       <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px">
         <div id="dropdown">
-          <button id="dropbtn" class="ntext">The CSSS</button>
+          <button class="dropbtn ntext">The CSSS</button>
           <div id="dropdown-content">
             <a href="https://www.instagram.com/sfu_csss/" target="_blank">instagram</a>
             <a href="https://sfucsss.org" target="_blank">website</a>
@@ -97,24 +95,20 @@
           </div>
         </div>
         <div id="dropdown">
-          <button id="dropbtn" class="ntext" onclick="window.location.href = '#about'">
-            About
-          </button>
+          <a class="dropbtn ntext" href="#about">About</a>
         </div>
         <div id="dropdown">
-          <button id="dropbtn" class="ntext" onclick="window.location.href = '#register'">
-            Register
-          </button>
+          <a class="dropbtn ntext" href="#register"> Register </a>
         </div>
         <div id="dropdown">
-          <button id="dropbtn" class="ntext" onclick="window.location.href = '#faq'">FAQ</button>
+          <a class="dropbtn ntext" href="#faq">FAQ</a>
         </div>
       </div>
     </div>
 
     <div class="navbar" style="font-family: 'Geist Mono'">
       <div class="dropdown">
-        <button class="dropbtn ntext" onclick="window.location.href = '#'">FALL HACKS 2026</button>
+        <a class="dropbtn ntext" href="#">FALL HACKS 2026</a>
       </div>
 
       <button
@@ -525,9 +519,14 @@
       <div class="col-md-6">
         <img src="img/dark_logo.svg" alt="CSSS Logo" />
         <div id="dropdown">
-          <button id="dropbtn" class="ntext" onclick="window.open('https://sfucsss.org', '_blank')">
+          <a
+            class="dropbtn ntext"
+            href="https://sfucsss.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             BROUGHT TO YOU BY THE CSSS
-          </button>
+          </a>
         </div>
       </div>
       <div
@@ -558,27 +557,17 @@
 
         <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px">
           <div id="dropdown">
-            <button
-              id="dropbtn"
-              class="ntext"
-              onclick="window.location.href = 'mailto:csss-hackathonchair@sfu.ca'"
-            >
-              Email
-            </button>
+            <a class="dropbtn ntext" href="mailto:csss-hackathonchair@sfu.ca"> Email </a>
           </div>
           <div id="dropdown">
-            <button
-              id="dropbtn"
-              class="ntext"
-              onclick="
-                window.open(
-                  'https://drive.google.com/file/d/1AIdRni8b5RYJ965LBjAGNN-W90MaRD3D/view?usp=sharing',
-                  '_blank'
-                )
-              "
+            <a
+              class="dropbtn ntext"
+              href="https://drive.google.com/file/d/1AIdRni8b5RYJ965LBjAGNN-W90MaRD3D/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Sponsorship Package
-            </button>
+            </a>
           </div>
         </div>
       </div>
