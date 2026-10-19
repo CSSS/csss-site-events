@@ -1,3 +1,10 @@
+:root {
+  --padding-inline: 1rem;
+  --site-content-width: 75rem;
+  --site-breakout-width: 90rem;
+  --breakout-width: calc((var(--site-breakout-width) - var(--site-content-width)) / 2);
+}
+
 body {
   background-color: #fdfcf0;
 }
@@ -5,11 +12,44 @@ body {
 .tan {
   color: #fdfcf0;
 }
+
+.content-grid {
+  --content-width: min(100% - (var(--padding-inline) * 2), var(--site-content-width));
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-width))
+    [content-start] var(--content-width)
+    [content-end]
+    minmax(0, var(--breakout-width)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid > * {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--content-gap);
+}
+
 h1 {
   font-family: 'Cal Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+
 #dropdown-content a {
   color: #000;
   font-family: 'Geist Mono';
