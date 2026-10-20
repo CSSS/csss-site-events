@@ -78,8 +78,8 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="navbar">
+  <body class="content-grid">
+    <div id="navbar" class="full-width">
       <div id="dropdown">
         <button class="dropbtn ntext" onclick="window.scrollTo(0, 0)">FALL HACKS 2026</button>
       </div>
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <div class="navbar" style="font-family: 'Geist Mono'">
+    <div class="navbar full-width" style="font-family: 'Geist Mono'">
       <div class="dropdown">
         <a class="dropbtn ntext" href="#">FALL HACKS 2026</a>
       </div>
@@ -157,9 +157,9 @@
                 <a class="dropdown-item" href="https://sfucsss.org" target="_blank">WEBSITE</a>
               </li>
               <li>
-                <a class="dropdown-item" href="https://discord.gg/sfucsss" target="_blank"
-                  >DISCORD SERVER</a
-                >
+                <a class="dropdown-item" href="https://discord.gg/sfucsss" target="_blank">
+                  DISCORD SERVER
+                </a>
               </li>
               <li><hr style="border-color: black" class="dropdown-divider" /></li>
               <li><a class="dropdown-item" href="/2025" target="_blank">FALL HACKS 2025</a></li>
@@ -171,7 +171,7 @@
 
     <div
       id="carouselExampleFade"
-      class="desktop-car carousel slide carousel-fade mt-2 m-5"
+      class="breakout desktop-car carousel slide carousel-fade m-5"
       data-bs-ride="carousel"
     >
       <div
@@ -233,7 +233,7 @@
 
     <div
       id="carouselExampleFade"
-      class="mobile-car carousel slide carousel-fade mt-0"
+      class="full-width mobile-car carousel slide carousel-fade mt-0"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner" style="height: 400px">
@@ -298,7 +298,7 @@
 
     <div class="m-5" style="display: flex; justify-content: center; align-items: center">
       <div
-        class="tagline"
+        class="tagline py-2"
         id="about"
         style="
           font-size: 12px;
@@ -306,12 +306,11 @@
           background-color: #fd4e53;
           color: #fdfcf0;
           display: inline-flex;
-          padding: 5px 40px;
           justify-content: center;
           align-items: center;
         "
       >
-        <i>SFU's Student First Hackathon.</i>
+        <i class="px-4">SFU's Student First Hackathon.</i>
       </div>
     </div>
     <div
@@ -362,12 +361,20 @@
       </div>
     </div>
 
-    <div class="py-5 py-md-3 px-lg-5 my-5" style="background-color: #fff9da">
-      <div class="row align-items-start m-sm-4 m-lg-6 m-3 g-lg-5 g-md-3">
-        <div id="register" class="col-md-5 mb-3 mb-md-1 mt-0 px-0">
+    <div
+      class="content-grid full-width py-5 py-md-3 px-lg-5 my-5"
+      style="background-color: #fff9da"
+    >
+      <div class="row justify-content-center m-sm-4 m-lg-6 m-3 g-lg-5 g-md-3 gap-4">
+        <div
+          id="register"
+          class="row col-md-5 mb-3 mb-md-1 mt-0 px-0 justify-content-end gap-2"
+          style="max-width: 500px"
+        >
           <img
             src="/img/register.jpg"
             alt="Fall Hacks registration"
+            class="px-0"
             style="
               max-width: 100%;
               border-radius: 15px;
@@ -376,21 +383,18 @@
             "
           />
         </div>
-        <div class="col-md-7">
-          <div
-            class="d-flex flex-column align-content-center py-lg-5 py-md-3 py-4"
-            style="min-height: 100%"
-          >
-            <div class="mb-auto p-2">
+        <div class="col-md-7 mt-0">
+          <div class="d-flex flex-column py-lg-5 py-md-3 py-4">
+            <div class="mb-auto">
               <img
                 src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-black.svg"
                 alt="MLH Logo"
                 style="height: 63px"
               />
             </div>
-            <div class="p-2">
-              <p
-                class="hero mt-5 mt-md-3"
+            <div>
+              <h2
+                class="mt-5 mt-md-3"
                 style="
                   font-size: clamp(2rem, 3vi, 3.5rem);
                   font-family: 'Cal Sans';
@@ -399,12 +403,17 @@
                 "
               >
                 Registrations now open!
-              </p>
+              </h2>
+              <p>Registrations close on <strong>November 2, 2026</strong></p>
             </div>
-            <div class="p-2">
-              <a href="https://events.mlh.com/events/14659-fall-hacks-2026"
-                >Sign up on the MLH Hacker Portal</a
+            <div>
+              <a
+                class="button button--solid button--blue"
+                target="_blank"
+                href="https://events.mlh.com/events/14659-fall-hacks-2026"
               >
+                Sign up on the MLH Portal
+              </a>
             </div>
           </div>
         </div>
@@ -511,9 +520,9 @@
       </div>
     </div>
 
-    <div
+    <footer
       id="footer"
-      class="row align-items-stretch pb-3"
+      class="full-width row align-items-stretch pb-3"
       style="border-top: 1.5px solid black; padding: 40px 120px 10px 120px"
     >
       <div class="col-md-6">
@@ -571,7 +580,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </footer>
 
     <script>
       window.onscroll = function () {
