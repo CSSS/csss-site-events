@@ -19,13 +19,14 @@ interface Props {
   heroBgColour?: string;
   isFullHeightHero?: boolean;
   navItems?: NavItem[];
+  noindex?: boolean;
 }
 
-const { title, heroImage, heroAlt, heroBgColour, isFullHeightHero = false } = Astro.props;
+const { title, heroImage, heroAlt, heroBgColour, isFullHeightHero = false, noindex = false } = Astro.props;
 const hasHero = heroImage || Astro.slots.hero;
 ---
 
-<BaseLayout pageTitle={title} description={siteConfig.description}>
+<BaseLayout pageTitle={title} description={siteConfig.description} noindex={noindex}>
   <Fragment slot="head">
     <Font cssVariable="--font-geist-mono" />
     <Font cssVariable="--font-cal-sans" />
